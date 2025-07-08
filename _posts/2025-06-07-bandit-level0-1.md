@@ -6,7 +6,13 @@ categories: bandit
 tags: [overthewire, bandit, ssh]
 ---
 
-> **목표:** SSH 접속을 통해 다음 레벨 비밀번호를 획득한다.
+> 📝 **공식 문제 (Level 0 → 1)**
+>
+> **Level Goal**
+> The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game.
+>
+> **Commands you may need to solve this level**
+> `ls`, `cd`, `cat`, `file`, `du`, `find`
 
 ---
 
@@ -21,9 +27,6 @@ tags: [overthewire, bandit, ssh]
 - **명령어**
 ```bash
 ssh bandit0@bandit.labs.overthewire.org -p 2220
-```
-
----
 
 ## 🧪 풀이 과정
 
@@ -49,6 +52,6 @@ ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
 ## 💡 배운 점
 
 - 리눅스 기본 명령어 복습: `ssh`, `cat`
-- 첫 레벨은 단순하지만 구조 파악에 중요
+- 첫 레벨은 가볍게 구조 파악에 집중
 
 ---
