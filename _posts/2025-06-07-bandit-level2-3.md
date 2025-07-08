@@ -26,7 +26,8 @@ tags: [overthewire, bandit, linux]
   - 비밀번호: `263JGJPfgU6LtdEvgfWU1XP5yac29mFx`
   
 - **접속 명령어**
-```bash
+
+  ```bash
 ssh bandit2@bandit.labs.overthewire.org -p 2220
 
 ## 🧪 풀이 과정
