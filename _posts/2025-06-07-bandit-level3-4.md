@@ -6,7 +6,13 @@ categories: bandit
 tags: [overthewire, bandit, linux]
 ---
 
-> **목표:** 숨겨진 디렉토리 안의 숨겨진 파일에서 비밀번호 찾기
+> 📝 **공식 문제 (Level 3 → 4)**
+>
+> **Level Goal**
+> The password for the next level is stored in a hidden file in the inhere directory.
+>
+> **Commands you may need to solve this level**
+> `ls`, `cd`, `cat`, `file`, `du`, `find`
 
 ---
 
@@ -14,14 +20,11 @@ tags: [overthewire, bandit, linux]
 
 - **접속 정보**
   - 사용자: `bandit3`
-  - 비밀번호: MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+  - 비밀번호: `MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx`
 
 - **접속 명령어**
 ```bash
 ssh bandit3@bandit.labs.overthewire.org -p 2220
-```
-
----
 
 ## 🧪 풀이 과정
 
