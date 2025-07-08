@@ -94,3 +94,36 @@ a:hover {
     font-size: 0.9em;
     color: #6c757d; /* 회색 글씨 */
 }```
+
+/* ------------------- */
+/* 게시글 및 목록 스타일  */
+/* ------------------- */
+
+.post-meta {
+    color: #6c757d; /* 회색 글씨 */
+    font-size: 0.9em;
+}
+
+/* 게시글 목록 */
+.post-list {
+    list-style: none; /* 리스트 앞에 점 없애기 */
+    padding-left: 0;
+}
+
+.post-list li {
+    margin-bottom: 40px; /* 목록 사이 간격 */
+}
+
+.post-list h2 {
+    margin-bottom: 5px;
+}
+
+.post-list a {
+    color: #212529; /* 제목 색상 */
+    text-decoration: none;
+}
+
+.post-list a:hover {
+    color: #007bff; /* 마우스 올리면 파란색으로 */
+    text-decoration: none;
+}
