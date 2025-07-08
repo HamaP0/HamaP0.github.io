@@ -168,3 +168,28 @@ a:hover {
 .category-list a:hover {
   color: #218838; /* 마우스를 올리면 조금 더 진한 초록색으로 */
 }
+
+/* ------------------- */
+/* 포스트 내비게이션 스타일 */
+/* ------------------- */
+.post-nav {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #dee2e6; /* 구분선 */
+  display: flex; /* 가로로 배치 */
+  justify-content: space-between; /* 양 끝으로 정렬 */
+  flex-wrap: wrap; /* 화면이 좁으면 줄바꿈 */
+}
+
+.post-nav a {
+  display: block;
+  max-width: 48%; /* 한 줄에 너무 길어지지 않도록 */
+}
+
+.post-nav .prev {
+  text-align: left;
+}
+
+.post-nav .next {
+  text-align: right;
+}
