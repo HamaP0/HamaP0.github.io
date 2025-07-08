@@ -83,7 +83,8 @@ a:hover {
 }
 
 .content-wrapper p {
-    margin-bottom: 1em; /* 문단 사이 간격 */
+    margin-bottom: 1.2em; /* 문단 간 간격을 조금 더 넓게 */
+    font-size: 1.1rem; /* 기본 글자(16px)의 1.1배 크기로 설정하여 읽기 편하게 */
 }
 
 
