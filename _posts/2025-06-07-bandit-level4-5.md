@@ -48,4 +48,3 @@ cat [파일명]
 - `find`, `file`, `size` 옵션 등 조건 검색 실습
 
 ---
-[← 이전 단계](/2025/06/07/bandit-level3-4.html)
