@@ -137,3 +137,17 @@ h1 .signature-icon {
     height: 0.8em; /* h1 글씨에 맞춰 상대 크기를 더 줄임 */
     vertical-align: -0.05em; /* 정렬 미세 조정 */
 }
+
+/* ------------------- */
+/* 다크 모드 버튼 위치 고정 */
+/* ------------------- */
+.site-header .container {
+  position: relative; /* 자식 요소를 absolute로 위치시킬 기준점 */
+}
+
+#dark-mode-toggle {
+  position: absolute; /* 부모 요소를 기준으로 자유롭게 위치 */
+  right: 20px; /* 오른쪽 끝에서 20px 떨어진 곳에 배치 */
+  top: 50%; /* 세로 중앙 정렬을 위한 설정 */
+  transform: translateY(-50%);
+}
