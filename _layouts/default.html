@@ -1,5 +1,5 @@
     <!-- =================================================================== -->
-    <!-- 최종 스크립트 모음 (아이콘 복사 버튼 + 다크 모드) - 업그레이드 버전 -->
+    <!-- 최종 스크립트 모음 (아이콘 복사 버튼 + 다크 모드 기본 적용) -->
     <!-- =================================================================== -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -29,14 +29,13 @@
           });
         });
 
-        // --- 다크 모드 기능 ---
+        // --- 다크 모드 기능 (다크 모드가 기본) ---
         const toggleButton = document.getElementById('dark-mode-toggle');
         const htmlEl = document.documentElement;
         
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-          htmlEl.setAttribute('data-theme', savedTheme);
-        }
+        // 페이지 로드 시, 저장된 테마가 없으면 'dark'를 기본으로 적용합니다.
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        htmlEl.setAttribute('data-theme', savedTheme);
 
         toggleButton.addEventListener('click', () => {
           const currentTheme = htmlEl.getAttribute('data-theme');
