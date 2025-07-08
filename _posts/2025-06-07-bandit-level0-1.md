@@ -25,8 +25,9 @@ tags: [overthewire, bandit, ssh]
   - 비밀번호 : `bandit0`
 
 - **접속 명령어**
-```bash
-ssh bandit0@bandit.labs.overthewire.org -p 2220
+
+  ```bash
+  ssh bandit0@bandit.labs.overthewire.org -p 2220
 
 ## 🧪 풀이 과정
 
