@@ -27,31 +27,46 @@
     <!-- 아래 스크립트를 새로 추가합니다. (코드 복사 기능) -->
     <!-- =============================================== -->
     <script>
+      // 스크립트가 HTML 문서를 모두 읽은 후에 실행되도록 합니다.
       document.addEventListener('DOMContentLoaded', () => {
-        // 모든 코드 블록을 찾습니다.
-        const codeBlocks = document.querySelectorAll('.content-wrapper pre');
 
+        // --- 코드 복사 기능 ---
+        const codeBlocks = document.querySelectorAll('.content-wrapper pre');
         codeBlocks.forEach(block => {
-          // 복사 버튼을 만듭니다.
           const copyButton = document.createElement('button');
           copyButton.className = 'copy-button';
           copyButton.textContent = '복사';
-          
-          // 버튼을 코드 블록 안에 추가합니다.
           block.appendChild(copyButton);
 
-          // 버튼 클릭 이벤트를 추가합니다.
           copyButton.addEventListener('click', () => {
             const code = block.querySelector('code').innerText;
             navigator.clipboard.writeText(code).then(() => {
-              // 성공 시 버튼 텍스트를 잠시 바꿉니다.
-              copyButton.textContent = '복사 완료!';
+              copyButton.textContent = '완료!';
               setTimeout(() => {
                 copyButton.textContent = '복사';
               }, 2000);
             });
           });
         });
+
+        // --- 다크 모드 기능 ---
+        const toggleButton = document.getElementById('dark-mode-toggle');
+        const htmlEl = document.documentElement;
+        
+        // 페이지 로드 시, 저장된 테마가 있으면 적용합니다.
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          htmlEl.setAttribute('data-theme', savedTheme);
+        }
+
+        // 버튼 클릭 시 테마를 전환하고, 선택을 localStorage에 저장합니다.
+        toggleButton.addEventListener('click', () => {
+          const currentTheme = htmlEl.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          htmlEl.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+        });
+
       });
     </script>
 
