@@ -53,6 +53,3 @@ cat .hidden
 - `.dotfile`은 리눅스에서 매우 자주 등장
 
 ---
-
-[← 이전 단계](/2025/06/07/bandit-level0-1.html)
-[다음 단계 →](/2025/06/07/bandit-level2-3.html)
