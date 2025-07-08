@@ -1,52 +1,76 @@
 /* =============================================================================
-   HamaP의 기술 블로그 - 최종 스타일시트
+   HamaP의 기술 블로그 - 최종 스타일시트 (다크 모드 포함)
    ========================================================================== */
+
+/* ------------------- */
+/* 색상 변수 정의 (다크/라이트 모드) */
+/* ------------------- */
+
+/* :root는 문서 전체에서 사용할 변수를 정의하는 곳입니다. (기본: 라이트 모드) */
+:root {
+  --bg-color: #f8f9fa;
+  --text-color: #212529;
+  --header-bg: #ffffff;
+  --content-bg: #ffffff;
+  --border-color: #dee2e6;
+  --code-bg: #f1f3f5;
+  --footer-text: #6c757d;
+  --copy-btn-bg: #6c757d;
+}
+
+/* [data-theme="dark"] 속성이 html에 적용되면 이 색상들을 사용합니다. */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --header-bg: #1e1e1e;
+  --content-bg: #1e1e1e;
+  --border-color: #333333;
+  --code-bg: #2c2c2c;
+  --footer-text: #888888;
+  --copy-btn-bg: #4a4a4a;
+}
 
 /* ------------------- */
 /* 기본 스타일 (Global) */
 /* ------------------- */
 body {
-    /* Pretendard 폰트를 최우선으로 사용하고, 실패 시 시스템 기본 폰트를 사용합니다. */
     font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     margin: 0;
     padding: 0;
-    
-    /* 가독성을 위해 본문 기본 글씨 크기를 16px로, 줄 간격은 1.7배로 조정합니다. */
     font-size: 16px;
     line-height: 1.7;
-    
-    background-color: #f8f9fa; /* 약간 부드러운 회색 배경 */
-    color: #212529; /* 약간 부드러운 검은색 글씨 */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 a {
-    color: #007bff; /* 기본 링크 색상 (파란색) */
-    text-decoration: none; /* 밑줄 제거 */
+    color: #007bff;
+    text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline; /* 마우스를 올리면 밑줄 표시 */
+    text-decoration: underline;
 }
 
 .container {
-    max-width: 800px; /* 본문 최대 너비 제한 */
-    margin: 0 auto; /* 가운데 정렬 */
-    padding: 0 20px; /* 좌우 여백 */
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 hr {
     border: none;
-    border-top: 1px solid #dee2e6; /* 구분선 스타일 */
+    border-top: 1px solid var(--border-color);
     margin: 40px 0;
 }
-
 
 /* ------------------- */
 /* 헤더 및 네비게이션    */
 /* ------------------- */
 .site-header {
-    background-color: #ffffff;
-    border-bottom: 1px solid #dee2e6;
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
     padding: 20px 0;
     margin-bottom: 30px;
 }
@@ -60,7 +84,7 @@ hr {
 .site-title {
     font-size: 1.5em;
     font-weight: bold;
-    color: #212529;
+    color: var(--text-color);
 }
 .site-title:hover {
     text-decoration: none;
@@ -70,21 +94,20 @@ hr {
     margin-left: 20px;
     font-size: 1.1em;
     font-weight: bold;
-    color: #007bff; /* 메뉴 링크 색상 */
+    color: #007bff;
     transition: color 0.2s;
 }
 
 .site-nav a:hover {
-    color: #8A2BE2; /* 마우스 올렸을 때 색상 */
+    color: #8A2BE2;
     text-decoration: none;
 }
-
 
 /* ------------------- */
 /* 메인 컨텐츠 영역      */
 /* ------------------- */
 .content-wrapper {
-    background-color: #ffffff;
+    background-color: var(--content-bg);
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -101,31 +124,29 @@ hr {
 
 .content-wrapper p {
     margin-bottom: 1.2em;
-    font-size: 1.1rem; /* 기본 글자의 1.1배 크기로 가독성 향상 */
+    font-size: 1.1rem;
 }
 
-/* 코드 블록 스타일 (기술 블로그에 필수!) */
 .content-wrapper pre,
 .content-wrapper code {
-    font-family: "D2Coding", "Courier New", monospace; /* 코딩용 D2Coding 폰트 우선 적용 */
-    background-color: #f1f3f5;
+    font-family: "D2Coding", "Courier New", monospace;
+    background-color: var(--code-bg);
     border-radius: 4px;
 }
 .content-wrapper pre {
     padding: 15px;
-    overflow-x: auto; /* 코드가 길면 가로 스크롤 생성 */
+    overflow-x: auto;
 }
 .content-wrapper :not(pre) > code {
-    padding: 3px 6px; /* 문단 내의 짧은 코드 스타일 */
+    padding: 3px 6px;
     font-size: 0.9em;
 }
-
 
 /* ------------------- */
 /* 게시글 목록 스타일   */
 /* ------------------- */
 .post-meta {
-    color: #6c757d;
+    color: var(--footer-text); /* footer와 동일한 톤의 색상 사용 */
     font-size: 0.9em;
 }
 
@@ -143,13 +164,12 @@ hr {
 }
 
 .post-list a.post-link {
-    color: #212529;
+    color: var(--text-color);
     text-decoration: none;
 }
 .post-list a.post-link:hover {
     color: #007bff;
 }
-
 
 /* ------------------- */
 /* 카테고리 목록 스타일  */
@@ -166,7 +186,7 @@ hr {
 .category-list a {
   font-size: 1.2em;
   font-weight: bold;
-  color: #28a745; /* 초록색 */
+  color: #28a745;
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -175,14 +195,13 @@ hr {
   color: #218838;
 }
 
-
 /* ------------------- */
 /* 포스트 내비게이션 (이전/다음 글) */
 /* ------------------- */
 .post-nav {
   margin-top: 40px;
   padding-top: 20px;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
 }
@@ -200,9 +219,8 @@ hr {
 
 .post-nav .next {
   text-align: right;
-  margin-left: auto; /* 이전 글이 없어도 항상 오른쪽 끝에 고정 */
+  margin-left: auto;
 }
-
 
 /* ------------------- */
 /* 푸터 (하단)         */
@@ -211,28 +229,28 @@ hr {
     text-align: center;
     padding: 20px 0;
     font-size: 0.9em;
-    color: #6c757d;
+    color: var(--footer-text);
 }
 
 /* ------------------- */
 /* 코드 복사 버튼 스타일 */
 /* ------------------- */
 .content-wrapper pre {
-    position: relative; /* 버튼 위치의 기준점이 됨 */
+    position: relative;
 }
 
 .copy-button {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #6c757d;
+    background-color: var(--copy-btn-bg);
     color: white;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     opacity: 0.7;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, background-color 0.2s;
 }
 
 .copy-button:hover {
@@ -240,5 +258,5 @@ hr {
 }
 
 .copy-button:active {
-    background-color: #28a745; /* 클릭했을 때 색 */
+    background-color: #28a745;
 }
