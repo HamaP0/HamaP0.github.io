@@ -7,7 +7,24 @@ title: Study
 <p>이 페이지에는 제가 공부한 내용들을 정리해서 올릴 예정입니다.</p>
 <p>주로 해킹, 보안, 클라우드 기술에 대한 글이 올라옵니다.</p>
 
-<!-- 
-  나중에 여기에 공부한 글 목록이 자동으로 표시되도록 만들 수 있습니다. 
-  예를 들어, _posts 폴더에 있는 글들이 나타나게 됩니다.
--->
+<hr> <!-- 구분을 위한 가로줄 -->
+
+<!-- 게시글 목록을 담을 리스트 -->
+<ul class="post-list">
+  <!-- 
+    Jekyll이 site.posts 변수에 모든 글을 담아줍니다.
+    for 반복문을 사용해 각 게시글(post)을 순서대로 꺼내옵니다.
+  -->
+  {% for post in site.posts %}
+    <li>
+      <h2>
+        <!-- 각 게시글의 URL 주소로 연결되는 링크를 만듭니다 -->
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h2>
+      <p class="post-meta">{{ post.date | date: "%Y년 %m월 %d일" }}</p>
+      
+      <!-- post.excerpt는 각 글의 첫 번째 문단을 자동으로 가져옵니다. -->
+      <p>{{ post.excerpt }}</p>
+    </li>
+  {% endfor %}
+</ul>
