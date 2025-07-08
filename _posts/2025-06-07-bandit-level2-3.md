@@ -47,5 +47,3 @@ cat "spaces in this filename"
 - 파일 이름에 공백이 있을 경우 처리하는 법 (`"` 또는 `\` 활용)
 
 ---
-[← 이전 단계](/2025/06/07/bandit-level1-2.html)
-[다음 단계 →](/2025/06/07/bandit-level3-4.html)
