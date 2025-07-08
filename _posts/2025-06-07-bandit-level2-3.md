@@ -12,11 +12,11 @@ tags: [overthewire, bandit, linux]
 
 ## 🔐 Level Info
 
-- **사용자:** banditX
-- **비밀번호:** 이전 레벨에서 획득
+- **사용자:** bandit2
+- **비밀번호:** 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
 - **접속 명령어**
 ```bash
-ssh banditX@bandit.labs.overthewire.org -p 2220
+ssh bandit2@bandit.labs.overthewire.org -p 2220
 ```
 
 ---
@@ -37,7 +37,7 @@ cat "spaces in this filename"
 
 다음 레벨의 비밀번호:
 ```
-<여기에 비밀번호>
+MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
 ```
 
 ---
