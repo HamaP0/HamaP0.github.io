@@ -40,7 +40,7 @@ cat readme
 
 다음 레벨의 비밀번호:
 ```
-<여기에 비밀번호>
+ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
 ```
 
 ---
