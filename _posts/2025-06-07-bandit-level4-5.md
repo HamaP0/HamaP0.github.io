@@ -6,7 +6,13 @@ categories: bandit
 tags: [overthewire, bandit, linux]
 ---
 
-> **목표:** 파일 크기, 이름 기준으로 조건에 맞는 파일 찾기
+> 📝 **공식 문제 (Level 4 → 5)**
+>
+> **Level Goal**
+> The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.
+>
+> **Commands you may need to solve this level**
+> `ls`, `cd`, `cat`, `file`, `du`, `find`
 
 ---
 
@@ -14,14 +20,11 @@ tags: [overthewire, bandit, linux]
 
 - **접속 정보**
   - 사용자: `bandit4`
-  - 비밀번호: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
-  - 
+  - 비밀번호: `2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ`
+  
 - **접속 명령어**
 ```bash
 ssh bandit4@bandit.labs.overthewire.org -p 2220
-```
-
----
 
 ## 🧪 풀이 과정
 
