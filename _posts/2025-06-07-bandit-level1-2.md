@@ -2,7 +2,7 @@
 layout: post
 title: "[Bandit] Level 1 → 2 풀이"
 date: 2025-06-07
-categories: wargame bandit
+categories: bandit
 tags: [overthewire, bandit, ssh]
 ---
 
