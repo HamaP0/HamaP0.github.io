@@ -29,7 +29,7 @@ tags: [overthewire, bandit, ssh]
 - **접속 명령어**
 
   ```bash
-  ssh bandit1@bandit.labs.overthewire.org -p 2220
+ssh bandit1@bandit.labs.overthewire.org -p 2220
 
 ## 🧪 풀이 과정
 
