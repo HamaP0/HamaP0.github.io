@@ -4,10 +4,15 @@
 /* 기본 스타일 (Global) */
 /* ------------------- */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    /* Pretendard 폰트를 최우선으로 사용하고, 실패 시 기본 폰트를 사용합니다. */
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    
+    /* 가독성을 위해 본문 기본 글씨 크기를 16px로, 줄 간격은 1.7배로 조정합니다. */
+    font-size: 16px;
+    line-height: 1.7;
+    
     background-color: #f8f9fa;
     color: #212529;
 }
