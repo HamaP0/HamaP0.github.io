@@ -1,0 +1,16 @@
+title: HamaP의 기술 블로그
+description: 해킹과 보안, 클라우드 공부 기록
+author: HamaP
+baseurl: ""
+url: "https://hamap0.github.io"
+
+markdown: kramdown
+highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+collections:
+  posts:
+    output: true

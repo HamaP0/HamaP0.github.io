@@ -1,0 +1,28 @@
+<!-- _layouts/default.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 페이지마다 다른 제목이 표시되도록 설정합니다. -->
+    <title>{{ page.title | default: site.title }}</title>
+    
+    <!-- Jekyll이 자동으로 CSS 파일 경로를 올바르게 연결해줍니다. -->
+    <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+</head>
+<body>
+
+    <!-- 모든 페이지 상단에 표시될 헤더(메뉴)를 불러옵니다. -->
+    {% include header.html %}
+
+    <main class="content-wrapper">
+        <!-- 이 부분에 각 페이지의 실제 내용(index.html, about.html 등)이 들어옵니다. -->
+        {{ content }}
+    </main>
+
+    <!-- 모든 페이지 하단에 표시될 푸터를 불러옵니다. -->
+    {% include footer.html %}
+
+</body>
+</html>

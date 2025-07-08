@@ -1,0 +1,19 @@
+<!-- _includes/header.html -->
+<header class="site-header">
+    <div class="container">
+        <!-- 로고/블로그 제목. 클릭하면 홈으로 이동합니다. -->
+        <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title }}</a>
+
+        <!-- 네비게이션 메뉴 -->
+        <nav class="site-nav">
+            <!-- 
+              Jekyll의 relative_url 필터는 GitHub Pages 환경에서도 링크가 깨지지 않게 도와줍니다.
+              (예: /HamaP.github.io/study.html 같은 경로를 자동으로 처리)
+            -->
+            <a href="{{ "/" | relative_url }}">HOME</a>
+            <a href="{{ "/projects.html" | relative_url }}">Project</a>
+            <a href="{{ "/study.html" | relative_url }}">Study</a>
+            <a href="{{ "/about.html" | relative_url }}">HamaP</a>
+        </nav>
+    </div>
+</header>
