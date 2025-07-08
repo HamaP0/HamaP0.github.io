@@ -4,35 +4,20 @@ title: Study
 ---
 
 <h1>Study</h1>
-<p>이곳에서는 제가 공부한 모든 기록을 볼 수 있습니다.</p>
+<p>이곳에서는 제가 공부한 모든 기록을 볼 수 있습니다. 아래 카테고리를 선택하세요.</p>
 
 <hr>
 
 <h2>카테고리 목록</h2>
 <ul class="category-list">
   <!-- 
-    site.categories는 Jekyll이 자동으로 만들어주는 모든 카테고리의 목록입니다.
-    이 반복문은 'bandit', 'wargame' 같은 카테고리 이름을 하나씩 꺼내옵니다.
+    이 코드는 _posts 폴더에 있는 글들의 카테고리를 분석해서
+    'wargame', 'bandit' 같은 카테고리 목록을 자동으로 만들어줍니다.
+    나중에 'network' 글을 쓰면 여기에 자동으로 추가되어 편리합니다.
   -->
   {% for category in site.categories %}
     <li>
-      <!-- 
-        카테고리 이름을 가져와서 (category[0]), 
-        /category/카테고리이름.html 과 같은 링크를 만듭니다.
-      -->
       <a href="/category/{{ category[0] }}.html">{{ category[0] }} ({{ category[1].size }})</a>
-    </li>
-  {% endfor %}
-</ul>
-
-<hr>
-
-<h2>전체 글 목록</h2>
-<ul class="post-list">
-  {% for post in site.posts %}
-    <li>
-      <h2><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <p class="post-meta">{{ post.date | date: "%Y년 %m월 %d일" }}</p>
     </li>
   {% endfor %}
 </ul>
