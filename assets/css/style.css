@@ -127,3 +127,19 @@ a:hover {
     color: #007bff; /* 마우스 올리면 파란색으로 */
     text-decoration: none;
 }
+
+/* ------------------- */
+/* 메뉴 링크 색상 추가   */
+/* ------------------- */
+
+.site-nav a {
+    /* 기본 메뉴 링크 색상 */
+    color: #007bff; /* 파란색 계열 */
+    font-weight: bold; /* 글씨를 약간 두껍게 */
+    transition: color 0.2s; /* 색상이 부드럽게 변하는 효과 */
+}
+
+.site-nav a:hover {
+    /* 마우스를 올렸을 때 색상 */
+    color: #8A2BE2; /* 보라색 계열 */
+}
