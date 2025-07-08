@@ -6,7 +6,16 @@ categories: bandit
 tags: [overthewire, bandit, linux]
 ---
 
-> **목표:** 디렉토리 내부에 있는 특정 이름의 파일에서 비밀번호 찾기
+> 📝 **공식 문제 (Level 2 → 3)**
+>
+> **Level Goal**
+> The password for the next level is stored in a file called spaces in this filename located in the home directory.
+>
+> **Commands you may need to solve this level**
+> `ls`, `cd`, `cat`, `file`, `du`, `find`
+>
+> **Helpful Reading Material**
+> - [Google Search for “spaces in filename”](https://www.google.com/search?q=spaces+in+filename)
 
 ---
 
@@ -14,14 +23,11 @@ tags: [overthewire, bandit, linux]
 
 - **접속 정보**
   - 사용자: `bandit2`
-  - 비밀번호: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+  - 비밀번호: `263JGJPfgU6LtdEvgfWU1XP5yac29mFx`
   
 - **접속 명령어**
 ```bash
 ssh bandit2@bandit.labs.overthewire.org -p 2220
-```
-
----
 
 ## 🧪 풀이 과정
 
