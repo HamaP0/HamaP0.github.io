@@ -119,7 +119,29 @@ hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
 /* ------------------- */
 /* HamaP 시그니처 아이콘 */
 /* ------------------- */
-.signature-icon { height: 1.2em; width: auto; vertical-align: -0.2em; margin-left: 3px; }
+.signature-icon {
+    height: 1.2em;
+    width: auto;
+    vertical-align: -0.2em;
+    margin-left: 3px;
+    display: inline-block; /* 아이콘 교체를 위해 추가 */
+}
+
+/* 라이트 모드에서는 다크 모드 아이콘을 숨깁니다 */
+.dark-icon {
+    display: none;
+}
+
+/* 다크 모드에서는 라이트 모드 아이콘을 숨기고, */
+[data-theme="dark"] .light-icon {
+    display: none;
+}
+/* 다크 모드 아이콘을 보여줍니다 */
+[data-theme="dark"] .dark-icon {
+    display: inline-block;
+}
+
+/* 큰 글씨 옆 아이콘 크기 개별 조절 */
 .site-title .signature-icon { height: 0.9em; vertical-align: -0.1em; }
 h1 .signature-icon { height: 0.8em; vertical-align: -0.05em; }
 
