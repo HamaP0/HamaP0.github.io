@@ -1,0 +1,28 @@
+---
+# 이 post 레이아웃 자체도 default 레이아웃을 사용합니다.
+# 이렇게 하면 헤더와 푸터를 그대로 재사용할 수 있습니다.
+layout: default 
+---
+
+<!-- 게시글 하나를 감싸는 영역입니다 -->
+<article class="post">
+
+  <header class="post-header">
+    <!-- 글의 제목을 표시합니다 (예: "[Bandit] Level 0 → 1 풀이") -->
+    <h1 class="post-title">{{ page.title }}</h1>
+    
+    <!-- 글의 작성 날짜와 카테고리를 표시합니다 -->
+    <p class="post-meta">
+      작성일: {{ page.date | date: "%Y년 %m월 %d일" }}
+      {% if page.categories.size > 0 %}
+        • 카테고리: {{ page.categories | join: ', ' }}
+      {% endif %}
+    </p>
+  </header>
+
+  <div class="post-content">
+    <!-- 이 부분에 각 마크다운(.md) 파일의 실제 내용이 들어옵니다 -->
+    {{ content }}
+  </div>
+
+</article>
