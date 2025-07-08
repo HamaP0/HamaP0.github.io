@@ -14,7 +14,7 @@ tags: [overthewire, bandit, ssh]
 
 - **접속 정보**
   - 사용자: `bandit1`
-  - 비밀번호: 이전 레벨에서 얻은 값
+  - 비밀번호: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
   - 호스트: `bandit.labs.overthewire.org`
   - 포트: `2220`
 
