@@ -6,7 +6,17 @@ categories: bandit
 tags: [overthewire, bandit, ssh]
 ---
 
-> **목표:** 숨겨진 파일에서 다음 레벨의 비밀번호를 찾는다.
+> 📝 **공식 문제 (Level 1 → 2)**
+>
+> **Level Goal**
+> The password for the next level is stored in a file called - located in the home directory.
+>
+> **Commands you may need to solve this level**
+> `ls`, `cd`, `cat`, `file`, `du`, `find`
+>
+> **Helpful Reading Material**
+> - [Google Search for “dashed filename”](https://www.google.com/search?q=dashed+filename)
+> - [Advanced Bash-scripting Guide - Chapter 3 - Special Characters](https://tldp.org/LDP/abs/html/special-chars.html)
 
 ---
 
@@ -14,13 +24,11 @@ tags: [overthewire, bandit, ssh]
 
 - **접속 정보**
   - 사용자: `bandit1`
-  - 비밀번호: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+  - 비밀번호: `ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If`
 
 - **명령어**
 ```bash
 ssh bandit1@bandit.labs.overthewire.org -p 2220
-```
-
 ---
 
 ## 🧪 풀이 과정
