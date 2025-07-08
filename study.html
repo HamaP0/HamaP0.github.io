@@ -3,28 +3,36 @@ layout: default
 title: Study
 ---
 
-<h1>학습 기록</h1>
-<p>이 페이지에는 제가 공부한 내용들을 정리해서 올릴 예정입니다.</p>
-<p>주로 해킹, 보안, 클라우드 기술에 대한 글이 올라옵니다.</p>
+<h1>Study</h1>
+<p>이곳에서는 제가 공부한 모든 기록을 볼 수 있습니다.</p>
 
-<hr> <!-- 구분을 위한 가로줄 -->
+<hr>
 
-<!-- 게시글 목록을 담을 리스트 -->
-<ul class="post-list">
+<h2>카테고리 목록</h2>
+<ul class="category-list">
   <!-- 
-    Jekyll이 site.posts 변수에 모든 글을 담아줍니다.
-    for 반복문을 사용해 각 게시글(post)을 순서대로 꺼내옵니다.
+    site.categories는 Jekyll이 자동으로 만들어주는 모든 카테고리의 목록입니다.
+    이 반복문은 'bandit', 'wargame' 같은 카테고리 이름을 하나씩 꺼내옵니다.
   -->
+  {% for category in site.categories %}
+    <li>
+      <!-- 
+        카테고리 이름을 가져와서 (category[0]), 
+        /category/카테고리이름.html 과 같은 링크를 만듭니다.
+      -->
+      <a href="/category/{{ category[0] }}.html">{{ category[0] }} ({{ category[1].size }})</a>
+    </li>
+  {% endfor %}
+</ul>
+
+<hr>
+
+<h2>전체 글 목록</h2>
+<ul class="post-list">
   {% for post in site.posts %}
     <li>
-      <h2>
-        <!-- 각 게시글의 URL 주소로 연결되는 링크를 만듭니다 -->
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h2>
+      <h2><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
       <p class="post-meta">{{ post.date | date: "%Y년 %m월 %d일" }}</p>
-      
-      <!-- post.excerpt는 각 글의 첫 번째 문단을 자동으로 가져옵니다. -->
-      <p>{{ post.excerpt }}</p>
     </li>
   {% endfor %}
 </ul>
