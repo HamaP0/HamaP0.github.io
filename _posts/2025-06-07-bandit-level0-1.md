@@ -16,6 +16,7 @@ tags: [overthewire, bandit, ssh]
   - 호스트: `bandit.labs.overthewire.org`
   - 포트: `2220`
   - 사용자: `bandit0`
+  - 비밀번호 : `bandit0`
 
 - **명령어**
 ```bash
