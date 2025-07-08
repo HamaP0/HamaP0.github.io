@@ -1,12 +1,10 @@
 /* =============================================================================
-   HamaP의 기술 블로그 - 최종 스타일시트 (다크 모드 포함)
+   HamaP의 기술 블로그 - 최종 스타일시트 (다크 모드 + 복사 버튼 포함)
    ========================================================================== */
 
 /* ------------------- */
 /* 색상 변수 정의 (다크/라이트 모드) */
 /* ------------------- */
-
-/* :root는 문서 전체에서 사용할 변수를 정의하는 곳입니다. (기본: 라이트 모드) */
 :root {
   --bg-color: #f8f9fa;
   --text-color: #212529;
@@ -18,7 +16,6 @@
   --copy-btn-bg: #6c757d;
 }
 
-/* [data-theme="dark"] 속성이 html에 적용되면 이 색상들을 사용합니다. */
 [data-theme="dark"] {
   --bg-color: #121212;
   --text-color: #e0e0e0;
@@ -35,35 +32,16 @@
 /* ------------------- */
 body {
     font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-    line-height: 1.7;
+    margin: 0; padding: 0; font-size: 16px; line-height: 1.7;
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
 }
 
-a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-hr {
-    border: none;
-    border-top: 1px solid var(--border-color);
-    margin: 40px 0;
-}
+a { color: #007bff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
 
 /* ------------------- */
 /* 헤더 및 네비게이션    */
@@ -71,61 +49,27 @@ hr {
 .site-header {
     background-color: var(--header-bg);
     border-bottom: 1px solid var(--border-color);
-    padding: 20px 0;
-    margin-bottom: 30px;
+    padding: 20px 0; margin-bottom: 30px;
 }
 
-.site-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.site-title {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: var(--text-color);
-}
-.site-title:hover {
-    text-decoration: none;
-}
-
-.site-nav a {
-    margin-left: 20px;
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #007bff;
-    transition: color 0.2s;
-}
-
-.site-nav a:hover {
-    color: #8A2BE2;
-    text-decoration: none;
-}
+.site-header .container { display: flex; justify-content: space-between; align-items: center; }
+.site-title { font-size: 1.5em; font-weight: bold; color: var(--text-color); }
+.site-title:hover { text-decoration: none; }
+.site-nav a { margin-left: 20px; font-size: 1.1em; font-weight: bold; color: #007bff; transition: color 0.2s; }
+.site-nav a:hover { color: #8A2BE2; text-decoration: none; }
 
 /* ------------------- */
 /* 메인 컨텐츠 영역      */
 /* ------------------- */
 .content-wrapper {
     background-color: var(--content-bg);
-    padding: 40px;
-    border-radius: 8px;
+    padding: 40px; border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     margin-bottom: 30px;
 }
 
-.content-wrapper h1,
-.content-wrapper h2,
-.content-wrapper h3 {
-    margin-top: 1.5em;
-    margin-bottom: 0.8em;
-    line-height: 1.3;
-}
-
-.content-wrapper p {
-    margin-bottom: 1.2em;
-    font-size: 1.1rem;
-}
+.content-wrapper h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.8em; line-height: 1.3; }
+.content-wrapper p { margin-bottom: 1.2em; font-size: 1.1rem; }
 
 .content-wrapper pre,
 .content-wrapper code {
@@ -133,143 +77,51 @@ hr {
     background-color: var(--code-bg);
     border-radius: 4px;
 }
-.content-wrapper pre {
-    padding: 15px;
-    overflow-x: auto;
-}
-.content-wrapper :not(pre) > code {
-    padding: 3px 6px;
-    font-size: 0.9em;
-}
+.content-wrapper pre { padding: 15px; overflow-x: auto; }
+.content-wrapper :not(pre) > code { padding: 3px 6px; font-size: 0.9em; }
 
 /* ------------------- */
-/* 게시글 목록 스타일   */
+/* 게시글/카테고리 목록   */
 /* ------------------- */
-.post-meta {
-    color: var(--footer-text); /* footer와 동일한 톤의 색상 사용 */
-    font-size: 0.9em;
-}
-
-.post-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.post-list li {
-    margin-bottom: 40px;
-}
-
-.post-list h2 {
-    margin-bottom: 5px;
-}
-
-.post-list a.post-link {
-    color: var(--text-color);
-    text-decoration: none;
-}
-.post-list a.post-link:hover {
-    color: #007bff;
-}
-
-/* ------------------- */
-/* 카테고리 목록 스타일  */
-/* ------------------- */
-.category-list {
-  list-style: none;
-  padding-left: 20px;
-}
-
-.category-list li {
-  margin-bottom: 10px;
-}
-
-.category-list a {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #28a745;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.category-list a:hover {
-  color: #218838;
-}
+.post-meta { color: var(--footer-text); font-size: 0.9em; }
+.post-list, .category-list { list-style: none; padding-left: 0; }
+.post-list li { margin-bottom: 40px; }
+.post-list h2 { margin-bottom: 5px; }
+.post-list a.post-link { color: var(--text-color); text-decoration: none; }
+.post-list a.post-link:hover { color: #007bff; }
+.category-list li { margin-bottom: 10px; }
+.category-list a { font-size: 1.2em; font-weight: bold; color: #28a745; text-decoration: none; transition: color 0.2s; }
+.category-list a:hover { color: #218838; }
 
 /* ------------------- */
 /* 포스트 내비게이션 (이전/다음 글) */
 /* ------------------- */
-.post-nav {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border-color);
-  display: flex;
-  justify-content: space-between;
-}
-
-.post-nav a {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 48%;
-}
-
-.post-nav .prev {
-  text-align: left;
-}
-
-.post-nav .next {
-  text-align: right;
-  margin-left: auto;
-}
+.post-nav { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; }
+.post-nav a { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 48%; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; margin-left: auto; }
 
 /* ------------------- */
 /* 푸터 (하단)         */
 /* ------------------- */
-.site-footer {
-    text-align: center;
-    padding: 20px 0;
-    font-size: 0.9em;
-    color: var(--footer-text);
-}
+.site-footer { text-align: center; padding: 20px 0; font-size: 0.9em; color: var(--footer-text); }
+
+/* ------------------- */
+/* HamaP 시그니처 아이콘 */
+/* ------------------- */
+.signature-icon { height: 1.2em; width: auto; vertical-align: -0.2em; margin-left: 3px; }
 
 /* ------------------- */
 /* 코드 복사 버튼 스타일 */
 /* ------------------- */
-.content-wrapper pre {
-    position: relative;
-}
-
+.content-wrapper pre { position: relative; }
 .copy-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    position: absolute; top: 10px; right: 10px;
     background-color: var(--copy-btn-bg);
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    opacity: 0.7;
+    color: white; border: none; padding: 5px 10px;
+    border-radius: 5px; cursor: pointer; opacity: 0; /* 평소엔 안보이게 */
     transition: opacity 0.2s, background-color 0.2s;
 }
-
-.copy-button:hover {
-    opacity: 1;
-}
-
-.copy-button:active {
-    background-color: #28a745;
-}
-
-/* ------------------- */
-/* HamaP 시그니처 아이콘 스타일 */
-/* ------------------- */
-.signature-icon {
-    /* height 값을 조절하여 아이콘 크기를 설정합니다. */
-    height: 1.2em; /* 글자 크기의 1.2배 높이. 'em' 단위가 중요합니다. */
-    width: auto;   /* 높이에 맞춰 너비는 자동으로 조절 */
-
-    /* 아이콘을 글자와 자연스럽게 정렬합니다. */
-    vertical-align: -0.2em; /* 아이콘을 글자 라인에 맞게 살짝 내림 */
-    margin-left: 3px;       /* 이름과 아이콘 사이의 간격 */
-}
+.content-wrapper pre:hover .copy-button { opacity: 0.7; } /* 마우스를 올리면 보이게 */
+.copy-button:hover { opacity: 1; }
+.copy-button:active { background-color: #28a745; }
