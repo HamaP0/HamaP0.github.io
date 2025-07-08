@@ -42,7 +42,7 @@ cat .hidden
 
 다음 레벨의 비밀번호:
 ```
-<여기에 비밀번호>
+263JGJPfgU6LtdEvgfWU1XP5yac29mFx
 ```
 
 ---
