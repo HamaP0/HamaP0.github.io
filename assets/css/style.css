@@ -260,3 +260,13 @@ hr {
 .copy-button:active {
     background-color: #28a745;
 }
+
+/* ------------------- */
+/* HamaP 시그니처 아이콘 스타일 */
+/* ------------------- */
+.signature-icon {
+    height: 1.2em; /* 글자 크기에 맞춰 아이콘 높이 조절 */
+    width: auto;
+    vertical-align: -0.2em; /* 아이콘을 글자 라인에 맞게 살짝 내림 */
+    margin-left: 2px; /* 이름과 아이콘 사이의 간격 */
+}
