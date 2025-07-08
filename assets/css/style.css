@@ -199,4 +199,11 @@ a:hover {
 
 .post-nav .next {
   text-align: right; /* 오른쪽 정렬 */
+
+  /* 
+    이 코드가 핵심입니다! 
+    'next' 링크의 왼쪽에 자동으로 여백을 채워넣어
+    스스로 오른쪽 끝으로 밀려나게 만듭니다.
+  */
+  margin-left: auto; 
 }
