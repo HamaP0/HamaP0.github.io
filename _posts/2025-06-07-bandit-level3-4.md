@@ -43,7 +43,7 @@ cat [파일명]
 
 다음 레벨의 비밀번호:
 ```
-<2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ>
+2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
 ```
 
 ---
