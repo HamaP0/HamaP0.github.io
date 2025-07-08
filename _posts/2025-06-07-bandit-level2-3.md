@@ -29,6 +29,7 @@ tags: [overthewire, bandit, linux]
 
   ```bash
 ssh bandit2@bandit.labs.overthewire.org -p 2220
+  ```
 
 ## 🧪 풀이 과정
 
