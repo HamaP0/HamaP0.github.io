@@ -28,7 +28,7 @@ tags: [overthewire, bandit, linux]
 - **접속 명령어**
 
   ```bash
-  ssh bandit2@bandit.labs.overthewire.org -p 2220
+ssh bandit2@bandit.labs.overthewire.org -p 2220
 
 ## 🧪 풀이 과정
 
