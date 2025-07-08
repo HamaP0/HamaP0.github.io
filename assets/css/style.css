@@ -4,15 +4,12 @@
 /* 기본 스타일 (Global) */
 /* ------------------- */
 body {
-    /* 보기 편한 최신 시스템 폰트를 사용합니다. */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6; /* 줄 간격을 넉넉하게 */
-    
-    /* 요청하신 대로 흰색 배경과 검은색 계열의 글씨입니다. */
-    background-color: #f8f9fa; /* 완전 흰색보다 약간 부드러운 회색 */
-    color: #212529; /* 완전 검은색보다 부드러운 검은색 */
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #212529;
 }
 
 /* 모든 링크의 기본 스타일 */
