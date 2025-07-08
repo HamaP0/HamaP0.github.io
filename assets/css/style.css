@@ -143,3 +143,28 @@ a:hover {
     /* 마우스를 올렸을 때 색상 */
     color: #8A2BE2; /* 보라색 계열 */
 }
+
+/* ------------------- */
+/* 카테고리 목록 스타일  */
+/* ------------------- */
+
+.category-list {
+  list-style: none; /* 리스트 앞에 점 없애기 */
+  padding-left: 20px; /* 왼쪽에 약간의 여백 */
+}
+
+.category-list li {
+  margin-bottom: 10px; /* 목록 사이 간격 */
+}
+
+.category-list a {
+  font-size: 1.2em; /* 폰트를 약간 크게 */
+  font-weight: bold;
+  color: #28a745; /* 보기 편한 초록색 */
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.category-list a:hover {
+  color: #218838; /* 마우스를 올리면 조금 더 진한 초록색으로 */
+}
