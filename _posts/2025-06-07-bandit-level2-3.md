@@ -13,8 +13,8 @@ tags: [overthewire, bandit, linux]
 ## 🔐 Level Info
 
 - **접속 정보**
-- **사용자:** bandit2
-- **비밀번호:** 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+  - 사용자: `bandit2`
+  - 비밀번호: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
   
 - **접속 명령어**
 ```bash
