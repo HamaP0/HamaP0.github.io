@@ -125,3 +125,15 @@ hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
 .content-wrapper pre:hover .copy-button { opacity: 0.7; } /* 마우스를 올리면 보이게 */
 .copy-button:hover { opacity: 1; }
 .copy-button:active { background-color: #28a745; }
+
+/* 블로그 제목(HamaP의 블로그) 옆 아이콘 크기 조절 */
+.site-title .signature-icon {
+    height: 0.9em; /* 큰 글씨에 맞춰 아이콘 상대 크기를 줄임 */
+    vertical-align: -0.1em; /* 정렬 미세 조정 */
+}
+
+/* h1 태그(안녕하세요, HamaP...) 옆 아이콘 크기 조절 */
+h1 .signature-icon {
+    height: 0.8em; /* h1 글씨에 맞춰 상대 크기를 더 줄임 */
+    vertical-align: -0.05em; /* 정렬 미세 조정 */
+}
