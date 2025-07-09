@@ -47,16 +47,16 @@ Windows 환경에서는 **PuTTY**라는 프로그램을 사용하면 아주 편�
 
 ![PuTTY appearance 화면]({{ "/assets/images/putty-appearance-screenshot.png" | relative_url }})
 
-> 글씨체와 글씨 크기를 조절 할 수 있습니다.
+- 글씨체와 글씨 크기를 조절 할 수 있습니다.
 
 ![PuTTY selection 화면]({{ "/assets/images/putty-selection-screenshot.png" | relative_url }})
 
-> 마우스 우 클릭으로 paste붙여넣기를 할 수 있습니다.
+- 마우스 우 클릭으로 paste붙여넣기를 할 수 있습니다.
 
 ![PuTTY save 화면]({{ "/assets/images/putty-save-screenshot.png" | relative_url }})
 
-> Saved Sessions에 원하는 이름을 입력하고 Save 하면 설정 정보가 저장 됩니다.
-> 이후 접속시 아래 목록에 있는 OvertheWire_bandit(설정한 이름)을 더블 클릭하면 접속 됩니다.
+- Saved Sessions에 원하는 이름을 입력하고 Save 하면 설정 정보가 저장 됩니다.
+- 이후 접속시 아래 목록에 있는 OvertheWire_bandit(설정한 이름)을 더블 클릭하면 접속 됩니다.
 
 
 
