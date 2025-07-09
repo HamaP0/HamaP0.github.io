@@ -92,3 +92,11 @@ h1 .signature-icon { height: 0.8em; vertical-align: -0.05em; }
 .content-wrapper pre:hover .copy-button { opacity: 0.7; }
 .copy-button:hover { opacity: 1; }
 .copy-button:active { background-color: var(--category-color); }
+
+/* ------------------- */
+/* details 안의 코드 블록 스타일 보정 */
+/* ------------------- */
+details pre {
+    margin-top: 15px; /* 제목과 코드 블록 사이에 적절한 간격을 줍니다. */
+    margin-bottom: 0; /* 아래쪽 불필요한 간격을 제거합니다. */
+}
