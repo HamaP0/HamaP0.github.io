@@ -35,6 +35,8 @@ ssh bandit8@bandit.labs.overthewire.org -p 2220
 
 ```bash
 find inhere -type f -size 1033c ! -executable
+```
+```bash
 cat [파일명]
 ```
 
