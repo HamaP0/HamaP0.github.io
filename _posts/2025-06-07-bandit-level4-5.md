@@ -43,7 +43,7 @@ cat [파일명]
 
 ## 🎯 결과
 
-<details>
+<details markdown="1">
 <summary>👀 클릭하여 비밀번호 확인하기</summary>
 
 ```
