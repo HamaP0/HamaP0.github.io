@@ -37,7 +37,9 @@ ssh bandit3@bandit.labs.overthewire.org -p 2220
 
 ```bash
 cd .hidden
+```bash
 ls
+```bash
 cat [파일명]
 ```
 
