@@ -14,5 +14,4 @@ plugins:
 collections:
   posts:
     output: true
-
-future: true
+    future: true
