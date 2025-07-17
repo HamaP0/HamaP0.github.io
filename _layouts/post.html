@@ -18,37 +18,34 @@ layout: default
   </div>
 
   <!-- ====================================================== -->
-  <!-- 카테고리 기반 이전/다음 글 내비게이션 (새로운 코드) -->
+  <!-- 더 완벽해진! 순환 가능 카테고리 내비게이션 (결정판) -->
   <!-- ====================================================== -->
-  {% comment %}
-    1. 현재 포스트의 첫 번째 카테고리를 가져옵니다.
-    2. 해당 카테고리에 속한 모든 포스트 목록을 가져옵니다.
-    3. 목록을 반복하며 현재 포스트를 찾습니다.
-    4. 찾았을 때, forloop의 내장 변수인 'next'와 'previous'를 사용해
-       각각 다음 글과 이전 글 객체를 변수에 저장합니다.
-  {% endcomment %}
-
   {% assign category_name = page.categories | first %}
   {% if category_name %}
-    {% assign posts_in_category = site.categories[category_name] %}
-    {% for post in posts_in_category %}
-      {% if post.url == page.url %}
-        {% assign prev_post_in_category = forloop.previous %}
-        {% assign next_post_in_category = forloop.next %}
-      {% endif %}
-    {% endfor %}
+    {% comment %} 1. 글을 날짜순(오래된 순)으로 명확하게 정렬합니다. {% endcomment %}
+    {% assign sorted_posts = site.categories[category_name] | sort: 'date' %}
+    {% assign post_count = sorted_posts | size %}
+
+    {% if post_count > 1 %}
+      {% comment %} 2. 정렬된 목록에서 현재 글의 순번(index)을 찾습니다. {% endcomment %}
+      {% for post in sorted_posts %}
+        {% if post.url == page.url %}
+          {% assign current_index = forloop.index0 %}
+        {% endif %}
+      {% endfor %}
+
+      {% comment %} 3. 순번을 기준으로 이전/다음 글의 인덱스를 계산합니다. (순환 포함) {% endcomment %}
+      {% assign prev_index = (current_index | minus: 1 | plus: post_count) | modulo: post_count %}
+      {% assign next_index = (current_index | plus: 1) | modulo: post_count %}
+
+      {% assign prev_post = sorted_posts[prev_index] %}
+      {% assign next_post = sorted_posts[next_index] %}
+
+      <nav class="post-nav">
+        <a class="prev" href="{{ prev_post.url | relative_url }}">« 이전 글: {{ prev_post.title }}</a>
+        <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title }} »</a>
+      </nav>
+    {% endif %}
   {% endif %}
-
-  <nav class="post-nav">
-    <!-- 카테고리 내 이전 글이 존재할 경우에만 링크를 보여줍니다. -->
-    {% if prev_post_in_category %}
-      <a class="prev" href="{{ prev_post_in_category.url | relative_url }}">« 이전 글: {{ prev_post_in_category.title }}</a>
-    {% endif %}
-
-    <!-- 카테고리 내 다음 글이 존재할 경우에만 링크를 보여줍니다. -->
-    {% if next_post_in_category %}
-      <a class="next" href="{{ next_post_in_category.url | relative_url }}">다음 글: {{ next_post_in_category.title }} »</a>
-    {% endif %}
-  </nav>
 
 </article>
