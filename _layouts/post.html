@@ -19,40 +19,43 @@
   <!-- ... 포스트 헤더 및 콘텐츠 영역 끝 ... -->
 
   {% comment %} ====================================================== {% endcomment %}
-  {% comment %}    최종 완성: 모든 예외 상황을 처리하는 내비게이션 로직      {% endcomment %}
+  {% comment %}    최종 완성: 접근성과 확장성까지 고려한 내비게이션 로직     {% endcomment %}
   {% comment %} ====================================================== {% endcomment %}
   
   {% assign category_to_navigate = page.primary_category %}
-  {% if category_to_navigate == nil %}
+  {% unless category_to_navigate %}
     {% assign category_to_navigate = page.categories | first %}
-  {% endif %}
+  {% endunless %}
 
   {% if category_to_navigate %}
     {% assign posts_in_category = site.categories[category_to_navigate] | sort: 'date' %}
+    
     {% if posts_in_category.size > 1 %}
-
-      {% comment %} 1. 객체 기준으로 인덱스를 먼저 찾습니다 (가장 안정적). {% endcomment %}
       {% assign current_post_index = posts_in_category | index_of: page %}
 
-      {% comment %} 2. 객체 매칭 실패 시, URL 기준으로 다시 찾아보는 안전장치를 가동합니다. {% endcomment %}
       {% if current_post_index == -1 %}
         {% assign current_post_index = posts_in_category | map: 'url' | index_of: page.url %}
       {% endif %}
 
-      {% comment %} 3. 인덱스를 성공적으로 찾은 경우에만(음수가 아닐 때) 내비게이션을 렌더링합니다. {% endcomment %}
       {% if current_post_index >= 0 %}
         {% assign last_post_index = posts_in_category.size | minus: 1 %}
 
         <hr>
-        <nav class="post-nav">
+        {% comment %} 접근성 향상을 위해 내비게이션의 목적을 명시합니다. {% endcomment %}
+        <nav class="post-nav" aria-label="이전·다음 글">
           {% if current_post_index > 0 %}
             {% assign previous_post = posts_in_category[current_post_index | minus: 1] %}
-            <a class="prev" href="{{ previous_post.url | relative_url }}">« 이전 글: {{ previous_post.title | escape }}</a>
+            <a class="prev" href="{{ previous_post.url | relative_url }}">
+              {% comment %} 다국어 지원을 위해 이 텍스트는 _data/ui_text.yml 등에서 불러올 수 있습니다. {% endcomment %}
+              « 이전 글: {{ previous_post.title | escape }}
+            </a>
           {% endif %}
 
           {% if current_post_index < last_post_index %}
             {% assign next_post = posts_in_category[current_post_index | plus: 1] %}
-            <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title | escape }} »</a>
+            <a class="next" href="{{ next_post.url | relative_url }}">
+              다음 글: {{ next_post.title | escape }} »
+            </a>
           {% endif %}
         </nav>
       {% endif %}
