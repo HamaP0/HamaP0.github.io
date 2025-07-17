@@ -43,7 +43,7 @@ hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
 /* 메인 컨텐츠 영역      */
 /* ------------------- */
 .content-wrapper {
-  max-width: 600px; /* 800이 최대 너비 */
+  max-width: 400px; /* 800이 최대 너비 */
   margin: 0 auto 30px auto; /* 상 0, 좌우 auto(가운데정렬), 하 30px */
   padding: 40px;
   background-color: var(--content-bg);
