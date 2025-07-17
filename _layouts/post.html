@@ -18,33 +18,31 @@ layout: default
   </div>
 
   <!-- ====================================================== -->
-  <!-- 카테고리별 내비게이션 -->
+  <!-- 카테고리 내비게이션 -->
   <!-- ====================================================== -->
   {% assign category_name = page.categories | first %}
   {% if category_name %}
     {% comment %} 1. 글을 날짜순(오래된 순)으로 명확하게 정렬합니다. {% endcomment %}
     {% assign sorted_posts = site.categories[category_name] | sort: 'date' %}
-    {% assign post_count = sorted_posts | size %}
-
-    {% if post_count > 1 %}
-      {% comment %} 2. 정렬된 목록을 반복하며 현재 글의 이전/다음 글을 찾습니다. {% endcomment %}
-      {% for post in sorted_posts %}
-        {% if post.url == page.url %}
-          {% assign prev_post = forloop.previous %}
-          {% assign next_post = forloop.next %}
-        {% endif %}
-      {% endfor %}
-
+    
+    {% if sorted_posts.size > 1 %}
       <nav class="post-nav">
-        {% comment %} 이전 글 변수(prev_post)가 존재할 때만 링크를 표시합니다. {% endcomment %}
-        {% if prev_post %}
-          <a class="prev" href="{{ prev_post.url | relative_url }}">« 이전 글: {{ prev_post.title }}</a>
-        {% endif %}
+        {% comment %} 2. 정렬된 목록을 반복하며, 현재 글을 찾으면 그 자리에서 바로 링크를 생성합니다. {% endcomment %}
+        {% for post in sorted_posts %}
+          {% if post.url == page.url %}
+            
+            {% comment %} 현재 루프의 이전 글이 존재하면 링크를 만듭니다. {% endcomment %}
+            {% if forloop.previous %}
+              <a class="prev" href="{{ forloop.previous.url | relative_url }}">« 이전 글: {{ forloop.previous.title }}</a>
+            {% endif %}
 
-        {% comment %} 다음 글 변수(next_post)가 존재할 때만 링크를 표시합니다. {% endcomment %}
-        {% if next_post %}
-          <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title }} »</a>
-        {% endif %}
+            {% comment %} 현재 루프의 다음 글이 존재하면 링크를 만듭니다. {% endcomment %}
+            {% if forloop.next %}
+              <a class="next" href="{{ forloop.next.url | relative_url }}">다음 글: {{ forloop.next.title }} »</a>
+            {% endif %}
+
+          {% endif %}
+        {% endfor %}
       </nav>
     {% endif %}
   {% endif %}
