@@ -18,31 +18,36 @@ layout: default
   </div>
 
   <!-- ====================================================== -->
-  <!-- 카테고리 내비게이션 -->
+  <!-- 'capture'를 사용한, 안정성이 보장된 최종 내비게이션 -->
   <!-- ====================================================== -->
   {% assign category_name = page.categories | first %}
   {% if category_name %}
     {% comment %} 1. 글을 날짜순으로 명확하게 정렬합니다. {% endcomment %}
     {% assign sorted_posts = site.categories[category_name] | sort: 'date' %}
 
-    {% comment %} 2. 정렬된 목록을 반복하며 현재 글을 찾습니다. {% endcomment %}
+    {% comment %} 2. 루프를 돌며 현재 글을 찾고, 링크 HTML을 변수에 '캡처'합니다. {% endcomment %}
     {% for post in sorted_posts %}
       {% if post.url == page.url %}
-
-        {% comment %} 3. 이전 글이나 다음 글이 하나라도 존재할 때만 <nav> 태그를 생성합니다. {% endcomment %}
-        {% if forloop.previous or forloop.next %}
-          <nav class="post-nav">
-            {% if forloop.previous %}
-              <a class="prev" href="{{ forloop.previous.url | relative_url }}">« 이전 글: {{ forloop.previous.title }}</a>
-            {% endif %}
-            {% if forloop.next %}
-              <a class="next" href="{{ forloop.next.url | relative_url }}">다음 글: {{ forloop.next.title }} »</a>
-            {% endif %}
-          </nav>
+        {% if forloop.previous %}
+          {% capture prev_link %}
+            <a class="prev" href="{{ forloop.previous.url | relative_url }}">« 이전 글: {{ forloop.previous.title }}</a>
+          {% endcapture %}
         {% endif %}
-        
+        {% if forloop.next %}
+          {% capture next_link %}
+            <a class="next" href="{{ forloop.next.url | relative_url }}">다음 글: {{ forloop.next.title }} »</a>
+          {% endcapture %}
+        {% endif %}
       {% endif %}
     {% endfor %}
+
+    {% comment %} 3. 캡처된 변수에 내용이 있을 경우에만, <nav> 태그와 함께 출력합니다. {% endcomment %}
+    {% if prev_link or next_link %}
+      <nav class="post-nav">
+        {{ prev_link }}
+        {{ next_link }}
+      </nav>
+    {% endif %}
   {% endif %}
 
 </article>
