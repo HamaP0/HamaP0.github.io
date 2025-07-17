@@ -3,16 +3,21 @@ layout: default
 title: "카테고리: 자격증"
 ---
 
-<h1>카테고리: 자격증</h1>
-<hr>
+<div class="main-container">
 
-<ul class="post-list">
-  {% for post in site.categories['자격증'] %}
-    <li>
-      <h3>
-        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-      </h3>
-      <p class="post-meta">{{ post.date | date: "%Y년 %m월 %d일" }}</p>
-    </li>
-  {% endfor %}
-</ul>
+  <h1>카테고리: 자격증</h1>
+  <p>자격증 취득 관련 글 목록입니다.</p>
+
+  <hr>
+  
+  <ul class="post-list">
+    {% for post in site.categories['자격증'] %}
+      <li>
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>
