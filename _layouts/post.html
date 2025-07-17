@@ -2,6 +2,7 @@
 ---
 ---
 <article class="post">
+  <!-- ... 포스트 헤더 및 콘텐츠 영역 ... -->
   <header class="post-header">
     <h1 class="post-title">{{ page.title | escape }}</h1>
     <p class="post-meta">
@@ -15,39 +16,46 @@
   <div class="post-content">
     {{ content }}
   </div>
+  <!-- ... 포스트 헤더 및 콘텐츠 영역 끝 ... -->
 
   {% comment %} ====================================================== {% endcomment %}
-  {% comment %}         최종 완성된 이전/다음 글 내비게이션 로직             {% endcomment %}
+  {% comment %}    최종 완성: 모든 예외 상황을 처리하는 내비게이션 로직      {% endcomment %}
   {% comment %} ====================================================== {% endcomment %}
-
-  {% comment %} 1. 우선순위 카테고리 선택: Front Matter에 primary_category가 있으면 그것을 사용하고, 없으면 첫 번째 카테고리를 기본값으로 사용합니다. {% endcomment %}
-  {% assign category_to_navigate = page.primary_category | default: page.categories.first %}
+  
+  {% assign category_to_navigate = page.primary_category %}
+  {% if category_to_navigate == nil %}
+    {% assign category_to_navigate = page.categories | first %}
+  {% endif %}
 
   {% if category_to_navigate %}
-    {% comment %} 2. 선택된 카테고리의 모든 글을 날짜 오름차순(오래된 순)으로 정렬합니다. {% endcomment %}
     {% assign posts_in_category = site.categories[category_to_navigate] | sort: 'date' %}
-
     {% if posts_in_category.size > 1 %}
-      {% comment %} 3. 루프 없이 현재 글 객체를 기준으로 인덱스를 찾아 안정성을 높입니다. {% endcomment %}
+
+      {% comment %} 1. 객체 기준으로 인덱스를 먼저 찾습니다 (가장 안정적). {% endcomment %}
       {% assign current_post_index = posts_in_category | index_of: page %}
-      
-      {% comment %} 4. 가독성을 위해 마지막 인덱스 값을 변수에 저장합니다. {% endcomment %}
-      {% assign last_post_index = posts_in_category.size | minus: 1 %}
 
-      <hr>
-      <nav class="post-nav">
-        {% comment %} 5. 이전 글(더 과거의 글) 링크를 생성합니다. {% endcomment %}
-        {% if current_post_index > 0 %}
-          {% assign previous_post = posts_in_category[current_post_index | minus: 1] %}
-          <a class="prev" href="{{ previous_post.url | relative_url }}">« 이전 글: {{ previous_post.title | escape }}</a>
-        {% endif %}
+      {% comment %} 2. 객체 매칭 실패 시, URL 기준으로 다시 찾아보는 안전장치를 가동합니다. {% endcomment %}
+      {% if current_post_index == -1 %}
+        {% assign current_post_index = posts_in_category | map: 'url' | index_of: page.url %}
+      {% endif %}
 
-        {% comment %} 6. 다음 글(더 최신의 글) 링크를 생성합니다. {% endcomment %}
-        {% if current_post_index < last_post_index %}
-          {% assign next_post = posts_in_category[current_post_index | plus: 1] %}
-          <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title | escape }} »</a>
-        {% endif %}
-      </nav>
+      {% comment %} 3. 인덱스를 성공적으로 찾은 경우에만(음수가 아닐 때) 내비게이션을 렌더링합니다. {% endcomment %}
+      {% if current_post_index >= 0 %}
+        {% assign last_post_index = posts_in_category.size | minus: 1 %}
+
+        <hr>
+        <nav class="post-nav">
+          {% if current_post_index > 0 %}
+            {% assign previous_post = posts_in_category[current_post_index | minus: 1] %}
+            <a class="prev" href="{{ previous_post.url | relative_url }}">« 이전 글: {{ previous_post.title | escape }}</a>
+          {% endif %}
+
+          {% if current_post_index < last_post_index %}
+            {% assign next_post = posts_in_category[current_post_index | plus: 1] %}
+            <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title | escape }} »</a>
+          {% endif %}
+        </nav>
+      {% endif %}
     {% endif %}
   {% endif %}
 </article>
