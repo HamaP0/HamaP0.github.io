@@ -100,3 +100,12 @@ details pre {
     margin-top: 15px; /* 제목과 코드 블록 사이에 적절한 간격을 줍니다. */
     margin-bottom: 0; /* 아래쪽 불필요한 간격을 제거합니다. */
 }
+
+/* 페이지 콘텐츠 가운데 정렬을 위한 스타일 */
+.main-container {
+  max-width: 800px; /* 콘텐츠의 최대 너비. 원하시면 조절하세요. */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
