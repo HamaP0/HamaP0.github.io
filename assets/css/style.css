@@ -53,9 +53,13 @@ hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
 .content-wrapper h1, h2, h3 { margin-top: 1.5em; margin-bottom: 0.8em; line-height: 1.3; }
 .content-wrapper p { margin-bottom: 1.2em; font-size: 1.1rem; }
 .content-wrapper pre, .content-wrapper code { font-family: "D2Coding", "Courier New", monospace; background-color: var(--code-bg); border-radius: 4px; }
-.content-wrapper pre { padding: 15px; overflow-x: auto; }
-.content-wrapper :not(pre) > code { padding: 3px 6px; font-size: 0.9em; }
+.content-wrapper pre { 
+  padding: 15px; 
+  white-space: pre-wrap;   /* 자동 줄바꿈을 허용하고, 기존 공백은 유지 */
+  overflow-wrap: break-word; /* 단어가 길어 영역을 벗어날 경우 강제로 줄바꿈 */
+}
 
+.content-wrapper :not(pre) > code { padding: 3px 6px; font-size: 0.9em; }
 /* ------------------- */
 /* 게시글/카테고리 목록   */
 /* ------------------- */
