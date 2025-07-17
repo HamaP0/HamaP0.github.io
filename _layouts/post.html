@@ -1,10 +1,9 @@
+<!-- _layouts/post.html -->
 ---
-layout: default 
 ---
-
 <article class="post">
   <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
+    <h1 class="post-title">{{ page.title | escape }}</h1>
     <p class="post-meta">
       작성일: {{ page.date | date: "%Y년 %m월 %d일" }}
       {% if page.categories.size > 0 %}
@@ -17,42 +16,33 @@ layout: default
     {{ content }}
   </div>
 
-  <!-- ====================================================== -->
-  <!-- forloop.first/last를 사용한 가장 간결하고 안정적인 내비게이션 -->
-  <!-- ====================================================== -->
-  {% assign category_name = page.categories | first %}
-  {% if category_name %}
-    {% comment %} 1. 글을 날짜순(최신순)으로 정렬합니다. {% endcomment %}
-    {% assign sorted_posts = site.categories[category_name] | sort: 'date' | reverse %}
-    
-    {% comment %} 2. 카테고리에 글이 2개 이상일 때만 내비게이션을 표시합니다. {% endcomment %}
-    {% if sorted_posts.size > 1 %}
+  {% comment %} ====================================================== {% endcomment %}
+  {% comment %}   가장 효율적이고 안정적인 카테고리별 이전/다음 글 내비게이션     {% endcomment %}
+  {% comment %} ====================================================== {% endcomment %}
+  {% assign category = page.categories | first %}
+  {% if category %}
+    {% comment %} 1. 현재 카테고리의 모든 글을 날짜 오름차순(오래된 순)으로 정렬합니다. {% endcomment %}
+    {% assign posts_in_category = site.categories[category] | sort: 'date' %}
+
+    {% if posts_in_category.size > 1 %}
+      {% comment %} 2. for 루프 없이 현재 글의 인덱스를 직접 찾습니다. (가장 효율적인 방식) {% endcomment %}
+      {% assign current_post_index = posts_in_category | map: 'url' | index_of: page.url %}
+      
+      <hr>
       <nav class="post-nav">
-        {% for post in sorted_posts %}
-          {% if post.url == page.url %}
+        {% comment %} 3. 이전 글(더 과거의 글)이 있는지 확인하고 링크를 생성합니다. {% endcomment %}
+        {% if current_post_index > 0 %}
+          {% assign prev_post_index = current_post_index | minus: 1 %}
+          {% assign prev_post = posts_in_category[prev_post_index] %}
+          <a class="prev" href="{{ prev_post.url | relative_url }}">« 이전 글: {{ prev_post.title | escape }}</a>
+        {% endif %}
 
-            {% comment %} 
-              3. '이전 글' 링크 (forloop.first 활용)
-              첫 번째 반복(가장 최신 글)이 아닐 경우에만 이전 글 링크를 표시합니다.
-              '이전 글'은 시간순으로 더 나중의 글(목록에서 바로 앞 항목)입니다.
-            {% endcomment %}
-            {% unless forloop.first %}
-              {% assign prev_post = sorted_posts[forloop.index0 | minus: 1] %}
-              <a class="prev" href="{{ prev_post.url | relative_url }}">« 이전 글: {{ prev_post.title }}</a>
-            {% endunless %}
-
-            {% comment %} 
-              4. '다음 글' 링크 (forloop.last 활용)
-              마지막 반복(가장 오래된 글)이 아닐 경우에만 다음 글 링크를 표시합니다.
-              '다음 글'은 시간순으로 더 이전의 글(목록에서 바로 뒤 항목)입니다.
-            {% endcomment %}
-            {% unless forloop.last %}
-              {% assign next_post = sorted_posts[forloop.index0 | plus: 1] %}
-              <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title }} »</a>
-            {% endunless %}
-            
-          {% endif %}
-        {% endfor %}
+        {% comment %} 4. 다음 글(더 최신의 글)이 있는지 확인하고 링크를 생성합니다. {% endcomment %}
+        {% if current_post_index < posts_in_category.size | minus: 1 %}
+          {% assign next_post_index = current_post_index | plus: 1 %}
+          {% assign next_post = posts_in_category[next_post_index] %}
+          <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title | escape }} »</a>
+        {% endif %}
       </nav>
     {% endif %}
   {% endif %}
