@@ -27,19 +27,21 @@ layout: default
     {% assign post_count = sorted_posts | size %}
 
     {% if post_count > 1 %}
-      {% comment %} 2. 정렬된 목록에서 현재 글의 순번(index)을 찾습니다. {% endcomment %}
+      {% comment %} 2. 정렬된 목록을 반복하며 현재 글의 이전/다음 글을 찾습니다. {% endcomment %}
       {% for post in sorted_posts %}
         {% if post.url == page.url %}
-          {% assign current_index = forloop.index0 %}
+          {% assign prev_post = forloop.previous %}
+          {% assign next_post = forloop.next %}
         {% endif %}
       {% endfor %}
 
-      {% comment %} 3. 순번을 기준으로 이전/다음 글의 인덱스를 계산합니다. (순환 포함) {% endcomment %}
-      {% assign prev_index = (current_index | minus: 1 | plus: post_count) | modulo: post_count %}
-      {% assign next_index = (current_index | plus: 1) | modulo: post_count %}
-
-      {% assign prev_post = sorted_posts[prev_index] %}
-      {% assign next_post = sorted_posts[next_index] %}
+      {% comment %} 3. 순환 기능을 위해, 첫 글과 마지막 글의 링크를 처리합니다. {% endcomment %}
+      {% if prev_post == nil %}
+        {% assign prev_post = sorted_posts | last %}
+      {% endif %}
+      {% if next_post == nil %}
+        {% assign next_post = sorted_posts | first %}
+      {% endif %}
 
       <nav class="post-nav">
         <a class="prev" href="{{ prev_post.url | relative_url }}">« 이전 글: {{ prev_post.title }}</a>
