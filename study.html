@@ -17,7 +17,7 @@ title: Study
   -->
   {% for category in site.categories %}
     <li>
-      <a href="/category/{{ category[0] }}.html">{{ category[0] }} ({{ category[1].size }})</a>
+      <a href="{{ '/category/' | append: category[0] | append: '.html' | relative_url }}">{{ category[0] }} ({{ category[1].size }})</a>
     </li>
   {% endfor %}
 </ul>
