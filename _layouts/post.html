@@ -18,7 +18,7 @@ layout: default
   </div>
 
   <!-- ====================================================== -->
-  <!-- 카테고리 내비게이션 -->
+  <!-- 카테고리별 내비게이션 -->
   <!-- ====================================================== -->
   {% assign category_name = page.categories | first %}
   {% if category_name %}
@@ -35,17 +35,16 @@ layout: default
         {% endif %}
       {% endfor %}
 
-      {% comment %} 3. 순환 기능을 위해, 첫 글과 마지막 글의 링크를 처리합니다. {% endcomment %}
-      {% if prev_post == nil %}
-        {% assign prev_post = sorted_posts | last %}
-      {% endif %}
-      {% if next_post == nil %}
-        {% assign next_post = sorted_posts | first %}
-      {% endif %}
-
       <nav class="post-nav">
-        <a class="prev" href="{{ prev_post.url | relative_url }}">« 이전 글: {{ prev_post.title }}</a>
-        <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title }} »</a>
+        {% comment %} 이전 글 변수(prev_post)가 존재할 때만 링크를 표시합니다. {% endcomment %}
+        {% if prev_post %}
+          <a class="prev" href="{{ prev_post.url | relative_url }}">« 이전 글: {{ prev_post.title }}</a>
+        {% endif %}
+
+        {% comment %} 다음 글 변수(next_post)가 존재할 때만 링크를 표시합니다. {% endcomment %}
+        {% if next_post %}
+          <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title }} »</a>
+        {% endif %}
       </nav>
     {% endif %}
   {% endif %}
