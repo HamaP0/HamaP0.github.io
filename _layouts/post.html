@@ -19,35 +19,42 @@ layout: default
 
 <hr>
 <nav class="post-nav" aria-label="이전·다음 글">
-  {% assign posts = site.categories[ page.primary_category | default: page.categories | first ] | default: [] | sort: 'date' %}
-  {% assign idx = posts | map: 'url' | index_of: page.url %}
-  {% if idx == -1 %}
-    {% assign idx = posts | index_of: page %}
-  {% endif %}
+  {% comment %}
+    카테고리 내 이전/다음 글을 찾기 위해 for-loop를 사용합니다.
+    'index_of' 필터는 표준 Liquid 기능이 아니므로 아래와 같이 수정합니다.
+  {% endcomment %}
+  {% assign category_posts = site.categories[page.primary_category | default: page.categories.first] | default: site.posts | sort: 'date' %}
 
-  {% if idx > 0 %}
-    {% assign prev = posts[idx | minus: 1] %}
-    <a class="prev" href="{{ prev.url | relative_url }}">
-      « 이전 글: {{ prev.title | escape }}
+  {% for post in category_posts %}
+    {% if post.url == page.url %}
+      {% assign post_index = forloop.index0 %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign prev_post_index = post_index | minus: 1 %}
+  {% if post_index > 0 %}
+    {% assign prev_post = category_posts[prev_post_index] %}
+    <a class="prev" href="{{ prev_post.url | relative_url }}">
+      « 이전 글: {{ prev_post.title | escape }}
     </a>
   {% endif %}
 
-  {% assign last = posts.size | minus: 1 %}
-  {% if idx < last %}
-    {% assign next = posts[idx | plus: 1] %}
-    <a class="next" href="{{ next.url | relative_url }}">
-      다음 글: {{ next.title | escape }} »
+  {% assign next_post_index = post_index | plus: 1 %}
+  {% assign posts_size = category_posts.size | minus: 1 %}
+  {% if post_index < posts_size %}
+    {% assign next_post = category_posts[next_post_index] %}
+    <a class="next" href="{{ next_post.url | relative_url }}">
+      다음 글: {{ next_post.title | escape }} »
     </a>
   {% endif %}
 
-  {%- comment -%}
-    // 카테고리가 없거나, posts 배열에 이 글만 있을 때
-    // page.previous/page.next 로 대체
-  {%- endcomment -%}
-  {%
-    comment
-  %}
-  {% if posts.size <= 1 %}
+  {% comment %}
+    위 로직으로 카테고리 내 이전/다음 글을 찾지 못할 경우를 대비해
+    Jekyll 기본 page.previous/page.next를 사용할 수 있습니다.
+    위 코드가 잘 동작한다면 이 부분은 필요 없을 수 있습니다.
+  {% endcomment %}
+  {% if category_posts.size <= 1 %}
     {% if page.previous %}
       <a class="prev" href="{{ page.previous.url | relative_url }}">
         « 이전 글: {{ page.previous.title | escape }}
@@ -59,7 +66,4 @@ layout: default
       </a>
     {% endif %}
   {% endif %}
-  {%
-    endcomment
-  %}
 </nav>
