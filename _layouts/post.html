@@ -1,3 +1,4 @@
+<!-- _layouts/post.html -->
 ---
 layout: default
 ---
@@ -21,12 +22,17 @@ layout: default
 <nav class="post-nav" aria-label="이전·다음 글">
   {% assign posts = site.categories[ page.primary_category | default: page.categories | first ] | default: [] | sort: 'date' %}
   {% assign idx = posts | map: 'url' | index_of: page.url %}
+  {% if idx == -1 %}
+    {% assign idx = posts | index_of: page %}
+  {% endif %}
+
   {% if idx > 0 %}
     {% assign prev = posts[idx | minus: 1] %}
     <a class="prev" href="{{ prev.url | relative_url }}">
       « 이전 글: {{ prev.title | escape }}
     </a>
   {% endif %}
+
   {% assign last = posts.size | minus: 1 %}
   {% if idx < last %}
     {% assign next = posts[idx | plus: 1] %}
@@ -36,8 +42,8 @@ layout: default
   {% endif %}
 
   {%- comment -%}
-    카테고리 내비가 없을 때(또는 posts 배열이 비어 있을 때) 
-    page.previous/page.next 로 대체하고 싶으면 아래 주석 해제
+    // 카테고리가 없거나, posts 배열에 이 글만 있을 때
+    // page.previous/page.next 로 대체
   {%- endcomment -%}
   {%
     comment
