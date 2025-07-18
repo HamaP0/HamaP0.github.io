@@ -87,6 +87,40 @@ hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
 }
 
 /* ------------------- */
+/* details/summary 스타일 적용 */
+/* ------------------- */
+.content-wrapper details {
+  margin: 0 auto 1.2em;   /* 상단 0, 좌우 auto(가운데), 하단 1.2em */
+  max-width: 700px;       /* 본문과 동일한 너비 제한 */
+}
+
+.content-wrapper summary {
+  cursor: pointer;
+  font-weight: bold;
+  list-style: none;       /* 기본 마커 제거 */
+  outline: none;          /* 포커스 윤곽선 제거(Optional) */
+}
+
+/* 기본 브라우저 마커 숨기기 */
+.content-wrapper summary::-webkit-details-marker {
+  display: none;
+}
+
+/* 화살표 아이콘 추가 */
+.content-wrapper summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 0.5em;
+  transform: rotate(0deg);
+  transition: transform 0.2s;
+}
+
+/* 열렸을 때 화살표 회전 */
+.content-wrapper details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+/* ------------------- */
 /* 게시글/카테고리 목록   */
 /* ------------------- */
 .post-meta { color: var(--footer-text); font-size: 0.9em; }
