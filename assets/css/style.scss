@@ -1,57 +1,129 @@
 ---
 # 이 빈 머리말은 Jekyll에게 이 파일을 처리하라고 알려주는 중요한 신호입니다.
 ---
+
 /* =============================================================================
    HamaP의 블로그 - 최종 스타일시트 (Gemini 팔레트 + 다크 모드 기본)
-   ========================================================================== */
+   ============================================================================= */
 
 /* ------------------- */
 /* Gemini 색상 변수 정의 */
 /* ------------------- */
 :root {
-  --bg-color: #E8EAED; --text-color: #202124; --header-bg: #ffffff; --content-bg: #ffffff;
-  --border-color: #d8dadc; --code-bg: #f1f3f5; --footer-text: #5F6368; --link-color: #4285F4;
-  --link-hover-color: #1A73E8; --category-color: #00A67D; --copy-btn-bg: #5F6368;
+  --bg-color:          #E8EAED;
+  --text-color:        #202124;
+  --header-bg:         #ffffff;
+  --content-bg:        #ffffff;
+  --border-color:      #d8dadc;
+  --code-bg:           #f1f3f5;
+  --footer-text:       #5F6368;
+  --link-color:        #4285F4;
+  --link-hover-color:  #1A73E8;
+  --category-color:    #00A67D;
+  --copy-btn-bg:       #5F6368;
 }
+
 [data-theme="dark"] {
-  --bg-color: #202124; --text-color: #E8EAED; --header-bg: #2d2e30; --content-bg: #2d2e30;
-  --border-color: #3c4043; --code-bg: #282a2d; --footer-text: #9aa0a6; --link-color: #89B2F6;
-  --link-hover-color: #a3c2f7; --category-color: #00A67D; --copy-btn-bg: #5F6368;
+  --bg-color:          #202124;
+  --text-color:        #E8EAED;
+  --header-bg:         #2d2e30;
+  --content-bg:        #2d2e30;
+  --border-color:      #3c4043;
+  --code-bg:           #282a2d;
+  --footer-text:       #9aa0a6;
+  --link-color:        #89B2F6;
+  --link-hover-color:  #a3c2f7;
+  --category-color:    #00A67D;
+  --copy-btn-bg:       #5F6368;
 }
 
 /* ------------------- */
 /* 기본 스타일 (Global) */
 /* ------------------- */
-body { font-family: "Pretendard", sans-serif; margin: 0; padding: 0; font-size: 16px; line-height: 1.7; background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
-a { color: var(--link-color); text-decoration: none; }
-a:hover { text-decoration: underline; color: var(--link-hover-color); }
-.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
+body {
+  font-family: "Pretendard", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
 
-/* ------------------- */
-/* 헤더 및 네비게이션    */
-/* ------------------- */
-.site-header { background-color: var(--header-bg); border-bottom: 1px solid var(--border-color); padding: 20px 0; margin-bottom: 30px; }
-.site-header .container { display: flex; justify-content: space-between; align-items: center; position: relative; }
-.site-title { font-size: 1.5em; font-weight: bold; color: var(--text-color); }
-.site-title:hover { text-decoration: none; }
-.site-nav a { margin-left: 20px; font-size: 1.1em; font-weight: bold; transition: color 0.2s; }
-.site-nav a:hover { text-decoration: none; }
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
 
-/* ------------------- */
-/* 메인 컨텐츠 영역      */
-/* ------------------- */
-.content-wrapper {
-  max-width: 900px;            /* 최대 너비 */
-  margin: 0 auto 30px auto;    /* 상 0, 좌/우 auto(가운데 정렬), 하 30px */
-  padding: 50px 80px;          /* 상/하 50px, 좌/우 80px 유지 */
-  background-color: var(--content-bg);
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 40px 0;
 }
 
 /* ------------------- */
-/* 본문 문단 너비 제한   */
+/* 헤더 및 네비게이션 */
+/* ------------------- */
+.site-header {
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.site-title:hover {
+  text-decoration: none;
+}
+
+.site-nav a {
+  margin-left: 20px;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.site-nav a:hover {
+  text-decoration: none;
+}
+
+/* ------------------- */
+/* 메인 컨텐츠 영역 */
+/* ------------------- */
+.content-wrapper {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  padding: 50px 80px;
+  background-color: var(--content-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ------------------- */
+/* 본문 문단 너비 제한 */
 /* ------------------- */
 .content-wrapper p,
 .content-wrapper h1,
@@ -63,23 +135,15 @@ hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
 .content-wrapper ol,
 .content-wrapper ul,
 .content-wrapper pre,
-.content-wrapper .post-nav {
+.content-wrapper details {
   margin: 0 auto 1.2em;
   max-width: 700px;
 }
 
 .content-wrapper ol,
 .content-wrapper ul {
-  padding-left: 1.5em;           /* 번호/불릿 영역만큼 들여쓰기 */
-  list-style-position: outside;  /* 번호/불릿을 좌측 여백에 붙이기 */
-}
-
-.content-wrapper pre {
-  /* margin, max-width는 위에서 처리했으므로 여기서는 기존 스타일만 남깁니다 */
-  padding: 15px;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  position: relative;
+  padding-left: 1.5em;
+  list-style-position: outside;
 }
 
 .content-wrapper :not(pre) > code {
@@ -88,47 +152,65 @@ hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
 }
 
 /* ------------------- */
-/* 포스트 내비게이션    */
+/* 코드 블록 스타일 */
 /* ------------------- */
-.content-wrapper .post-nav {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border-color);
-  display: flex;
-  justify-content: space-between;
+.content-wrapper pre,
+.details pre {
+  background-color: var(--code-bg);
+  padding: 15px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  position: relative;
+  border-radius: 4px;
 }
 
-.content-wrapper .post-nav a {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 48%;
+.content-wrapper pre::before {
+  content: "";
 }
 
-.content-wrapper .post-nav .prev { text-align: left; }
-.content-wrapper .post-nav .next { text-align: right; margin-left: auto; }
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--copy-btn-bg);
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.content-wrapper pre:hover .copy-button {
+  opacity: 0.7;
+}
+
+.copy-button:hover {
+  opacity: 1;
+}
+
+.copy-button:active {
+  background-color: var(--category-color);
+}
 
 /* ------------------- */
-/* details/summary 스타일 적용 */
+/* details/summary 스타일 */
 /* ------------------- */
 .content-wrapper details {
-  margin: 0 auto 1.2em;   /* 상단 0, 좌우 auto(가운데), 하단 1.2em */
-  max-width: 700px;       /* 본문과 동일한 너비 제한 */
+  cursor: pointer;
 }
 
 .content-wrapper summary {
-  cursor: pointer;
   font-weight: bold;
-  list-style: none;       /* 기본 마커 제거 */
-  outline: none;          /* 포커스 윤곽선 제거(Optional) */
+  outline: none;
+  list-style: none;
 }
 
-/* 기본 브라우저 마커 숨기기 */
 .content-wrapper summary::-webkit-details-marker {
   display: none;
 }
 
-/* 화살표 아이콘 추가 */
 .content-wrapper summary::before {
   content: "▶";
   display: inline-block;
@@ -137,59 +219,132 @@ hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
   transition: transform 0.2s;
 }
 
-/* 열렸을 때 화살표 회전 */
 .content-wrapper details[open] summary::before {
   transform: rotate(90deg);
 }
 
 /* ------------------- */
-/* 게시글/카테고리 목록   */
+/* 포스트/카테고리 목록 */
 /* ------------------- */
-.post-meta { color: var(--footer-text); font-size: 0.9em; }
-.post-list, .category-list { list-style: none; padding-left: 0; }
-.post-list li { margin-bottom: 40px; }
-.post-list h2 { margin-bottom: 5px; }
-.post-list a.post-link { color: var(--text-color); text-decoration: none; }
-.category-list li { margin-bottom: 10px; }
-.category-list a { font-size: 1.2em; font-weight: bold; color: var(--category-color); text-decoration: none; transition: color 0.2s; }
-.category-list a:hover { filter: brightness(1.2); }
+.post-meta {
+  color: var(--footer-text);
+  font-size: 0.9em;
+}
+
+.post-list,
+.category-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.post-list li {
+  margin-bottom: 40px;
+}
+
+.post-list a.post-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.category-list li {
+  margin-bottom: 10px;
+}
+
+.category-list a {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--category-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.category-list a:hover {
+  filter: brightness(1.2);
+}
 
 /* ------------------- */
-/* 포스트 내비게이션 (이전/다음 글) */
+/* 포스트 내비게이션    */
 /* ------------------- */
-.post-nav { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; }
-.post-nav a { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 48%; }
-.post-nav .prev { text-align: left; }
-.post-nav .next { text-align: right; margin-left: auto; }
+.post-nav {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-nav .prev,
+.post-nav .next {
+  flex: 0 0 48%;
+}
+
+.post-nav .prev {
+  text-align: left;
+}
+
+.post-nav .next {
+  text-align: right;
+}
+
+.post-nav a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 12px 18px;
+  background-color: var(--content-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--link-color);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.post-nav a:hover {
+  background-color: var(--border-color);
+  color: var(--link-hover-color);
+}
 
 /* ------------------- */
 /* 푸터 (하단)         */
 /* ------------------- */
-.site-footer { text-align: center; padding: 20px 0; font-size: 0.9em; color: var(--footer-text); }
-
-/* ------------------- */
-/* HamaP 시그니처 아이콘 */
-/* ------------------- */
-.signature-icon { height: 1.2em; width: auto; vertical-align: -0.2em; margin-left: 3px; display: inline-block; }
-.dark-icon { display: none; }
-[data-theme="dark"] .light-icon { display: none; }
-[data-theme="dark"] .dark-icon { display: inline-block; }
-.site-title .signature-icon { height: 0.9em; vertical-align: -0.1em; }
-h1 .signature-icon { height: 0.8em; vertical-align: -0.05em; }
-
-/* ------------------- */
-/* 복사 버튼 스타일 */
-/* ------------------- */
-.content-wrapper pre { position: relative; }
-.copy-button { position: absolute; top: 10px; right: 10px; background-color: var(--copy-btn-bg); color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; opacity: 0; transition: opacity 0.2s, background-color 0.2s; }
-.content-wrapper pre:hover .copy-button { opacity: 0.7; }
-.copy-button:hover { opacity: 1; }
-.copy-button:active { background-color: var(--category-color); }
-
-/* ------------------- */
-/* details 안의 코드 블록 스타일 보정 */
-/* ------------------- */
-details pre {
-    margin-top: 15px; /* 제목과 코드 블록 사이에 적절한 간격을 줍니다. */
-    margin-bottom: 0; /* 아래쪽 불필요한 간격을 제거합니다. */
+.site-footer {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9em;
+  color: var(--footer-text);
 }
+
+/* ------------------- */
+/* 시그니처 아이콘     */
+/* ------------------- */
+.signature-icon {
+  height: 1.2em;
+  vertical-align: -0.2em;
+  margin-left: 3px;
+}
+
+.site-title .signature-icon {
+  height: 0.9em;
+  vertical-align: -0.1em;
+}
+
+h1 .signature-icon {
+  height: 0.8em;
+  vertical-align: -0.05em;
+}
+
+.light-icon {
+  display: inline-block;
+}
+
+.dark-icon {
+  display: none;
+}
+
+[data-theme="dark"] .light-icon {
+  display: none;
+}
+
+[data-theme="dark"] .dark-icon {
+  display: inline-block;
