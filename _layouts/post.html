@@ -1,8 +1,6 @@
 ---
 layout: default
 ---
-<!-- _layouts/post.html -->
-
 <article class="post">
   <header class="post-header">
     <h1 class="post-title">{{ page.title | escape }}</h1>
@@ -17,44 +15,46 @@ layout: default
   <div class="post-content">
     {{ content }}
   </div>
+</article>
 
-  {% comment %} ====================================================== {% endcomment %}
-  {% comment %}         이전·다음 내비게이션 로직 (카테고리 우선)         {% endcomment %}
-  {% comment %} ====================================================== {% endcomment %}
+<hr>
+<nav class="post-nav" aria-label="이전·다음 글">
+  {% assign posts = site.categories[ page.primary_category | default: page.categories | first ] | default: [] | sort: 'date' %}
+  {% assign idx = posts | map: 'url' | index_of: page.url %}
+  {% if idx > 0 %}
+    {% assign prev = posts[idx | minus: 1] %}
+    <a class="prev" href="{{ prev.url | relative_url }}">
+      « 이전 글: {{ prev.title | escape }}
+    </a>
+  {% endif %}
+  {% assign last = posts.size | minus: 1 %}
+  {% if idx < last %}
+    {% assign next = posts[idx | plus: 1] %}
+    <a class="next" href="{{ next.url | relative_url }}">
+      다음 글: {{ next.title | escape }} »
+    </a>
+  {% endif %}
 
-  {% assign category_to_navigate = page.primary_category %}
-  {% unless category_to_navigate %}
-    {% assign category_to_navigate = page.categories | first %}
-  {% endunless %}
-
-  {% if category_to_navigate %}
-    {% assign posts_in_category = site.categories[category_to_navigate] | default: [] | sort: 'date' %}
-
-    {% if posts_in_category.size > 1 %}
-      {% assign current_post_index = posts_in_category | index_of: page %}
-      {% if current_post_index == -1 %}
-        {% assign current_post_index = posts_in_category | map: 'url' | index_of: page.url %}
-      {% endif %}
-
-      {% if current_post_index >= 0 %}
-        {% assign last_post_index = posts_in_category.size | minus: 1 %}
-
-        <hr>
-        <nav class="post-nav" aria-label="이전·다음 글">
-          {% if current_post_index > 0 %}
-            {% assign previous_post = posts_in_category[current_post_index | minus: 1] %}
-            <a class="prev" href="{{ previous_post.url | relative_url }}">
-              « 이전 글: {{ previous_post.title | escape }}
-            </a>
-          {% endif %}
-          {% if current_post_index < last_post_index %}
-            {% assign next_post = posts_in_category[current_post_index | plus: 1] %}
-            <a class="next" href="{{ next_post.url | relative_url }}">
-              다음 글: {{ next_post.title | escape }} »
-            </a>
-          {% endif %}
-        </nav>
-      {% endif %}
+  {%- comment -%}
+    카테고리 내비가 없을 때(또는 posts 배열이 비어 있을 때) 
+    page.previous/page.next 로 대체하고 싶으면 아래 주석 해제
+  {%- endcomment -%}
+  {%
+    comment
+  %}
+  {% if posts.size <= 1 %}
+    {% if page.previous %}
+      <a class="prev" href="{{ page.previous.url | relative_url }}">
+        « 이전 글: {{ page.previous.title | escape }}
+      </a>
+    {% endif %}
+    {% if page.next %}
+      <a class="next" href="{{ page.next.url | relative_url }}">
+        다음 글: {{ page.next.title | escape }} »
+      </a>
     {% endif %}
   {% endif %}
-</article>
+  {%
+    endcomment
+  %}
+</nav>
