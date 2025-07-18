@@ -61,22 +61,31 @@ hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
 .content-wrapper h5,
 .content-wrapper h6,
 .content-wrapper ol,
-.content-wrapper ul {
-  margin: 0 auto 1.2em;
-  max-width: 700px;
+.content-wrapper ul,
+.content-wrapper pre {
+  margin: 0 auto 1.2em;   /* 상단 0, 좌우 auto(가운데 정렬), 하단 1.2em */
+  max-width: 700px;       /* 본문과 동일한 너비 제한 */
 }
 
 .content-wrapper ol,
 .content-wrapper ul {
-  padding-left: 1.5em;
-  list-style-position: outside;
+  padding-left: 1.5em;           /* 번호/불릿 영역만큼 들여쓰기 */
+  list-style-position: outside;  /* 번호/불릿을 좌측 여백에 붙이기 */
 }
 
+.content-wrapper pre {
+  /* margin, max-width는 위에서 처리했으므로 여기서는 기존 스타일만 남깁니다 */
+  padding: 15px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  position: relative;
+}
 
+.content-wrapper :not(pre) > code {
+  padding: 3px 6px;
+  font-size: 0.9em;
+}
 
-
-
-.content-wrapper :not(pre) > code { padding: 3px 6px; font-size: 0.9em; }
 /* ------------------- */
 /* 게시글/카테고리 목록   */
 /* ------------------- */
