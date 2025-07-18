@@ -53,19 +53,28 @@ hr { border: none; border-top: 1px solid var(--border-color); margin: 40px 0; }
 /* ------------------- */
 /* 본문 문단 너비 제한   */
 /* ------------------- */
-.content-wrapper p {
-  margin: 0 auto 1.2em;   /* 상 0, 좌/우 auto(가운데 정렬), 하 1.2em */
-  max-width: 700px;       /* 원하는 읽기 폭으로 제한 */
-  font-size: 1.1rem;
+.content-wrapper p,
+.content-wrapper h1,
+.content-wrapper h2,
+.content-wrapper h3,
+.content-wrapper h4,
+.content-wrapper h5,
+.content-wrapper h6,
+.content-wrapper ol,
+.content-wrapper ul {
+  margin: 0 auto 1.2em;
+  max-width: 700px;
+}
+
+.content-wrapper ol,
+.content-wrapper ul {
+  padding-left: 1.5em;
+  list-style-position: outside;
 }
 
 
-.content-wrapper pre, .content-wrapper code { font-family: "D2Coding", "Courier New", monospace; background-color: var(--code-bg); border-radius: 4px; }
-.content-wrapper pre { 
-  padding: 15px; 
-  white-space: pre-wrap;   /* 자동 줄바꿈을 허용하고, 기존 공백은 유지 */
-  overflow-wrap: break-word; /* 단어가 길어 영역을 벗어날 경우 강제로 줄바꿈 */
-}
+
+
 
 .content-wrapper :not(pre) > code { padding: 3px 6px; font-size: 0.9em; }
 /* ------------------- */
