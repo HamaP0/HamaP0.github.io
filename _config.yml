@@ -16,3 +16,12 @@ collections:
     output: true
     
 future: true
+
+# 아래 내용 추가 (defaults 섹션)
+defaults:
+  -
+    scope:
+      path: "" # 프로젝트 전체 경로
+      type: "posts" # posts 컬렉션에만 적용
+    values:
+      primary_category: "uncategorized" # primary_category가 정의되지 않은 경우 기본값
