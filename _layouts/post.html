@@ -25,28 +25,29 @@ layout: default
     {%- assign category_to_navigate = page.primary_category | default: page.categories.first -%}
 
     {%- if category_to_navigate -%}
-        {%- assign posts_in_category = site.categories[category_to_navigate] | sort: 'date' -%}
-
-        {%- if posts_in_category and posts_in_category.size > 1 -%}
+        {%- assign posts_in_category_unsorted = site.categories[category_to_navigate] -%}
+        {%- if posts_in_category_unsorted and posts_in_category_unsorted.size > 1 -%}
+            {%- assign posts_in_category = posts_in_category_unsorted | sort: 'date' -%}
             {%- for post_item in posts_in_category -%}
-                {%- comment %} URL 대신 고유 ID를 비교하여 permalink 설정에 따른 오류를 방지합니다. {% endcomment %}
                 {%- if post_item.id == page.id -%}
                     {%- assign current_post_index = forloop.index0 -%}
                     {%- break -%}
                 {%- endif -%}
             {%- endfor -%}
 
-            {%- comment %} current_post_index가 정상적으로 할당되었는지 확인합니다. {% endcomment %}
             {%- if current_post_index != nil -%}
                 <hr>
                 <nav class="post-nav" aria-label="이전·다음 글">
                     {%- if current_post_index > 0 -%}
-                        {%- assign previous_post = posts_in_category[current_post_index | minus: 1] -%}
+                        {%- assign prev_post_index = current_post_index | minus: 1 -%}
+                        {%- assign previous_post = posts_in_category[prev_post_index] -%}
                         <a class="prev" href="{{ previous_post.url | relative_url }}">« 이전 글: {{ previous_post.title | escape }}</a>
                     {%- endif -%}
 
-                    {%- if current_post_index < posts_in_category.size | minus: 1 -%}
-                        {%- assign next_post = posts_in_category[current_post_index | plus: 1] -%}
+                    {%- assign last_post_index = posts_in_category.size | minus: 1 -%}
+                    {%- if current_post_index < last_post_index -%}
+                        {%- assign next_post_index = current_post_index | plus: 1 -%}
+                        {%- assign next_post = posts_in_category[next_post_index] -%}
                         <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title | escape }} »</a>
                     {%- endif -%}
                 </nav>
