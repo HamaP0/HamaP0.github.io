@@ -18,39 +18,56 @@ layout: default
   </div>
 
   {% comment %} ====================================================== {% endcomment %}
-  {% comment %}         빌드 오류까지 방지하는 최종 내비게이션 로직          {% endcomment %}
+  {% comment %}    이전/다음 글 내비게이션 (오류 방지 로직 적용)        {% endcomment %}
   {% comment %} ====================================================== {% endcomment %}
-  
-  {% assign category_to_navigate = page.primary_category %}
-  {% unless category_to_navigate %}
-    {% assign category_to_navigate = page.categories | first %}
-  {% endunless %}
 
-  {% if category_to_navigate %}
-    {% comment %} [오류 수정] site.categories[...]가 nil일 경우를 대비해 빈 배열([])을 기본값으로 설정합니다. {% endcomment %}
-    {% assign posts_in_category = site.categories[category_to_navigate] | default: [] | sort: 'date' %}
-    
-    {% if posts_in_category.size > 1 %}
-      {% assign current_post_index = posts_in_category | index_of: page %}
-      {% if current_post_index == -1 %}
-        {% assign current_post_index = posts_in_category | map: 'url' | index_of: page.url %}
-      {% endif %}
+  {%- comment -%}
+    1. 탐색할 카테고리를 정합니다. YAML 머리말에 'primary_category'가 있으면 그것을 사용하고,
+       없으면 첫 번째 카테고리를 사용합니다.
+  {%- endcomment -%}
+  {%- assign category_to_navigate = page.primary_category | default: page.categories.first -%}
 
-      {% if current_post_index >= 0 %}
-        {% assign last_post_index = posts_in_category.size | minus: 1 %}
+  {%- if category_to_navigate -%}
+    {%- comment -%}
+      2. 해당 카테고리의 모든 글을 가져옵니다.
+         [오류 수정] 카테고리가 비어있을 경우를 대비해 'default: []'로 오류를 방지하고,
+         날짜순으로 정렬합니다.
+    {%- endcomment -%}
+    {%- assign posts_in_category = site.categories[category_to_navigate] | default: [] | sort: 'date' -%}
 
-        <hr>
-        <nav class="post-nav" aria-label="이전·다음 글">
-          {% if current_post_index > 0 %}
-            {% assign previous_post = posts_in_category[current_post_index | minus: 1] %}
-            <a class="prev" href="{{ previous_post.url | relative_url }}">« 이전 글: {{ previous_post.title | escape }}</a>
-          {% endif %}
-          {% if current_post_index < last_post_index %}
-            {% assign next_post = posts_in_category[current_post_index | plus: 1] %}
-            <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title | escape }} »</a>
-          {% endif %}
-        </nav>
-      {% endif %}
-    {% endif %}
-  {% endif %}
+    {%- comment -%}
+      3. 표준 'for' 루프를 사용해 현재 글의 순서(index)를 찾습니다.
+         [오류 수정] 'index_of' 필터는 비표준이라 불안정하므로, 루프를 통해 직접 찾습니다.
+    {%- endcomment -%}
+    {%- for post_item in posts_in_category -%}
+      {%- if post_item.url == page.url -%}
+        {%- assign current_post_index = forloop.index0 -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- comment -%}
+      4. 현재 글의 순서를 찾았고, 카테고리에 2개 이상의 글이 있을 경우에만 내비게이션을 표시합니다.
+    {%- endcomment -%}
+    {%- if current_post_index and posts_in_category.size > 1 -%}
+      <hr>
+      <nav class="post-nav" aria-label="이전·다음 글">
+
+        {%- comment -%} 이전 글 링크 (첫 번째 글이 아닐 경우) {%- endcomment -%}
+        {%- if current_post_index > 0 -%}
+          {%- assign prev_post_index = current_post_index | minus: 1 -%}
+          {%- assign previous_post = posts_in_category[prev_post_index] -%}
+          <a class="prev" href="{{ previous_post.url | relative_url }}">« 이전 글: {{ previous_post.title | escape }}</a>
+        {%- endif -%}
+
+        {%- comment -%} 다음 글 링크 (마지막 글이 아닐 경우) {%- endcomment -%}
+        {%- if current_post_index < posts_in_category.size | minus: 1 -%}
+          {%- assign next_post_index = current_post_index | plus: 1 -%}
+          {%- assign next_post = posts_in_category[next_post_index] -%}
+          <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title | escape }} »</a>
+        {%- endif -%}
+
+      </nav>
+    {%- endif -%}
+  {%- endif -%}
 </article>
