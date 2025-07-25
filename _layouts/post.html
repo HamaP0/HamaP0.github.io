@@ -18,21 +18,14 @@ layout: default
   </div>
 
   {% comment %} ====================================================== {% endcomment %}
-  {% comment %}    이전/다음 글 내비게이션 (오류 방지 최종 로직)        {% endcomment %}
+  {% comment %}    이전/다음 글 내비게이션 (오류 및 경고 수정 최종)       {% endcomment %}
   {% comment %} ====================================================== {% endcomment %}
 
   {%- assign category_to_navigate = page.primary_category | default: page.categories.first -%}
 
   {%- if category_to_navigate -%}
-    {%- comment -%}
-      [오류 수정] site.categories에서 글 목록을 가져옵니다.
-    {%- endcomment -%}
     {%- assign posts_of_category = site.categories[category_to_navigate] -%}
 
-    {%- comment -%}
-      [오류 수정] 가져온 글 목록이 실제로 존재하는 경우에만 아래 로직을 실행합니다.
-      이것이 'Cannot sort a null object' 오류를 근본적으로 방지합니다.
-    {%- endcomment -%}
     {%- if posts_of_category -%}
       {%- assign posts_in_category = posts_of_category | sort: 'date' -%}
 
@@ -53,7 +46,11 @@ layout: default
             <a class="prev" href="{{ previous_post.url | relative_url }}">« 이전 글: {{ previous_post.title | escape }}</a>
           {%- endif -%}
 
-          {%- if current_post_index < posts_in_category.size | minus: 1 -%}
+          {%- comment -%}
+            [경고 수정] if문 내에서 직접 계산하지 않고 변수로 분리합니다.
+          {%- endcomment -%}
+          {%- assign last_post_index = posts_in_category.size | minus: 1 -%}
+          {%- if current_post_index < last_post_index -%}
             {%- assign next_post_index = current_post_index | plus: 1 -%}
             {%- assign next_post = posts_in_category[next_post_index] -%}
             <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title | escape }} »</a>
