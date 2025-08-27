@@ -1,0 +1,19 @@
+---
+layout: default
+title: "카테고리: NGFW"
+---
+
+<h1>카테고리: NGFW</h1>
+<p> 차세대 방화벽 NGFW 학습 기록입니다.</p>
+
+<hr>
+  
+<ul class="post-list">
+  {% for post in site.categories['NGFW'] %}
+    <li>
+      <h2>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h2>
+    </li>
+  {% endfor %}
+</ul>
