@@ -152,12 +152,13 @@ hr {
   color: var(--footer-text);
   margin: 15px 0 8px;
   padding-left: 5px;
+  border-left: 3px solid var(--category-color);
 }
 
 .sidebar-nav ul {
   list-style: none;
   padding-left: 0;
-  margin: 0;
+  margin: 0 0 15px;
 }
 
 .sidebar-nav li {
@@ -218,18 +219,18 @@ hr {
 .content-wrapper details {
   margin: 0 auto 1.2em;
   max-width: 700px;
-  font-size: 16px; /* 글씨 크기 조정 */
+  font-size: 16px;
 }
 
 .content-wrapper h1 {
-  font-size: 2em;
+  font-size: 2.2em;
   line-height: 1.2;
   margin-top: 0.67em;
   margin-bottom: 0.5em;
 }
 
 .content-wrapper h2 {
-  font-size: 1.75em;
+  font-size: 1.8em;
   line-height: 1.3;
   margin-top: 1.2em;
   margin-bottom: 0.6em;
@@ -349,19 +350,27 @@ hr {
 }
 
 .category-list li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .category-list a {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: var(--category-color);
-  text-decoration: none;
-  transition: color 0.2s;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 6px;
+  color: var(--text-color);
+  font-size: 1.1em;
+  transition: all 0.2s;
 }
 
 .category-list a:hover {
-  filter: brightness(1.2);
+  background-color: var(--border-color);
+  color: var(--link-hover-color);
+}
+
+.category-list a.current {
+  background-color: var(--card-bg);
+  border-left: 3px solid var(--category-color);
+  font-weight: bold;
 }
 
 /* ------------------- */
@@ -413,6 +422,116 @@ hr {
 .post-nav a:hover {
   background-color: var(--border-color);
   color: var(--link-hover-color);
+}
+
+/* ------------------- */
+/* 보안 전문가 스타일 */
+/* ------------------- */
+.security-skills-section {
+  margin-bottom: 40px;
+}
+
+.skill-category {
+  margin-bottom: 25px;
+}
+
+.category-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--text-color);
+  margin: 15px 0 10px;
+  padding-left: 10px;
+  border-left: 3px solid var(--category-color);
+}
+
+.skill-tag {
+  background-color: var(--tag-bg);
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  display: inline-block;
+  margin: 5px 5px 5px 0;
+  transition: all 0.2s;
+}
+
+.skill-tag:hover {
+  background-color: var(--tag-hover-bg);
+  transform: translateY(-2px);
+}
+
+.skill-tag.security {
+  border-left: 3px solid #00A67D;
+}
+
+.skill-tag.network {
+  border-left: 3px solid #4285F4;
+}
+
+.skill-tag.cloud {
+  border-left: 3px solid #EA4335;
+}
+
+.skill-tag.system {
+  border-left: 3px solid #FBBC05;
+}
+
+.skill-tag.programming {
+  border-left: 3px solid #34A853;
+}
+
+.certifications {
+  background-color: var(--content-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.cert-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--text-color);
+  margin: 0 0 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cert-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.cert-item {
+  background-color: var(--tag-bg);
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.cert-item .cert-name {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.cert-item .cert-date {
+  color: var(--footer-text);
+  font-size: 0.85em;
+}
+
+.profile-description {
+  max-width: 700px;
+  text-align: center;
+  color: var(--footer-text);
+  font-size: 1.1em;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.security-highlight {
+  color: var(--link-color);
+  font-weight: bold;
 }
 
 /* ------------------- */
@@ -472,6 +591,12 @@ h1 .signature-icon {
   
   .sidebar {
     display: none;
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--sidebar-border);
+    margin-bottom: 20px;
   }
   
   .content-area {
