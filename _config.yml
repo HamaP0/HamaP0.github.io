@@ -17,9 +17,9 @@ collections:
     
 future: false
 
-# 아래 내용 추가 (카테고리 URL 구조 변경)
+# 카테고리 URL 구조 변경
 category_dir: categories
-permalink: /:categories/:title:output_ext
+permalink: /:categories/:title/
 
 # defaults 섹션
 defaults:
@@ -30,3 +30,6 @@ defaults:
     values:
       layout: post
       primary_category: "uncategorized"
+
+sass:
+  style: compressed
