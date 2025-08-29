@@ -2,7 +2,7 @@
 layout: post
 title: "[Bandit] Level 0 시작하기"
 date: 2025-06-07 09:00:00 +0900
-categories: bandit
+categories: [bandit]
 tags: [overthewire, bandit, ssh, intro, putty]
 ---
 
@@ -70,3 +70,4 @@ Windows 환경에서는 **PuTTY**라는 프로그램을 사용하면 아주 편�
 2. PuTTY 사용법
 
 ---
+
