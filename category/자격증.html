@@ -1,19 +1,15 @@
 ---
 layout: default
-title: Bandit
+title: "카테고리: 자격증"
 ---
 
-<h1>카테고리: Bandit</h1>
-<p>Bandit 워게임 관련 글 목록입니다.</p>
-  
+<h1>카테고리: 자격증</h1>
+<p>자격증 취득 관련 글 목록입니다.</p>
+
 <hr>
   
 <ul class="post-list">
-  <!-- 
-    site.categories.bandit 에는 'bandit' 카테고리의 글만 담겨있습니다.
-    'reversed' 키워드를 추가하여 최신 글이 위로 오도록 순서를 뒤집니다.
-  -->
-  {% for post in site.categories.bandit reversed %}
+  {% for post in site.categories['자격증'] %}
     <li>
       <h2>
         <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
