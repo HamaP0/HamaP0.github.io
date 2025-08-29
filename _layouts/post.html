@@ -33,6 +33,11 @@ layout: default
         {%- assign posts_in_category_unsorted = site.categories[category_to_navigate] -%}
         {%- if posts_in_category_unsorted and posts_in_category_unsorted.size > 1 -%}
             {%- assign posts_in_category = posts_in_category_unsorted | sort: 'date' -%}
+
+        <!-- 디버깅: 네비게이션 카테고리 및 포스트 수 확인 -->
+        <pre>category_to_navigate: {{ category_to_navigate }}</pre>
+        <pre>posts_in_category_unsorted: {{ posts_in_category_unsorted | size }}</pre>
+        <pre>posts_in_category: {{ posts_in_category | size }}</pre>
             {%- for post_item in posts_in_category -%}
                 {%- if post_item.id == page.id -%}
                     {%- assign current_post_index = forloop.index0 -%}
