@@ -15,21 +15,13 @@ collections:
   posts:
     output: true
     
-future: false
+future: true
 
-# 카테고리 URL 구조 변경
-category_dir: categories
-permalink: /:categories/:title/
-
-# defaults 섹션
+# 아래 내용 추가 (defaults 섹션)
 defaults:
   -
     scope:
-      path: ""
-      type: "posts"
+      path: "" # 프로젝트 전체 경로
+      type: "posts" # posts 컬렉션에만 적용
     values:
-      layout: post
-      primary_category: "uncategorized"
-
-sass:
-  style: compressed
+      primary_category: "uncategorized" # primary_category가 정의되지 않은 경우 기본값
