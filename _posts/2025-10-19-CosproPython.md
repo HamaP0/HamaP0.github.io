@@ -2,7 +2,7 @@
 layout: post
 title: COS PRO Python 취득
 date: 2025-10-19 15:00:00 +0900
-categories: 자격증
+categories: [자격증]
 tags: [python]
 ---
 YBM에서 주관하는 COS PRO(Coding Specialist Professional) Python 자격증을 취득했습니다. 이 과정은 주어진 문제 상황에 맞춰 Python 코드를 직접 작성하고, 빈칸을 채우거나 잘못된 코드를 수정하는 등 실질적인 프로그래밍 구현 능력을 평가하는 경험이었습니다.
@@ -30,3 +30,4 @@ YBM에서 주관하는 COS PRO(Coding Specialist Professional) Python 자격증�
 ## 마치며
 
 COS PRO Python 자격증 취득 과정은 Python 언어를 활용한 실질적인 문제 해결 능력을 점검하는 경험이었습니다. 정해진 시간 안에 요구사항에 맞는 코드를 직접 구현하고 디버깅하는 과정을 통해, 프로그래밍의 이론적 지식을 실제 구현 능력으로 전환하는 기반을 다질 수 있었습니다.
+
