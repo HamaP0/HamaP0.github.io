@@ -16,3 +16,17 @@ collections:
     output: true
     
 future: false
+
+# 아래 내용 추가 (카테고리 URL 구조 변경)
+category_dir: categories
+permalink: /:categories/:title:output_ext
+
+# defaults 섹션
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      primary_category: "uncategorized"
