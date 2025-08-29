@@ -606,4 +606,9 @@ h1 .signature-icon {
   .content-wrapper {
     padding: 20px;
   }
+  
+  /* study.html에서 글씨 겹침 문제 해결 */
+  .content-wrapper h1 {
+    font-size: 1.8em;
+  }
 }
