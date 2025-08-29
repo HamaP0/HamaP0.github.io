@@ -1,10 +1,8 @@
 ---
 ---
-
 /* =============================================================================
    HamaP의 블로그 - 최종 스타일시트 (Gemini 팔레트 + 다크 모드 기본)
    ============================================================================= */
-
 /* ------------------- */
 /* Gemini 색상 변수 정의 */
 /* ------------------- */
@@ -14,12 +12,17 @@
   --header-bg:         #2d2e30;
   --content-bg:        #2d2e30;
   --border-color:      #3c4043;
+  --card-bg:           #2d2e30;
+  --card-hover-bg:     #333436;
+  --card-border:       #424549;
   --code-bg:           #282a2d;
   --footer-text:       #9aa0a6;
   --link-color:        #89B2F6;
   --link-hover-color:  #a3c2f7;
   --category-color:    #00A67D;
   --copy-btn-bg:       #5F6368;
+  --tag-bg:            #3c4043;
+  --tag-hover-bg:      #4a4e52;
 }
 
 /* ------------------- */
@@ -39,11 +42,12 @@ body {
 a {
   color: var(--link-color);
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 a:hover {
   color: var(--link-hover-color);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .container {
@@ -78,6 +82,8 @@ hr {
   font-size: 1.5em;
   font-weight: bold;
   color: var(--text-color);
+  display: flex;
+  align-items: center;
 }
 
 .site-title:hover {
@@ -93,6 +99,7 @@ hr {
 
 .site-nav a:hover {
   text-decoration: none;
+  color: var(--link-hover-color);
 }
 
 /* ------------------- */
@@ -214,37 +221,103 @@ hr {
 .post-meta {
   color: var(--footer-text);
   font-size: 0.9em;
+  margin-top: 8px;
 }
 
+/* Notion 스타일 카드 레이아웃 */
 .post-list,
 .category-list {
   list-style: none;
   padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin: 0;
 }
 
 .post-list li {
-  margin-bottom: 40px;
-}
-
-.post-list a.post-link {
-  color: var(--text-color);
-  text-decoration: none;
+  margin-bottom: 0;
+  display: flex;
 }
 
 .category-list li {
   margin-bottom: 10px;
 }
 
-.category-list a {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: var(--category-color);
+.post-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 18px;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.post-card:hover {
+  background-color: var(--card-hover-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-color: var(--border-color);
+}
+
+.post-link {
+  color: var(--text-color);
   text-decoration: none;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-link h2 {
+  font-size: 1.3em;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
   transition: color 0.2s;
 }
 
-.category-list a:hover {
-  filter: brightness(1.2);
+.post-link:hover h2 {
+  color: var(--link-hover-color);
+}
+
+.post-excerpt {
+  color: var(--footer-text);
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.category-tag {
+  display: inline-block;
+  background-color: var(--tag-bg);
+  color: var(--text-color);
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.8em;
+  margin-bottom: 10px;
+  transition: background-color 0.2s;
+}
+
+.category-tag:hover {
+  background-color: var(--tag-hover-bg);
+}
+
+/* 카테고리 페이지 스타일 */
+.category-page h1 {
+  margin-top: 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.category-page .post-list {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 /* ------------------- */
@@ -257,11 +330,14 @@ hr {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .post-nav .prev,
 .post-nav .next {
-  flex: 0 0 48%;
+  flex: 1;
+  min-width: 200px;
 }
 
 .post-nav .prev {
@@ -275,6 +351,7 @@ hr {
 .post-nav .next:only-child {
   margin-left: auto;
 }
+
 .post-nav .prev:only-child {
   margin-right: auto;
 }
@@ -332,4 +409,37 @@ h1 .signature-icon {
 
 .dark-icon {
   display: inline-block; /* 다크 모드만 사용하므로 항상 보이도록 */
+}
+
+/* ------------------- */
+/* 모바일 최적화       */
+/* ------------------- */
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 30px 20px;
+  }
+  
+  .site-header .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .site-nav a {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+  
+  .post-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .post-nav {
+    flex-direction: column;
+  }
+  
+  .post-nav .prev,
+  .post-nav .next {
+    width: 100%;
+  }
 }
