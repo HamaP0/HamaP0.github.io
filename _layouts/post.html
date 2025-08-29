@@ -18,28 +18,50 @@ layout: default
 
     {% comment %}
     ======================================================
-    이전/다음 글 내비게이션 (Jekyll 기본 기능 사용)
-    - site.posts 전체를 기준으로 이전/다음 글을 찾습니다.
-    - 가장 간단하고 확실하게 동작하는 방식입니다.
+    카테고리 내 이전/다음 글 내비게이션
+    - 현재 글의 첫 번째 카테고리를 기준으로 글 목록을 가져옵니다.
+    - 해당 목록 안에서 이전/다음 글을 찾아 링크를 생성합니다.
     ======================================================
     {% endcomment %}
-    {% if page.previous.url or page.next.url %}
-    <hr>
-    <nav class="post-nav">
-        {% if page.previous.url %}
-        <a class="post-nav-item post-nav-prev" href="{{ page.previous.url | relative_url }}">
-            <div class="nav-arrow">« 이전 글</div>
-            <span class="post-title">{{ page.previous.title }}</span>
-        </a>
-        {% endif %}
+    {%- comment -%} 현재 글의 카테고리를 찾습니다. {%- endcomment -%}
+    {%- assign current_category = page.categories.first -%}
 
-        {% if page.next.url %}
-        <a class="post-nav-item post-nav-next" href="{{ page.next.url | relative_url }}">
-            <div class="nav-arrow">다음 글 »</div>
-            <span class="post-title">{{ page.next.title }}</span>
-        </a>
-        {% endif %}
-    </nav>
-    {% endif %}
+    {%- comment -%} 카테고리가 존재할 경우에만 아래 로직을 실행합니다. {%- endcomment -%}
+    {%- if current_category -%}
+        {%- comment -%} 해당 카테고리에 속한 모든 글을 날짜순으로 정렬합니다. {%- endcomment -%}
+        {%- assign posts_in_category = site.categories[current_category] | sort: 'date' -%}
+
+        {%- comment -%} 정렬된 목록에서 현재 글이 몇 번째인지 찾습니다. {%- endcomment -%}
+        {%- for post in posts_in_category -%}
+            {%- if post.url == page.url -%}
+                {%- assign post_index = forloop.index0 -%}
+                {%- break -%}
+            {%- endif -%}
+        {%- endfor -%}
+
+        {%- comment -%} 찾은 순번(index)을 이용해 이전 글과 다음 글을 정합니다. {%- endcomment -%}
+        {%- assign previous_post = posts_in_category[post_index | minus: 1] -%}
+        {%- assign next_post = posts_in_category[post_index | plus: 1] -%}
+
+        {%- comment -%} 이전 글 또는 다음 글이 하나라도 존재하면 내비게이션을 표시합니다. {%- endcomment -%}
+        {%- if previous_post or next_post -%}
+            <hr>
+            <nav class="post-nav">
+                {%- if previous_post -%}
+                <a class="post-nav-item post-nav-prev" href="{{ previous_post.url | relative_url }}">
+                    <div class="nav-arrow">« 이전 글</div>
+                    <span class="post-title">{{ previous_post.title | escape }}</span>
+                </a>
+                {%- endif -%}
+
+                {%- if next_post -%}
+                <a class="post-nav-item post-nav-next" href="{{ next_post.url | relative_url }}">
+                    <div class="nav-arrow">다음 글 »</div>
+                    <span class="post-title">{{ next_post.title | escape }}</span>
+                </a>
+                {%- endif -%}
+            </nav>
+        {%- endif -%}
+    {%- endif -%}
 
 </article>
