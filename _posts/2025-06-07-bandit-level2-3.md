@@ -2,7 +2,7 @@
 layout: post
 title: "[Bandit] Level 2 → 3 풀이"
 date: 2025-06-07 09:03:00 +0900
-categories: bandit
+categories: [bandit]
 tags: [overthewire, bandit, linux]
 ---
 
