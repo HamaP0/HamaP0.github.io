@@ -15,7 +15,7 @@ collections:
   posts:
     output: true
     
-future: true
+future: false
 
 # 아래 내용 추가 (defaults 섹션)
 defaults:
