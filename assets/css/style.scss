@@ -102,7 +102,7 @@ hr {
 }
 
 /* ------------------- */
-/* 사이드바 네비게이션 (Study/Project 페이지에만 적용) */
+/* 사이드바 네비게이션 (카테고리 페이지에만 적용) */
 /* ------------------- */
 .has-sidebar {
   display: flex;
@@ -607,7 +607,6 @@ h1 .signature-icon {
     padding: 20px;
   }
   
-  /* study.html에서 글씨 겹침 문제 해결 */
   .content-wrapper h1 {
     font-size: 1.8em;
   }
