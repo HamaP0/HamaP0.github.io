@@ -18,40 +18,28 @@ layout: default
 
     {% comment %}
     ======================================================
-    이전/다음 글 내비게이션 (카테고리 내 탐색, 안정성 강화 버전)
+    이전/다음 글 내비게이션 (Jekyll 기본 기능 사용)
+    - site.posts 전체를 기준으로 이전/다음 글을 찾습니다.
+    - 가장 간단하고 확실하게 동작하는 방식입니다.
     ======================================================
     {% endcomment %}
-    {%- assign category_to_navigate = page.primary_category | default: page.categories.first -%}
+    {% if page.previous.url or page.next.url %}
+    <hr>
+    <nav class="post-nav">
+        {% if page.previous.url %}
+        <a class="post-nav-item post-nav-prev" href="{{ page.previous.url | relative_url }}">
+            <div class="nav-arrow">« 이전 글</div>
+            <span class="post-title">{{ page.previous.title }}</span>
+        </a>
+        {% endif %}
 
-    {%- if category_to_navigate -%}
-        {%- assign posts_in_category_unsorted = site.categories[category_to_navigate] -%}
-        {%- if posts_in_category_unsorted and posts_in_category_unsorted.size > 1 -%}
-            {%- assign posts_in_category = posts_in_category_unsorted | sort: 'date' -%}
-            {%- for post_item in posts_in_category -%}
-                {%- if post_item.id == page.id -%}
-                    {%- assign current_post_index = forloop.index0 -%}
-                    {%- break -%}
-                {%- endif -%}
-            {%- endfor -%}
+        {% if page.next.url %}
+        <a class="post-nav-item post-nav-next" href="{{ page.next.url | relative_url }}">
+            <div class="nav-arrow">다음 글 »</div>
+            <span class="post-title">{{ page.next.title }}</span>
+        </a>
+        {% endif %}
+    </nav>
+    {% endif %}
 
-            {%- if current_post_index != nil -%}
-                <hr>
-                <nav class="post-nav" aria-label="이전·다음 글">
-                    {%- if current_post_index > 0 -%}
-                        {%- assign prev_post_index = current_post_index | minus: 1 -%}
-                        {%- assign previous_post = posts_in_category[prev_post_index] -%}
-                        <a class="prev" href="{{ previous_post.url | relative_url }}">« 이전 글: {{ previous_post.title | escape }}</a>
-                    {%- endif -%}
-
-                    {%- assign last_post_index = posts_in_category.size | minus: 1 -%}
-                    {%- if current_post_index < last_post_index -%}
-                        {%- assign next_post_index = current_post_index | plus: 1 -%}
-                        {%- assign next_post = posts_in_category[next_post_index] -%}
-                        <a class="next" href="{{ next_post.url | relative_url }}">다음 글: {{ next_post.title | escape }} »</a>
-                    {%- endif -%}
-                </nav>
-            {%- endif -%}
-        {%- endif -%}
-    {%- endif -%}
 </article>
-
