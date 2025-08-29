@@ -2,7 +2,7 @@
 layout: post
 title: "[Bandit] Level 8 → 9 풀이"
 date: 2025-06-14 09:04:00 +0900
-categories: bandit
+categories: [bandit]
 tags: [overthewire, bandit, linux]
 ---
 
