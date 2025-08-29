@@ -16,12 +16,6 @@ layout: default
         {{ content }}
     </div>
 
-    <!-- 디버깅: 네비게이션 카테고리 및 포스트 수 확인 -->
-    <pre>category_to_navigate: {{ category_to_navigate }}</pre>
-    <pre>posts_in_category_unsorted: {{ posts_in_category_unsorted | size }}</pre>
-    <pre>posts_in_category: {{ posts_in_category | size }}</pre>
-    <pre>current_post_index: {{ current_post_index }}</pre>
-
     {% comment %}
     ======================================================
     이전/다음 글 내비게이션 (카테고리 내 탐색, 안정성 강화 버전)
@@ -60,3 +54,4 @@ layout: default
         {%- endif -%}
     {%- endif -%}
 </article>
+
