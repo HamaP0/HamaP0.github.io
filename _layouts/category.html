@@ -1,20 +1,14 @@
 ---
 layout: default
 ---
-<h1>{{ page.title }}</h1>
-{% if page.description %}
-<p>{{ page.description }}</p>
-{% endif %}
 
-<ul class="post-list">
+<h1>{{ page.title }}</h1>
+
+<ul>
   {% assign category = page.category %}
-  {% assign posts = site.categories[category] | reverse %}
-  {% for post in posts %}
+  {% for post in site.categories[category] %}
     <li>
-      <a class="post-link" href="{{ post.url | relative_url }}">
-        <h2>{{ post.title }}</h2>
-      </a>
-      <div class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a> - {{ post.date | date: "%Y-%m-%d" }}
     </li>
   {% endfor %}
 </ul>
