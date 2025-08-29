@@ -1,3 +1,144 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% seo %}
+        <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+        <link rel="stylesheet" href="{{ "/assets/css/custom.css" | relative_url }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+        {% if page.mathjax %}
+            <script type="text/javascript" async
+                src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+            </script>
+        {% endif %}
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="container sidebar-sticky">
+                <div class="sidebar-about">
+                    <h1>{{ site.title | default: site.github.repository_name }}</h1>
+                    <p class="lead">{{ site.description | default: site.github.project_tagline }}</p>
+                </div>
+                <nav class="sidebar-nav">
+                    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/">Home</a>
+                    {% for post in site.posts %}
+                        {% assign current_year = post.date | date: "%Y" %}
+                        {% assign next_year = post.previous.date | date: "%Y" %}
+                        {% if current_year != next_year %}
+                            <h3>{{ current_year }}</h3>
+                        {% endif %}
+                        <a class="sidebar-nav-item" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                    {% endfor %}
+                </nav>
+                <div class="sidebar-social">
+                    {% if site.github_username %}
+                        <a href="https://github.com/{{ site.github_username }}" target="_blank"><i class="fab fa-github"></i></a>
+                    {% endif %}
+                    {% if site.twitter_username %}
+                        <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank"><i class="fab fa-twitter"></i></a>
+                    {% endif %}
+                    {% if site.linkedin_username %}
+                        <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    
+        <div class="content-wrap">
+            <div class="container content">
+                <article class="post">
+                    <h1 class="post-title">{{ page.title }}</h1>
+                    <p class="post-meta">
+                        {% if page.author %}{{ page.author }} • {% endif %}{{ page.date | date: "%b %-d, %Y" }}
+                        {% if page.categories %} • 
+                            {% for category in page.categories %}
+                                <a href="{{ site.baseurl }}/categories/#{{ category | slugify }}">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+                            {% endfor %}
+                        {% endif %}
+                    </p>
+          
+                    <div class="post-content">
+                        {{ content }}
+                    </div>
+          
+                    <!-- 카테고리 내 탐색 (이전/다음 글 내비게이션) -->
+                    {% if page.categories.size > 0 %}
+                        {% assign current_category = page.categories | first %}
+                        {% assign category_posts = site.categories[current_category] | sort: 'date' %}
+            
+                        {% comment %} 
+                            Jekyll은 기본적으로 내림차순 정렬 (최신 글이 먼저)
+                            우리가 원하는 것은 오름차순 정렬 (과거 → 현재)이므로 reverse
+                        {% endcomment %}
+                        {% assign sorted_posts = category_posts | reverse %}
+            
+                        {% assign prev_post = nil %}
+                        {% assign next_post = nil %}
+                        {% assign found = false %}
+            
+                        {% for post in sorted_posts %}
+                            {% if found == false and post.url == page.url %}
+                                {% assign found = true %}
+                            {% elsif found == false %}
+                                {% assign prev_post = post %}
+                            {% else %}
+                                {% assign next_post = post %}
+                                {% break %}
+                            {% endif %}
+                        {% endfor %}
+            
+                        <div class="post-navigation">
+                            {% if prev_post %}
+                                <a href="{{ prev_post.url | relative_url }}" class="nav-previous">
+                                    <i class="fas fa-arrow-left"></i> {{ prev_post.title }}
+                                </a>
+                            {% endif %}
+              
+                            {% if next_post %}
+                                <a href="{{ next_post.url | relative_url }}" class="nav-next">
+                                    {{ next_post.title }} <i class="fas fa-arrow-right"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+          
+                    <!-- 댓글 섹션 -->
+                    {% if site.disqus_shortname %}
+                        <div id="disqus_thread"></div>
+                        <script>
+                            var disqus_config = function () {
+                                this.page.url = window.location.href;
+                                this.page.identifier = '{{ page.id }}';
+                            };
+                            (function() {
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://{{ site.disqus_shortname }}.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                    {% endif %}
+                </article>
+            </div>
+        </div>
+    
+        <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+        {% if site.google_analytics %}
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+                ga('create', '{{ site.google_analytics }}', 'auto');
+                ga('send', 'pageview');
+            </script>
+        {% endif %}
+    </body>
+</html>
 ---
 layout: default
 ---
@@ -54,4 +195,3 @@ layout: default
         {%- endif -%}
     {%- endif -%}
 </article>
-
