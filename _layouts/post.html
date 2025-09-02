@@ -18,51 +18,49 @@ layout: default
 
     {% comment %}
     ======================================================
-    카테고리 내 이전/다음 글 내비게이션 (안정성 강화 버전)
-    - 카테고리 이름을 소문자로 변환하여 일관성 있게 처리합니다.
-    - 이로 인해 'NGFW' vs 'ngfw' 같은 대소문자 문제를 방지합니다.
+    카테고리 내 이전/다음 글 내비게이션
+    - 현재 글의 첫 번째 카테고리를 기준으로 글 목록을 가져옵니다.
+    - 해당 목록 안에서 이전/다음 글을 찾아 링크를 생성합니다.
     ======================================================
     {% endcomment %}
-    {%- comment -%} 현재 글의 첫 번째 카테고리를 가져와 '소문자'로 변환합니다. {%- endcomment -%}
-    {%- assign current_category_raw = page.categories.first -%}
-    {%- assign current_category_safe = current_category_raw | downcase -%}
+    {%- comment -%} 현재 글의 카테고리를 찾습니다. {%- endcomment -%}
+    {%- assign current_category = page.categories.first -%}
 
     {%- comment -%} 카테고리가 존재할 경우에만 아래 로직을 실행합니다. {%- endcomment -%}
-    {%- if current_category_safe -%}
-        {%- comment -%} Jekyll의 카테고리 목록(site.categories)에 접근할 때도 소문자로 접근합니다. {%- endcomment -%}
-        {%- assign posts_in_category_unsorted = site.categories[current_category_safe] -%}
-        
-        {%- if posts_in_category_unsorted -%}
-            {%- assign posts_in_category = posts_in_category_unsorted | sort: 'date' -%}
+    {%- if current_category -%}
+        {%- comment -%} 해당 카테고리에 속한 모든 글을 날짜순으로 정렬합니다. {%- endcomment -%}
+        {%- assign posts_in_category = site.categories[current_category] | sort: 'date' -%}
 
-            {%- for post in posts_in_category -%}
-                {%- if post.url == page.url -%}
-                    {%- assign post_index = forloop.index0 -%}
-                    {%- break -%}
-                {%- endif -%}
-            {%- endfor -%}
-
-            {%- assign previous_post = posts_in_category[post_index | minus: 1] -%}
-            {%- assign next_post = posts_in_category[post_index | plus: 1] -%}
-
-            {%- if previous_post or next_post -%}
-                <hr>
-                <nav class="post-nav">
-                    {%- if previous_post -%}
-                    <a class="post-nav-item post-nav-prev" href="{{ previous_post.url | relative_url }}">
-                        <div class="nav-arrow">« 이전 글</div>
-                        <span class="post-title">{{ previous_post.title | escape }}</span>
-                    </a>
-                    {%- endif -%}
-
-                    {%- if next_post -%}
-                    <a class="post-nav-item post-nav-next" href="{{ next_post.url | relative_url }}">
-                        <div class="nav-arrow">다음 글 »</div>
-                        <span class="post-title">{{ next_post.title | escape }}</span>
-                    </a>
-                    {%- endif -%}
-                </nav>
+        {%- comment -%} 정렬된 목록에서 현재 글이 몇 번째인지 찾습니다. {%- endcomment -%}
+        {%- for post in posts_in_category -%}
+            {%- if post.url == page.url -%}
+                {%- assign post_index = forloop.index0 -%}
+                {%- break -%}
             {%- endif -%}
+        {%- endfor -%}
+
+        {%- comment -%} 찾은 순번(index)을 이용해 이전 글과 다음 글을 정합니다. {%- endcomment -%}
+        {%- assign previous_post = posts_in_category[post_index | minus: 1] -%}
+        {%- assign next_post = posts_in_category[post_index | plus: 1] -%}
+
+        {%- comment -%} 이전 글 또는 다음 글이 하나라도 존재하면 내비게이션을 표시합니다. {%- endcomment -%}
+        {%- if previous_post or next_post -%}
+            <hr>
+            <nav class="post-nav">
+                {%- if previous_post -%}
+                <a class="post-nav-item post-nav-prev" href="{{ previous_post.url | relative_url }}">
+                    <div class="nav-arrow">« 이전 글</div>
+                    <span class="post-title">{{ previous_post.title | escape }}</span>
+                </a>
+                {%- endif -%}
+
+                {%- if next_post -%}
+                <a class="post-nav-item post-nav-next" href="{{ next_post.url | relative_url }}">
+                    <div class="nav-arrow">다음 글 »</div>
+                    <span class="post-title">{{ next_post.title | escape }}</span>
+                </a>
+                {%- endif -%}
+            </nav>
         {%- endif -%}
     {%- endif -%}
 
