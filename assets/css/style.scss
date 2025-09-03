@@ -52,10 +52,16 @@ a:hover {
   padding: 0 20px;
 }
 
+/* 
+   ==========================================================================
+   (수정됨) 구분선(hr)에 그라데이션 포인트 적용
+   ==========================================================================
+*/
 hr {
   border: none;
-  border-top: 1px solid var(--border-color);
-  margin: 40px 0;
+  height: 2px;
+  background-image: linear-gradient(to right, var(--link-color), transparent);
+  margin: 60px 0; /* 위아래 여백 확대 */
 }
 
 /* ------------------- */
@@ -151,11 +157,11 @@ hr {
 
 /*
    ==========================================================================
-   인용문(blockquote) 스타일
+   (수정됨) 인용문(blockquote)에 포인트 색상 적용
    ==========================================================================
 */
 .post-content blockquote {
-  border-left: 4px solid var(--border-color);
+  border-left: 4px solid var(--category-color);
   padding-left: 1em;
   color: var(--footer-text);
   font-style: italic;
@@ -233,6 +239,8 @@ hr {
 .post-title {
   margin-bottom: 0.5rem;
   line-height: 1.4;
+  /* (추가됨) 제목에 포인트 색상 적용 */
+  color: var(--link-color);
 }
 
 /* ------------------- */
@@ -259,14 +267,9 @@ hr {
   text-decoration: none;
 }
 
-/* 
-   ==========================================================================
-   (수정됨) 카테고리 목록의 제목(h2) 스타일 미세 조정
-   ==========================================================================
-*/
 .post-list h2 {
-  font-size: 1.3rem;   /* 너무 크지도 작지도 않은 크기로 조절 */
-  font-weight: 600;    /* 기본 bold(700)보다 살짝 부드럽게 */
+  font-size: 1.3rem;
+  font-weight: 600;
   line-height: 1.5;
   margin-bottom: 0.5rem;
 }
@@ -277,22 +280,32 @@ hr {
   margin-bottom: 10px;
 }
 
+/* 
+   ==========================================================================
+   (수정됨) 카테고리 목록 링크에 인터랙션 강화
+   ==========================================================================
+*/
 .category-list a {
+  display: inline-block; /* 배경색 적용을 위해 block 요소로 변경 */
+  padding: 5px 12px;
+  border-radius: 8px;
   font-size: 1.2em;
   font-weight: bold;
   color: var(--category-color);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .category-list a:hover {
-  filter: brightness(1.2);
+  background-color: var(--category-color);
+  color: var(--bg-color); /* 배경색과 대비되는 글자색으로 변경 */
+  text-decoration: none;
 }
 
 
 /*
    ==========================================================================
-   (수정됨) 포스트 네비게이션
+   포스트 네비게이션
    ==========================================================================
 */
 .post-nav {
