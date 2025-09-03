@@ -27,7 +27,6 @@
 
     {% include footer.html %}
 
-    <!-- (추가됨) 맨 위로 가기 버튼 -->
     <a id="back-to-top" href="#">↑</a>
 
     <script>
@@ -45,9 +44,11 @@
                     const code = block.querySelector('code').innerText;
                     navigator.clipboard.writeText(code).then(() => {
                         button.innerHTML = copiedIconSVG;
+                        button.classList.add('copied'); // (추가) 성공 클래스 추가
                         button.title = '복사 완료!';
                         setTimeout(() => {
                             button.innerHTML = copyIconSVG;
+                            button.classList.remove('copied'); // (추가) 성공 클래스 제거
                             button.title = '코드 복사';
                         }, 2000);
                     });
@@ -65,19 +66,19 @@
               }
             }
 
-            // --- (추가됨) 맨 위로 가기 버튼 기능 ---
+            // --- 맨 위로 가기 버튼 기능 ---
             const backToTopBtn = document.getElementById('back-to-top');
             if (backToTopBtn) {
               window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) { // 300px 이상 스크롤하면
-                  backToTopBtn.style.display = 'block'; // 버튼 보이기
+                if (window.scrollY > 300) {
+                  backToTopBtn.style.display = 'block';
                 } else {
-                  backToTopBtn.style.display = 'none'; // 버튼 숨기기
+                  backToTopBtn.style.display = 'none';
                 }
               });
               backToTopBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' }); // 부드럽게 맨 위로
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               });
             }
         });
