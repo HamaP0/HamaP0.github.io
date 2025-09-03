@@ -4,6 +4,67 @@ title: 프로젝트
 ---
 
 <h1>프로젝트</h1>
-<p>이곳에는 제가 진행했던 프로젝트들을 기록할 예정입니다.</p>
+<p>이곳에는 제가 진행했던 프로젝트들을 기록하고 있습니다.</p>
 
-<!-- 여기에 프로젝트 목록 등을 추가하시면 됩니다. -->
+<hr>
+
+<!-- OWASP Top 10 프로젝트 목록 -->
+<h2 class="project-group-title">OWASP Top 10</h2>
+<ul class="project-list">
+  {% assign owasp_posts = site.categories['OWASP-Top-10'] | sort: 'title' %}
+  {% for post in owasp_posts %}
+    <li>
+      <a href="{{ post.url | relative_url }}">
+        <span class="post-title">{{ post.title }}</span>
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+<!-- 나중에 앱 취약점 프로젝트를 추가할 공간 (예시) -->
+<!-- 
+<h2 class="project-group-title">App Security</h2>
+<ul class="project-list">
+  {% assign app_posts = site.categories['App-Security'] | sort: 'title' %}
+  {% for post in app_posts %}
+    <li>
+      <a href="{{ post.url | relative_url }}">
+        <span class="post-title">{{ post.title }}</span>
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+-->
+
+<style>
+  .project-group-title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #5865F2;
+    padding-left: 0.75rem;
+  }
+  .project-list {
+    list-style: none;
+    padding-left: 1rem;
+  }
+  .project-list li a {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid #333;
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+  .project-list li a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  .project-list .post-title {
+    color: #eee;
+  }
+  .project-list .post-date {
+    color: #888;
+    font-size: 0.9em;
+  }
+</style>
