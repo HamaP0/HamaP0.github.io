@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "A06:2021 - Vulnerable and Outdated Components (취약하고 오래된 구성 요소) 분석 보고서"
+title: "A06:2021 - Vulnerable and Outdated Components <br> (취약하고 오래된 구성 요소) 분석 보고서"
 date: 2025-08-30 17:00:00 +0900
 categories: Projects OWASP-Top-10
 ---
 ---
 
-### **프로젝트 6. A06:2021 - Vulnerable and Outdated Components (취약하고 오래된 구성 요소) 분석 보고서**
+### **프로젝트 6. A06:2021 - Vulnerable and Outdated Components <br> (취약하고 오래된 구성 요소) 분석 보고서**
 
 #### **1. 취약점 개요**
 
