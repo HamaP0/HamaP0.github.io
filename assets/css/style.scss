@@ -439,3 +439,17 @@ h1 .signature-icon {
   text-decoration: none;
   background-color: var(--copy-btn-bg); /* hover 효과 통일 */
 }
+
+/*
+   ==========================================================================
+   (추가됨) 짧은 구분선 스타일
+   ==========================================================================
+*/
+hr.short-rule {
+  background-image: none; /* 파란색 그라데이션 제거 */
+  border-top: 1px solid var(--border-color); /* 얇은 회색 선으로 변경 */
+  width: 50%;         /* 너비를 50%로 줄임 */
+  margin-left: 0;     /* 왼쪽 정렬 */
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
