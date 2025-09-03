@@ -21,6 +21,16 @@
   --copy-btn-bg:       #5F6368;
 }
 
+/* 
+   ==========================================================================
+   (추가됨) 텍스트 선택(selection) 색상 테마에 맞게 변경
+   ==========================================================================
+*/
+::selection {
+  background-color: var(--link-color);
+  color: var(--bg-color);
+}
+
 /* ------------------- */
 /* 기본 스타일 (Global) */
 /* ------------------- */
@@ -43,9 +53,9 @@ a {
 
 a:hover {
   color: var(--link-hover-color);
-  text-decoration: none; /* 밑줄은 제거 */
-  background-color: rgba(137, 178, 246, 0.15); /* --link-color의 투명한 버전 */
-  border-radius: 4px; /* 살짝 둥근 모서리 */
+  text-decoration: none;
+  background-color: rgba(137, 178, 246, 0.15);
+  border-radius: 4px;
 }
 
 .container {
@@ -54,16 +64,11 @@ a:hover {
   padding: 0 20px;
 }
 
-/* 
-   ==========================================================================
-   (수정됨) 구분선(hr)에 그라데이션 포인트 적용
-   ==========================================================================
-*/
 hr {
   border: none;
   height: 2px;
   background-image: linear-gradient(to right, var(--link-color), transparent);
-  margin: 60px 0; /* 위아래 여백 확대 */
+  margin: 60px 0;
 }
 
 /* ------------------- */
@@ -90,6 +95,7 @@ hr {
 
 .site-title:hover {
   text-decoration: none;
+  background-color: transparent; /* site-title에는 hover 효과 제외 */
 }
 
 .site-nav a {
@@ -101,6 +107,7 @@ hr {
 
 .site-nav a:hover {
   text-decoration: none;
+  background-color: transparent; /* site-nav에도 hover 효과 제외 */
 }
 
 /* ------------------- */
@@ -140,6 +147,16 @@ hr {
   list-style-position: outside;
 }
 
+/*
+   ==========================================================================
+   (추가됨) 목록(List)의 글머리 기호에 포인트 색상 적용
+   ==========================================================================
+*/
+.post-content li::marker {
+  color: var(--link-color);
+}
+
+
 .post-content :not(pre) > code {
   padding: 3px 6px;
   font-size: 0.9em;
@@ -159,7 +176,7 @@ hr {
 
 /*
    ==========================================================================
-   (수정됨) 인용문(blockquote)에 포인트 색상 적용
+   인용문(blockquote) 스타일
    ==========================================================================
 */
 .post-content blockquote {
@@ -224,6 +241,11 @@ hr {
   transition: opacity 0.2s, background-color 0.2s;
 }
 
+/* (추가됨) 코드 복사 성공 시 스타일 */
+.copy-button.copied {
+  background-color: var(--category-color);
+}
+
 .content-wrapper pre:hover .copy-button {
   opacity: 0.7;
 }
@@ -241,7 +263,6 @@ hr {
 .post-title {
   margin-bottom: 0.5rem;
   line-height: 1.4;
-  /* (추가됨) 제목에 포인트 색상 적용 */
   color: var(--link-color);
 }
 
@@ -269,6 +290,10 @@ hr {
   text-decoration: none;
 }
 
+.post-list a.post-link:hover {
+    background-color: transparent; /* 목록 제목에는 hover 효과 제외 */
+}
+
 .post-list h2 {
   font-size: 1.3rem;
   font-weight: 600;
@@ -282,13 +307,8 @@ hr {
   margin-bottom: 10px;
 }
 
-/* 
-   ==========================================================================
-   (수정됨) 카테고리 목록 링크에 인터랙션 강화
-   ==========================================================================
-*/
 .category-list a {
-  display: inline-block; /* 배경색 적용을 위해 block 요소로 변경 */
+  display: inline-block;
   padding: 5px 12px;
   border-radius: 8px;
   font-size: 1.2em;
@@ -300,7 +320,7 @@ hr {
 
 .category-list a:hover {
   background-color: var(--category-color);
-  color: var(--bg-color); /* 배경색과 대비되는 글자색으로 변경 */
+  color: var(--bg-color);
   text-decoration: none;
 }
 
@@ -395,13 +415,13 @@ h1 .signature-icon {
 }
 
 /* ------------------- */
-/* (추가됨) 맨 위로 가기 버튼 */
+/* 맨 위로 가기 버튼 */
 /* ------------------- */
 #back-to-top {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  display: none; /* 평소엔 숨김 */
+  display: none;
   width: 40px;
   height: 40px;
   line-height: 40px;
@@ -417,4 +437,5 @@ h1 .signature-icon {
 #back-to-top:hover {
   opacity: 1;
   text-decoration: none;
+  background-color: var(--copy-btn-bg); /* hover 효과 통일 */
 }
