@@ -61,4 +61,4 @@ bandit8@bandit:~$ sort data.txt | uniq -u
 2. sort: 텍스트 데이터를 정렬함.
 3. uniq -u: 정렬된 데이터에서 중복되지 않고 한 번만 나타나는 줄만 출력함.
 
----
+    ---
