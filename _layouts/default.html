@@ -27,10 +27,12 @@
 
     {% include footer.html %}
 
+    <!-- (추가됨) 맨 위로 가기 버튼 -->
+    <a id="back-to-top" href="#">↑</a>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- 코드 블록 복사 기능 ---
-            // (이 부분은 변경 없음)
             const copyIconSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
             const copiedIconSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
             document.querySelectorAll('.content-wrapper pre').forEach(block => {
@@ -52,16 +54,31 @@
                 });
             });
 
-            // --- (수정됨) 이미지 인플레이스(in-place) 확대/축소 기능 ---
+            // --- 이미지 인플레이스(in-place) 확대/축소 기능 ---
             const postContent = document.querySelector('.post-content');
             if (postContent) {
               const images = postContent.getElementsByTagName('img');
               for (const img of images) {
                 img.addEventListener('click', function() {
-                  // 클릭할 때마다 'zoomed' 클래스를 추가하거나 제거합니다.
                   this.classList.toggle('zoomed');
                 });
               }
+            }
+
+            // --- (추가됨) 맨 위로 가기 버튼 기능 ---
+            const backToTopBtn = document.getElementById('back-to-top');
+            if (backToTopBtn) {
+              window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) { // 300px 이상 스크롤하면
+                  backToTopBtn.style.display = 'block'; // 버튼 보이기
+                } else {
+                  backToTopBtn.style.display = 'none'; // 버튼 숨기기
+                }
+              });
+              backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' }); // 부드럽게 맨 위로
+              });
             }
         });
     </script>
