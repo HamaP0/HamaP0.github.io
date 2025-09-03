@@ -10,32 +10,31 @@ title: 프로젝트
 
 <!-- OWASP Top 10 프로젝트 목록 -->
 <h2 class="project-group-title">OWASP Top 10</h2>
-<ul class="project-list">
-  {% assign owasp_posts = site.categories['OWASP-Top-10'] | sort: 'title' %}
-  {% for post in owasp_posts %}
-    <li>
-      <a href="{{ post.url | relative_url }}">
-        <span class="post-title">{{ post.title }}</span>
-        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+
+{%- comment -%}
+수정된 부분: 'OWASP-Top-10' 카테고리에 글이 존재하는지 먼저 확인합니다.
+{%- endcomment -%}
+{% if site.categories['OWASP-Top-10'] %}
+  <ul class="project-list">
+    {% assign owasp_posts = site.categories['OWASP-Top-10'] | sort: 'title' %}
+    {% for post in owasp_posts %}
+      <li>
+        <a href="{{ post.url | relative_url }}">
+          <span class="post-title">{{ post.title }}</span>
+          <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>아직 등록된 프로젝트가 없습니다.</p>
+{% endif %}
+
 
 <!-- 나중에 앱 취약점 프로젝트를 추가할 공간 (예시) -->
 <!-- 
 <h2 class="project-group-title">App Security</h2>
-<ul class="project-list">
-  {% assign app_posts = site.categories['App-Security'] | sort: 'title' %}
-  {% for post in app_posts %}
-    <li>
-      <a href="{{ post.url | relative_url }}">
-        <span class="post-title">{{ post.title }}</span>
-        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+...
 -->
 
 <style>
