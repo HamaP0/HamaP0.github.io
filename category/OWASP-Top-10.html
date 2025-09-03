@@ -9,15 +9,13 @@ category: "OWASP-Top-10"
 
 <ul class="post-list">
   {% comment %}
-    'title'을 기준으로 정렬하여 A01, A02, ... 순서가 되도록 합니다.
-    날짜 정보(post-meta)는 제거했습니다.
   {% endcomment %}
   {% assign category_posts = site.categories[page.category] | sort: 'title' %}
   {% for post in category_posts %}
     <li>
-      <h3>
+      <h2>
         <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-      </h3>
+      </h2>
     </li>
   {% endfor %}
 </ul>
