@@ -27,16 +27,10 @@
 
     {% include footer.html %}
 
-    <!-- ======== 이미지 라이트박스(확대) 기능용 HTML ======== -->
-    <div id="lightbox-overlay" class="lightbox-overlay">
-      <span class="lightbox-close">&times;</span>
-      <img class="lightbox-content" id="lightbox-img">
-    </div>
-    <!-- =================================================== -->
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- 코드 블록 복사 기능 ---
+            // (이 부분은 변경 없음)
             const copyIconSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
             const copiedIconSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
             document.querySelectorAll('.content-wrapper pre').forEach(block => {
@@ -58,32 +52,16 @@
                 });
             });
 
-            // --- 이미지 라이트박스(확대) 기능 ---
-            const lightbox = document.getElementById('lightbox-overlay');
-            if (lightbox) {
-              const lightboxImg = document.getElementById('lightbox-img');
-              const postContent = document.querySelector('.post-content');
-
-              if (postContent) {
-                const images = postContent.getElementsByTagName('img');
-                for (let img of images) {
-                  img.style.cursor = 'zoom-in';
-                  img.addEventListener('click', function() {
-                    lightbox.style.display = 'flex';
-                    lightboxImg.src = this.src;
-                  });
-                }
+            // --- (수정됨) 이미지 인플레이스(in-place) 확대/축소 기능 ---
+            const postContent = document.querySelector('.post-content');
+            if (postContent) {
+              const images = postContent.getElementsByTagName('img');
+              for (const img of images) {
+                img.addEventListener('click', function() {
+                  // 클릭할 때마다 'zoomed' 클래스를 추가하거나 제거합니다.
+                  this.classList.toggle('zoomed');
+                });
               }
-
-              // 닫기 버튼 또는 오버레이 클릭 시 닫힘
-              document.querySelector('.lightbox-close').addEventListener('click', () => {
-                lightbox.style.display = 'none';
-              });
-              lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) {
-                  lightbox.style.display = 'none';
-                }
-              });
             }
         });
     </script>
