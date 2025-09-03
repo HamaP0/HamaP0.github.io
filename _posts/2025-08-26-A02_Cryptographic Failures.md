@@ -26,9 +26,9 @@ categories: Projects OWASP-Top-10
 *   **공격 검증:**
 Burp Suite라는 도구로 'Weak Session IDs' 페이지에 똑같은 요청을 여러 번 보내봤습니다. 그랬더니 서버가 제게 나눠주는 dvwaSession이라는 이름표 값이 1, 2, 3... 순서로 뻔하게 증가하는 것을 확인할 수 있었습니다.
 
-   ![1](/assets/images/A02_P1-1.png)
-   ![2](/assets/images/A02_P1-2.png)
-   ![3](/assets/images/A02_P1-3.png)
+   ![1]({{ "/assets/images/A02_P1-1.png" | relative_url }})
+   ![2]({{ "/assets/images/A02_P1-2.png" | relative_url }})
+   ![3]({{ "/assets/images/A02_P1-3.png" | relative_url }})
 
 *   **위험성 분석:**
 공격자는 이 간단한 규칙을 이용해서 지금 접속해 있는 다른 사용자의 이름표 번호를 매우 쉽게 알아낼 수 있습니다. 그리고 그 이름표를 이용해 다른 사람의 계정을 가로채는 '세션 하이재킹' 공격을 할 수 있게 됩니다.
@@ -41,8 +41,8 @@ Burp Suite라는 도구로 'Weak Session IDs' 페이지에 똑같은 요청을 �
 *   **공격 검증:**
 Burp Suite로 DVWA 로그인 요청을 중간에서 가로채서 내용을 들여다봤습니다. 역시나, 비밀번호를 입력하는 password 칸의 값이 암호화되지 않은 날것 그대로의 글자(평문) 상태로 전송되는 것을 확인했습니다.
 
-   ![password](/assets/images/A02_P2-1.png)
-   ![letmein](/assets/images/A02_P2-2.png)
+   ![password]({{ "/assets/images/A02_P2-1.png" | relative_url }})
+   ![letmein]({{ "/assets/images/A02_P2-2.png" | relative_url }})
 
 *   **위험성 분석:**
 이렇게 암호화되지 않은 통신은 '중간자 공격(MITM)'에 매우 위험합니다. 같은 와이파이(Wi-Fi)를 쓰는 공격자가 통신 내용을 엿듣는 것만으로 아이디와 비밀번호를 간단하게 훔쳐갈 수 있습니다. 특히 보안이 취약한 공용 와이파이를 사용할 때 아주 치명적일 수 있습니다.
@@ -55,7 +55,7 @@ Burp Suite로 DVWA 로그인 요청을 중간에서 가로채서 내용을 들�
 *   **공격 검증:**
 SQL Injection 공격으로 데이터베이스의 사용자 정보(users 테이블)를 빼내어 비밀번호가 저장된 부분을 확인했습니다. 저장된 암호(5f4dcc3b5aa7...)의 형태를 보니, 현재는 보안 문제 때문에 절대 사용하면 안 되는 'MD5'라는 낡은 해시 알고리즘으로 만들어진 값이었습니다.
 
-   ![' UNION SELECT user, password FROM users#](/assets/images/A02_P3-1.png)
+   ![' UNION SELECT user, password FROM users#]({{ "/assets/images/A02_P3-1.png" | relative_url }})
 
 *   **위험성 분석:**
 MD5 방식은 이제 너무 약해서 '레인보우 테이블'이라는, 미리 만들어 놓은 거대한 '해시-비밀번호' 정답표를 이용하면 단 몇 초 만에 원래 비밀번호를 찾아낼 수 있습니다. 만약 데이터베이스가 통째로 유출된다면, MD5로 저장된 비밀번호는 사실상 그냥 비밀번호를 그대로 저장한 것과 별 차이가 없을 정도로 위험합니다.
@@ -72,7 +72,7 @@ MD5 방식은 이제 너무 약해서 '레인보우 테이블'이라는, 미리 
 
 암호화 문제를 막으려면, 데이터가 만들어지고, 인터넷을 통해 전달되고, 최종적으로 저장되는 모든 과정에서 아래와 같은 보안 규칙을 꼭 지켜야 한다고 생각합니다.
 
-   ![보안 규칙](/assets/images/A02_table.png)
+   ![보안 규칙]({{ "/assets/images/A02_table.png" | relative_url }})
 
 1.  **데이터 전송 보안:**
 *   웹사이트의 모든 통신은 http가 아닌 https를 사용해야 합니다. https는 'TLS'라는 기술로 우리가 보내는 모든 정보를 암호화해서, 중간에 누가 훔쳐보더라도 무슨 내용인지 알 수 없게 만들어 줍니다.
@@ -85,4 +85,3 @@ MD5 방식은 이제 너무 약해서 '레인보우 테이블'이라는, 미리 
 *   세션 ID를 포함한 모든 보안 토큰은 반드시 예측이 불가능하도록, 암호학적으로 안전한 의사 난수 생성기(CSPRNG)를 통해 생성되어야 합니다.
 
     ---
-
