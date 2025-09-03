@@ -33,10 +33,6 @@ layout: default
             {%- endif -%}
         {%- endfor -%}
 
-        {%- comment -%}
-        수정된 부분: 인덱스 연산을 먼저 수행하고,
-        해당 인덱스가 유효한 경우에만 이전/다음 글로 할당합니다.
-        {%- endcomment -%}
         {%- assign prev_post_index = post_index | minus: 1 -%}
         {%- assign next_post_index = post_index | plus: 1 -%}
 
@@ -56,6 +52,9 @@ layout: default
                     <div class="nav-arrow">« 이전 글</div>
                     <span class="post-title">{{ previous_post.title | escape }}</span>
                 </a>
+                {%- else -%}
+                <!-- 이전 글이 없을 때 공간을 차지하는 빈 요소 -->
+                <div class="post-nav-item-placeholder"></div>
                 {%- endif -%}
 
                 {%- if next_post -%}
@@ -63,6 +62,9 @@ layout: default
                     <div class="nav-arrow">다음 글 »</div>
                     <span class="post-title">{{ next_post.title | escape }}</span>
                 </a>
+                {%- else -%}
+                <!-- 다음 글이 없을 때 공간을 차지하는 빈 요소 -->
+                <div class="post-nav-item-placeholder"></div>
                 {%- endif -%}
             </nav>
         {%- endif -%}
