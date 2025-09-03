@@ -16,22 +16,16 @@ layout: default
         {{ content }}
     </div>
 
-    {% comment %}
+    {%- comment -%}
     ======================================================
     카테고리 내 이전/다음 글 내비게이션
-    - 현재 글의 첫 번째 카테고리를 기준으로 글 목록을 가져옵니다.
-    - 해당 목록 안에서 이전/다음 글을 찾아 링크를 생성합니다.
     ======================================================
-    {% endcomment %}
-    {%- comment -%} 현재 글의 카테고리를 찾습니다. {%- endcomment -%}
+    {%- endcomment -%}
     {%- assign current_category = page.categories.first -%}
 
-    {%- comment -%} 카테고리가 존재할 경우에만 아래 로직을 실행합니다. {%- endcomment -%}
     {%- if current_category -%}
-        {%- comment -%} 해당 카테고리에 속한 모든 글을 날짜순으로 정렬합니다. {%- endcomment -%}
         {%- assign posts_in_category = site.categories[current_category] | sort: 'date' -%}
-
-        {%- comment -%} 정렬된 목록에서 현재 글이 몇 번째인지 찾습니다. {%- endcomment -%}
+        
         {%- for post in posts_in_category -%}
             {%- if post.url == page.url -%}
                 {%- assign post_index = forloop.index0 -%}
@@ -39,11 +33,21 @@ layout: default
             {%- endif -%}
         {%- endfor -%}
 
-        {%- comment -%} 찾은 순번(index)을 이용해 이전 글과 다음 글을 정합니다. {%- endcomment -%}
-        {%- assign previous_post = posts_in_category[post_index | minus: 1] -%}
-        {%- assign next_post = posts_in_category[post_index | plus: 1] -%}
+        {%- comment -%}
+        수정된 부분: 인덱스 연산을 먼저 수행하고,
+        해당 인덱스가 유효한 경우에만 이전/다음 글로 할당합니다.
+        {%- endcomment -%}
+        {%- assign prev_post_index = post_index | minus: 1 -%}
+        {%- assign next_post_index = post_index | plus: 1 -%}
 
-        {%- comment -%} 이전 글 또는 다음 글이 하나라도 존재하면 내비게이션을 표시합니다. {%- endcomment -%}
+        {%- if prev_post_index >= 0 -%}
+            {%- assign previous_post = posts_in_category[prev_post_index] -%}
+        {%- endif -%}
+
+        {%- if next_post_index < posts_in_category.size -%}
+            {%- assign next_post = posts_in_category[next_post_index] -%}
+        {%- endif -%}
+
         {%- if previous_post or next_post -%}
             <hr>
             <nav class="post-nav">
