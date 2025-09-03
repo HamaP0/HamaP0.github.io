@@ -52,7 +52,7 @@ categories: Projects OWASP-Top-10
 
 최근에는 GitHub 같은 개발 플랫폼에 `Dependabot`과 같은 기능이 내장되어 있어, 위험한 부품을 발견하면 단순히 알려주는 것을 넘어 안전한 최신 버전으로 업데이트하라는 코드 수정 제안까지 자동으로 해줍니다.
 
-![Dependabot](/assets/images/A05_P3-2.png)
+![Dependabot](/assets/images/A06_P3-2.png)
 
 *   **분석 결론:**
 결국 '취약하고 오래된 구성 요소' 문제는 주기적인 자동화 스캔을 통해 꾸준히 관리하는 것이 유일한 해결책이라는 것을 알 수 있습니다.
