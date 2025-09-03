@@ -442,14 +442,21 @@ h1 .signature-icon {
 
 /*
    ==========================================================================
-   (추가됨) 짧은 구분선 스타일
+   (수정됨) 짧은 구분선 스타일 (가운데 정렬, 그라데이션 적용)
    ==========================================================================
 */
 hr.short-rule {
-  background-image: none; /* 파란색 그라데이션 제거 */
-  border-top: 1px solid var(--border-color); /* 얇은 회색 선으로 변경 */
-  width: 50%;         /* 너비를 50%로 줄임 */
-  margin-left: 0;     /* 왼쪽 정렬 */
+  /* 파란색 그라데이션 효과 복원 */
+  background-image: linear-gradient(to right, var(--link-color), transparent);
+  height: 2px;
+  border: none;
+
+  /* 가운데 정렬 및 너비 설정 */
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+  
+  /* 위아래 여백 */
   margin-top: 2em;
   margin-bottom: 2em;
 }
