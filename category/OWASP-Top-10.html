@@ -1,0 +1,27 @@
+---
+layout: default
+title: "OWASP-Top-10"
+category: "OWASP-Top-10"
+---
+
+<h1>카테고리: {{ page.category }}</h1>
+<hr>
+
+<ul class="post-list">
+  {% comment %}
+    page.category에 지정된 이름의 카테고리에 속한 글들을 찾아서,
+    날짜순으로 정렬하고(sort), 순서를 뒤집어(reverse) 최신글이 위로 오게 합니다.
+  {% endcomment %}
+  {% assign category_posts = site.categories[page.category] | sort: 'date' | reverse %}
+  {% for post in category_posts %}
+    <li>
+      <h3>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      </h3>
+      <p class="post-meta">{{ post.date | date: "%Y년 %m월 %d일" }}</p>
+      {%- if post.excerpt -%}
+        <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+      {%- endif -%}
+    </li>
+  {% endfor %}
+</ul>
