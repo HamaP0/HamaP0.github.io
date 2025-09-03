@@ -391,3 +391,28 @@ h1 .signature-icon {
 .dark-icon {
   display: inline-block;
 }
+
+/* ------------------- */
+/* (추가됨) 맨 위로 가기 버튼 */
+/* ------------------- */
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none; /* 평소엔 숨김 */
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: var(--copy-btn-bg);
+  color: white;
+  border-radius: 50%;
+  font-size: 1.5em;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+#back-to-top:hover {
+  opacity: 1;
+  text-decoration: none;
+}
