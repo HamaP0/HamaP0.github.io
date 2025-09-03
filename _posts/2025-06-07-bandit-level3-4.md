@@ -63,4 +63,4 @@ bandit3@bandit:~/inhere$ cat .hidden
 1. 리눅스에서 .으로 시작하는 파일/디렉토리는 숨김 처리됨.
 2. ls -a 옵션으로 숨겨진 항목을 확인할 수 있음.
 
-    ---
+<hr class="short-rule">

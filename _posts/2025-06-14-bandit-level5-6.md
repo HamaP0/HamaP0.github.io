@@ -65,4 +65,4 @@ HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
   -size 1033c: 크기가 정확히 1033 바이트인 파일 검색
   ! -executable: 실행 가능하지 않은 파일 검색
 
-    ---
+<hr class="short-rule">

@@ -57,4 +57,4 @@ dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
 
 1. `grep [패턴] [파일명]`: 파일 안에서 특정 패턴(문자열)이 포함된 줄을 찾아 출력함.
 
-    ---
+<hr class="short-rule">

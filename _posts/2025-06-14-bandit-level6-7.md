@@ -63,4 +63,4 @@ morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
 1. `find` 명령어의 소유자/그룹 검색 옵션: `-user`, `-group`
 2. `2>/dev/null`: 명령어 실행 시 발생하는 오류 메시지(stderr)를 버려서, 결과만 깔끔하게 볼 수 있음.
 
-    ---
+<hr class="short-rule">
