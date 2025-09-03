@@ -109,106 +109,73 @@ hr {
 /* ------------------- */
 /* 본문 문단 너비 제한 */
 /* ------------------- */
-.content-wrapper p,
-.content-wrapper h1,
-.content-wrapper h2,
-.content-wrapper h3,
-.content-wrapper h4,
-.content-wrapper h5,
-.content-wrapper h6,
-.content-wrapper ol,
-.content-wrapper ul,
-.content-wrapper pre,
-.content-wrapper details {
+.post-content p,
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6,
+.post-content ol,
+.post-content ul,
+.post-content pre,
+.post-content details {
   margin: 0 auto 1.2em;
   max-width: 700px;
 }
 
-.content-wrapper ol,
-.content-wrapper ul {
+.post-content ol,
+.post-content ul {
   padding-left: 1.5em;
   list-style-position: outside;
 }
 
-.content-wrapper :not(pre) > code {
+.post-content :not(pre) > code {
   padding: 3px 6px;
   font-size: 0.9em;
 }
 
-/* 
+/*
    ==========================================================================
-   (수정됨) 이미지 및 미디어 스타일 (가장 중요한 부분)
+   (수정됨) 이미지 및 미디어 스타일
    ==========================================================================
 */
-
-/* --- 1. 모든 이미지 반응형으로 만들기 --- */
-.content-wrapper img {
-  max-width: 100%; /* 이 마법 같은 한 줄이 이미지가 부모 요소를 벗어나지 않게 합니다. */
-  height: auto; /* 이미지 비율을 유지합니다. */
-  display: block; /* 이미지 아래 불필요한 여백을 제거합니다. */
-  margin-left: auto; /* 기본적으로 이미지를 가운데 정렬합니다. */
-  margin-right: auto;
-  border-radius: 8px; /* 이미지 모서리를 살짝 둥글게 만듭니다. */
-  margin-bottom: 1.2em; /* 문단과의 간격을 유지합니다. */
-}
-
-/* --- 2. 가로 정렬 컨테이너 (Flexbox) --- */
-.image-container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1.5rem; /* 이미지 사이의 간격 */
-  margin: 2rem auto; /* 위아래 및 가운데 정렬 */
-  flex-wrap: wrap;
-  max-width: 100%; /* 텍스트 너비(700px)를 무시하고 전체 너비 사용 */
-}
-
-.image-container > div {
-  flex: 1;
-  min-width: 200px;
-}
-
-/* --- 3. 이미지 정렬 클래스 (기본 가운데 정렬을 덮어쓰기 위함) --- */
-.align-center {
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 8px;
+  margin-bottom: 1.2em;
+  cursor: zoom-in;
+  /* 부드러운 전환 효과를 추가합니다. */
+  transition: transform 0.3s ease-in-out;
 }
 
-.align-left {
-  margin-left: 0;
-  margin-right: auto;
+/*
+   ==========================================================================
+   (추가됨) 이미지 확대 스타일
+   ==========================================================================
+*/
+.post-content img.zoomed {
+  transform: scale(1.5);
+  cursor: zoom-out;
+  /* 확대 시 다른 요소 위로 올라오도록 z-index를 설정합니다. */
+  position: relative;
+  z-index: 10;
 }
-
-.align-right {
-  margin-left: auto;
-  margin-right: 0;
-}
-
-/* --- 4. 이미지 설명(캡션) 스타일 --- */
-.caption {
-  text-align: center;
-  font-size: 0.9em;
-  color: #888;
-  margin-top: 0.5rem;
-}
-
-/* ========================================================================== */
 
 /* ------------------- */
 /* 코드 블록 스타일 */
 /* ------------------- */
-.content-wrapper pre,
-.details pre {
+.content-wrapper pre {
   background-color: var(--code-bg);
   padding: 15px;
   white-space: pre-wrap;
   overflow-wrap: break-word;
   position: relative;
   border-radius: 4px;
-}
-
-.content-wrapper pre::before {
-  content: "";
 }
 
 .copy-button {
@@ -229,43 +196,6 @@ hr {
   opacity: 0.7;
 }
 
-.copy-button:hover {
-  opacity: 1;
-}
-
-.copy-button:active {
-  background-color: var(--category-color);
-}
-
-/* ------------------- */
-/* details/summary 스타일 */
-/* ------------------- */
-.content-wrapper details {
-  cursor: pointer;
-}
-
-.content-wrapper summary {
-  font-weight: bold;
-  outline: none;
-  list-style: none;
-}
-
-.content-wrapper summary::-webkit-details-marker {
-  display: none;
-}
-
-.content-wrapper summary::before {
-  content: "▶";
-  display: inline-block;
-  margin-right: 0.5em;
-  transform: rotate(0deg);
-  transition: transform 0.2s;
-}
-
-.content-wrapper details[open] summary::before {
-  transform: rotate(90deg);
-}
-
 /* ------------------- */
 /* 포스트/카테고리 목록 */
 /* ------------------- */
@@ -275,21 +205,26 @@ hr {
 }
 
 .post-list,
-.category-list {
+.category-list,
+.project-list {
   list-style: none;
   padding-left: 0;
 }
 
 .post-list li {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .post-list a.post-link {
   color: var(--text-color);
   text-decoration: none;
 }
+.post-list h3 {
+  margin-bottom: 0.5rem;
+}
 
-.category-list li {
+.category-list li,
+.project-list li {
   margin-bottom: 10px;
 }
 
@@ -305,43 +240,29 @@ hr {
   filter: brightness(1.2);
 }
 
-/* ------------------- */
-/* 포스트 내비게이션    */
-/* ------------------- */
+
+/*
+   ==========================================================================
+   (수정됨) 포스트 네비게이션
+   ==========================================================================
+*/
 .post-nav {
   margin-top: 40px;
   padding-top: 20px;
   border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  gap: 20px; /* 버튼 사이 간격 */
 }
 
-.post-nav .prev,
-.post-nav .next {
-  flex: 0 0 48%;
+.post-nav-item, .post-nav-item-placeholder {
+  flex: 1; /* 양쪽 버튼이 동일한 너비를 갖도록 설정 */
+  min-width: 0; /* flex item이 줄어들 수 있도록 허용 */
 }
 
-.post-nav .prev {
-  text-align: left;
-}
-
-.post-nav .next {
-  text-align: right;
-}
-
-.post-nav .next:only-child {
-  margin-left: auto;
-}
-.post-nav .prev:only-child {
-  margin-right: auto;
-}
-
-.post-nav a {
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.post-nav-item {
+  display: flex;
+  flex-direction: column;
   padding: 12px 18px;
   background-color: var(--content-bg);
   border: 1px solid var(--border-color);
@@ -350,9 +271,30 @@ hr {
   transition: background-color 0.2s, color 0.2s;
 }
 
-.post-nav a:hover {
+.post-nav-item:hover {
   background-color: var(--border-color);
   color: var(--link-hover-color);
+  text-decoration: none;
+}
+
+.post-nav-prev {
+  text-align: left;
+}
+
+.post-nav-next {
+  text-align: right;
+}
+
+.post-nav-item .nav-arrow {
+  font-size: 0.9em;
+  color: var(--footer-text);
+  margin-bottom: 5px;
+}
+
+.post-nav-item .post-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 제목이 길 경우 ...으로 표시 */
 }
 
 /* ------------------- */
@@ -384,11 +326,6 @@ h1 .signature-icon {
   vertical-align: -0.05em;
 }
 
-.light-icon {
-  display: none; /* 라이트 테마를 사용하지 않으므로 항상 숨김 */
-}
-
 .dark-icon {
-  display: inline-block; /* 다크 모드만 사용하므로 항상 보이도록 */
+  display: inline-block;
 }
-
