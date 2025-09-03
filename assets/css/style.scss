@@ -43,7 +43,9 @@ a {
 
 a:hover {
   color: var(--link-hover-color);
-  text-decoration: underline;
+  text-decoration: none; /* 밑줄은 제거 */
+  background-color: rgba(137, 178, 246, 0.15); /* --link-color의 투명한 버전 */
+  border-radius: 4px; /* 살짝 둥근 모서리 */
 }
 
 .container {
