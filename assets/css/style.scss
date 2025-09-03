@@ -28,8 +28,10 @@ body {
   font-family: "Pretendard", sans-serif;
   margin: 0;
   padding: 0;
-  font-size: 16px;
-  line-height: 1.7;
+  /* (수정됨) 가독성 향상을 위한 값 변경 */
+  font-size: 17px;
+  line-height: 1.8;
+  font-weight: 400; /* 기본 글자 굵기 명시 */
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
@@ -119,8 +121,9 @@ hr {
 .post-content ol,
 .post-content ul,
 .post-content pre,
+.post-content blockquote, /* 인용문 추가 */
 .post-content details {
-  margin: 0 auto 1.2em;
+  margin: 0 auto 1.5em; /* (수정됨) 문단 간격 확대 */
   max-width: 700px;
 }
 
@@ -137,6 +140,30 @@ hr {
 
 /*
    ==========================================================================
+   (추가됨) 헤더(h2, h3) 여백 및 스타일 조정
+   ==========================================================================
+*/
+.post-content h2, .post-content h3 {
+  line-height: 1.4; /* 제목의 줄 간격은 본문보다 살짝 좁게 */
+  margin-top: 2.5em; /* 제목 위 여백을 넓게 주어 단락 구분 */
+  margin-bottom: 1em; /* 제목 아래 여백 조정 */
+}
+
+
+/*
+   ==========================================================================
+   (추가됨) 인용문(blockquote) 스타일
+   ==========================================================================
+*/
+.post-content blockquote {
+  border-left: 4px solid var(--border-color);
+  padding-left: 1em;
+  color: var(--footer-text); /* 본문보다 살짝 연한 색 */
+  font-style: italic;
+}
+
+/*
+   ==========================================================================
    (수정됨) 이미지 및 미디어 스타일
    ==========================================================================
 */
@@ -149,7 +176,6 @@ hr {
   border-radius: 8px;
   margin-bottom: 1.2em;
   cursor: zoom-in;
-  /* 부드러운 전환 효과를 추가합니다. */
   transition: transform 0.3s ease-in-out;
 }
 
@@ -161,7 +187,6 @@ hr {
 .post-content img.zoomed {
   transform: scale(1.5);
   cursor: zoom-out;
-  /* 확대 시 다른 요소 위로 올라오도록 z-index를 설정합니다. */
   position: relative;
   z-index: 10;
 }
@@ -198,16 +223,17 @@ hr {
 
 /*
    ==========================================================================
-   (추가됨) 포스트 상세 페이지 헤더
+   포스트 상세 페이지 헤더
    ==========================================================================
 */
 .post-header {
-  text-align: center; /* 제목과 작성일을 가운데 정렬합니다. */
-  margin-bottom: 40px; /* 제목과 본문 사이의 간격을 조정합니다. */
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .post-title {
-  margin-bottom: 0.5rem; /* 제목과 작성일 사이의 간격을 살짝 줍니다. */
+  margin-bottom: 0.5rem;
+  line-height: 1.4; /* (추가됨) 제목 줄 간격 조정 */
 }
 
 /* ------------------- */
@@ -266,12 +292,12 @@ hr {
   border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
-  gap: 20px; /* 버튼 사이 간격 */
+  gap: 20px;
 }
 
 .post-nav-item, .post-nav-item-placeholder {
-  flex: 1; /* 양쪽 버튼이 동일한 너비를 갖도록 설정 */
-  min-width: 0; /* flex item이 줄어들 수 있도록 허용 */
+  flex: 1;
+  min-width: 0;
 }
 
 .post-nav-item {
@@ -308,7 +334,7 @@ hr {
 .post-nav-item .post-title {
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* 제목이 길 경우 ...으로 표시 */
+  text-overflow: ellipsis;
 }
 
 /* ------------------- */
