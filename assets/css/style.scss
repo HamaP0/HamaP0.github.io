@@ -1,6 +1,3 @@
----
----
-
 /* =============================================================================
    HamaP의 블로그 - 최종 스타일시트 (Gemini 팔레트 + 다크 모드 기본)
    ============================================================================= */
@@ -135,6 +132,65 @@ hr {
   padding: 3px 6px;
   font-size: 0.9em;
 }
+
+/* 
+   ==========================================================================
+   (수정됨) 이미지 및 미디어 스타일 (가장 중요한 부분)
+   ==========================================================================
+*/
+
+/* --- 1. 모든 이미지 반응형으로 만들기 --- */
+.content-wrapper img {
+  max-width: 100%; /* 이 마법 같은 한 줄이 이미지가 부모 요소를 벗어나지 않게 합니다. */
+  height: auto; /* 이미지 비율을 유지합니다. */
+  display: block; /* 이미지 아래 불필요한 여백을 제거합니다. */
+  margin-left: auto; /* 기본적으로 이미지를 가운데 정렬합니다. */
+  margin-right: auto;
+  border-radius: 8px; /* 이미지 모서리를 살짝 둥글게 만듭니다. */
+  margin-bottom: 1.2em; /* 문단과의 간격을 유지합니다. */
+}
+
+/* --- 2. 가로 정렬 컨테이너 (Flexbox) --- */
+.image-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5rem; /* 이미지 사이의 간격 */
+  margin: 2rem auto; /* 위아래 및 가운데 정렬 */
+  flex-wrap: wrap;
+  max-width: 100%; /* 텍스트 너비(700px)를 무시하고 전체 너비 사용 */
+}
+
+.image-container > div {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* --- 3. 이미지 정렬 클래스 (기본 가운데 정렬을 덮어쓰기 위함) --- */
+.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.align-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* --- 4. 이미지 설명(캡션) 스타일 --- */
+.caption {
+  text-align: center;
+  font-size: 0.9em;
+  color: #888;
+  margin-top: 0.5rem;
+}
+
+/* ========================================================================== */
 
 /* ------------------- */
 /* 코드 블록 스타일 */
