@@ -2,13 +2,20 @@
 layout: default
 ---
 
-<h1>{{ page.title }}</h1>
+<h1>카테고리: {{ page.category }}</h1>
+<hr>
 
-<ul>
-  {% assign category = page.category %}
-  {% for post in site.categories[category] %}
+<ul class="post-list">
+  {% assign category_posts = site.categories[page.category] | sort: 'date' | reverse %}
+  {% for post in category_posts %}
     <li>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a> - {{ post.date | date: "%Y-%m-%d" }}
+      <h3>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      </h3>
+      <p class="post-meta">{{ post.date | date: "%Y년 %m월 %d일" }}</p>
+      {%- if post.excerpt -%}
+        <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+      {%- endif -%}
     </li>
   {% endfor %}
 </ul>
