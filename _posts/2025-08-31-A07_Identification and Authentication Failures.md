@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "A07:2021 - Identification and Authentication Failures (식별 및 인증 실패) 분석 보고서"
+title: "A07:2021 - Identification and Authentication Failures <br> (식별 및 인증 실패) 분석 보고서"
 date: 2025-08-31 17:00:00 +0900
 categories: Projects OWASP-Top-10
 ---
 ---
 
-### **프로젝트 7. A07:2021 - Identification and Authentication Failures (식별 및 인증 실패) 분석 보고서**
+### **프로젝트 7. A07:2021 - Identification and Authentication Failures <br> (식별 및 인증 실패) 분석 보고서**
 
 #### **1. 취약점 개요**
 
@@ -90,4 +90,3 @@ DVWA에는 해당 기능이 없지만, 실제 서비스에서 가장 심각한 �
 4.  **안전한 세션 관리:** 암호학적으로 안전한 난수 생성기(CSPRNG)를 통해 예측 불가능한 세션 ID를 생성하고, 모든 세션 쿠키에 `HttpOnly`, `Secure`, `SameSite=Strict` 속성을 부여하여 세션 탈취 공격을 원천적으로 방어해야 합니다.
 
 ---
-
