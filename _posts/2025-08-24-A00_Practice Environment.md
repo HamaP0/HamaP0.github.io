@@ -35,7 +35,7 @@ categories: Projects OWASP-Top-10
     *   → **[[A04] 안전하지 않은 설계 (Insecure Design)](/projects/owasp-top-10/2025/08/28/A04_Insecure-Design.html)**
     *   → **[[A07] 식별 및 인증 실패 (Identification and Authentication Failures)](/projects/owasp-top-10/2025/08/31/A07_Identification-and-Authentication-Failures.html)**
     *   → **[[A08] 소프트웨어 및 데이터 무결성 실패 (Software and Data Integrity Failures)](/projects/owasp-top-10/2025/09/01/A08_Software-and-Data-Integrity-Failures.html)**
-    *   → **[[A10] 서버 측 요청 위조 (Server-Side Request Forgery)](/projects/owasp-top-10/2025/09/03/A10_Server-Side-Request-Forgery.html)**
+    *   → **[[A10] 서버 측 요청 위조 (Server-Side Request Forgery)](/projects/owasp-top-10/2025/09/03/A10_Server-Side-Request-Forgery-(SSRF).html)**
 
 
 *   **4단계: 사후 분석 (Post-Exploitation & Analysis)**
@@ -86,4 +86,5 @@ VMware의 VMnet8(NAT) 기능을 활용하여 외부 인터넷과 분리된 `192.
 *이어지는 보고서들에서는 위 환경과 방법론을 기반으로 OWASP Top 10의 각 취약점 항목을 분석합니다.*
 
 <hr class="short-rule">
+
 
