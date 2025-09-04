@@ -1,20 +1,21 @@
 ---
 layout: default
 title: NGFW
+category: "NGFW"
 ---
 
 <h1>NGFW</h1>
 <p>차세대 방화벽 NGFW 학습 기록입니다.</p>
                        
 <hr>
-  
+
 <ul class="post-list">
-  {% for post in site.categories['NGFW'] %}
+  {% assign category_posts = site.categories[page.category] | sort: 'date' | reverse %}
+  {% for post in category_posts %}
     <li>
       <h2>
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
       </h2>
     </li>
   {% endfor %}
 </ul>
-
