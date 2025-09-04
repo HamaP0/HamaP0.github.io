@@ -19,47 +19,28 @@ categories: Projects OWASP-Top-10
 
 본 프로젝트는 실제 모의 해킹에서 사용되는 표준 침투 테스트 프로세스를 기반으로 전체적인 관점과 설계를 구성했습니다. 보고서는 OWASP 표준에 맞춰 A01부터 A10까지 순차적으로 작성하여 가독성을 높였으며, 각 취약점은 실제 공격 흐름의 단계별로 이해할 수 있도록 구성했습니다. 이를 통해 개별 취약점이 전체 공격 시나리오 내에서 어떻게 연결되는지 파악하는 데 도움이 될 것입니다.
 
-**[1단계] 정보 수집 및 정찰 (Reconnaissance & Information Gathering)**
-*공격의 첫 단계로, 시스템의 버전 정보, 설정 오류, 구조 등 외부로 노출된 정보를 수집하여 공격의 실마리를 찾는 과정입니다.*
-
-*   **[[A05] 보안 설정 오류 (Security Misconfiguration)](/projects/owasp-top-10/2025-08-29-A05_Security-Misconfiguration.html)**
-
-**[2단계] 취약점 분석 및 공격 벡터 식별 (Vulnerability Analysis)**
-*1단계에서 수집한 정보를 바탕으로, 시스템을 구성하는 소프트웨어(부품)에 알려진 취약점(CVE)이 있는지 확인하고 구체적인 공격 시나리오를 설계하는 과정입니다.*
-
-*   **[[A06] 취약하고 오래된 구성 요소 (Vulnerable and Outdated Components)](/projects/owasp-top-10/2025/08/30/A06_Vulnerable-and-Outdated-Components.html)**
-
-**[3단계] 공격 실행 및 시스템 침투 (Exploitation & Infiltration)**
-*분석된 취약점을 실제로 이용하여 시스템의 통제 권한을 획득하거나, 데이터를 탈취하고, 허가되지 않은 기능을 실행하는 본격적인 공격 단계입니다.*
-
-*   **[[A01] 접근 통제 실패 (Broken Access Control)](/projects/owasp-top-10/2025/08/25/A01_Broken-Access-Control.html)**
-*   **[[A02] 암호화 실패 (Cryptographic Failures)](/projects/owasp-top-10/2025/08/26/A02_Cryptographic-Failures.html)**
-*   **[[A03] 인젝션 (Injection)](/projects/owasp-top-10/2025/08/27/A03_Injection.html)**
-*   **[[A04] 안전하지 않은 설계 (Insecure Design)](/projects/owasp-top-10/2025/08/28/A04_Insecure-Design.html)**
-*   **[[A07] 식별 및 인증 실패 (Identification and Authentication Failures)](/projects/owasp-top-10/2025/08/31/A07_Identification-and-Authentication-Failures.html)**
-*   **[[A08] 소프트웨어 및 데이터 무결성 실패 (Software and Data Integrity Failures)](/projects/owasp-top-10/2025/09/01/A08_Software-and-Data-Integrity-Failures.html)**
-*   **[[A10] 서버 측 요청 위조 (Server-Side Request Forgery)](/projects/owasp-top-10/2025/09/03/A10_Server-Side-Request-Forgery.html)**
-
-**[4단계] 위협 탐지 및 사후 분석 (Threat Detection & Post-Mortem)**
-*공격자의 관점을 넘어, 방어자의 입장에서 수행된 공격이 시스템에 어떤 흔적을 남겼는지, 그리고 시스템이 이 공격을 제대로 탐지하고 경고했는지 확인하는 과정입니다.*
-
-*   **[[A09] 보안 로깅 및 모니터링 실패 (Security Logging and Monitoring Failures)](/projects/owasp-top-10/2025/09/02/A09_Security-Logging-and-Monitoring-Failures.html)**
-
 *   **1단계: 정보 수집 (Reconnaissance)**
     *   *시스템의 버전, 설정 등 외부 정보를 수집하여 공격의 실마리를 찾는 단계입니다.*
-    *   → **A05:** Security Misconfiguration
+    *   → **[[A05] 보안 설정 오류 (Security Misconfiguration)](/projects/owasp-top-10/2025/08/29/A05_Security-Misconfiguration.html)**
 
 *   **2단계: 취약점 분석 (Vulnerability Analysis)**
     *   *수집된 정보를 바탕으로 시스템을 구성하는 요소의 알려진 취약점(CVE)을 식별하는 단계입니다.*
-    *   → **A06:** Vulnerable and Outdated Components
+    *   → **[[A06] 취약하고 오래된 구성 요소 (Vulnerable and Outdated Components)](/projects/owasp-top-10/2025/08/30/A06_Vulnerable-and-Outdated-Components.html)**
 
 *   **3단계: 공격 실행 (Exploitation)**
     *   *식별된 취약점을 이용해 데이터를 탈취하거나 시스템 제어권을 획득하는 본격적인 공격 단계입니다.*
-    *   → **A01, A02, A03, A04, A07, A08, A10**
+    *   → **[[A01] 접근 통제 실패 (Broken Access Control)](/projects/owasp-top-10/2025/08/25/A01_Broken-Access-Control.html)**
+    *   → **[[A02] 암호화 실패 (Cryptographic Failures)](/projects/owasp-top-10/2025/08/26/A02_Cryptographic-Failures.html)**
+    *   → **[[A03] 인젝션 (Injection)](/projects/owasp-top-10/2025/08/27/A03_Injection.html)**
+    *   → **[[A04] 안전하지 않은 설계 (Insecure Design)](/projects/owasp-top-10/2025/08/28/A04_Insecure-Design.html)**
+    *   → **[[A07] 식별 및 인증 실패 (Identification and Authentication Failures)](/projects/owasp-top-10/2025/08/31/A07_Identification-and-Authentication-Failures.html)**
+    *   → **[[A08] 소프트웨어 및 데이터 무결성 실패 (Software and Data Integrity Failures)](/projects/owasp-top-10/2025/09/01/A08_Software-and-Data-Integrity-Failures.html)**
+   *   → **[[A10] 서버 측 요청 위조 (Server-Side Request Forgery)](/projects/owasp-top-10/2025/09/03/A10_Server-Side-Request-Forgery.html)**
+
 
 *   **4단계: 사후 분석 (Post-Exploitation & Analysis)**
     *   *공격이 시스템에 남긴 흔적을 추적하고, 방어 시스템의 탐지 능력을 평가하는 단계입니다.*
-    *   → **A09:** Security Logging and Monitoring Failures
+    *   → **[[A09] 보안 로깅 및 모니터링 실패 (Security Logging and Monitoring Failures)](/projects/owasp-top-10/2025/09/02/A09_Security-Logging-and-Monitoring-Failures.html)**
 
 ---
 
