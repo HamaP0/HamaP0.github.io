@@ -71,6 +71,22 @@ hr {
   margin: 60px 0;
 }
 
+/*
+   ==========================================================================
+   짧은 구분선 스타일
+   ==========================================================================
+*/
+hr.short-rule {
+  background-image: linear-gradient(to right, var(--link-color), transparent);
+  height: 2px;
+  border: none;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
 /* ------------------- */
 /* 헤더 및 네비게이션 */
 /* ------------------- */
@@ -95,7 +111,7 @@ hr {
 
 .site-title:hover {
   text-decoration: none;
-  background-color: transparent; /* site-title에는 hover 효과 제외 */
+  background-color: transparent;
 }
 
 .site-nav a {
@@ -107,7 +123,7 @@ hr {
 
 .site-nav a:hover {
   text-decoration: none;
-  background-color: transparent; /* site-nav에도 hover 효과 제외 */
+  background-color: transparent;
 }
 
 /* ------------------- */
@@ -147,11 +163,6 @@ hr {
   list-style-position: outside;
 }
 
-/*
-   ==========================================================================
-   (추가됨) 목록(List)의 글머리 기호에 포인트 색상 적용
-   ==========================================================================
-*/
 .post-content li::marker {
   color: var(--link-color);
 }
@@ -162,23 +173,12 @@ hr {
   font-size: 0.9em;
 }
 
-/*
-   ==========================================================================
-   헤더(h2, h3) 여백 및 스타일 조정
-   ==========================================================================
-*/
 .post-content h2, .post-content h3 {
   line-height: 1.4;
   margin-top: 2.5em;
   margin-bottom: 1em;
 }
 
-
-/*
-   ==========================================================================
-   인용문(blockquote) 스타일
-   ==========================================================================
-*/
 .post-content blockquote {
   border-left: 4px solid var(--category-color);
   padding-left: 1em;
@@ -186,11 +186,6 @@ hr {
   font-style: italic;
 }
 
-/*
-   ==========================================================================
-   이미지 및 미디어 스타일
-   ==========================================================================
-*/
 .post-content img {
   max-width: 100%;
   height: auto;
@@ -203,11 +198,6 @@ hr {
   transition: transform 0.3s ease-in-out;
 }
 
-/*
-   ==========================================================================
-   이미지 확대 스타일
-   ==========================================================================
-*/
 .post-content img.zoomed {
   transform: scale(1.5);
   cursor: zoom-out;
@@ -241,7 +231,6 @@ hr {
   transition: opacity 0.2s, background-color 0.2s;
 }
 
-/* (추가됨) 코드 복사 성공 시 스타일 */
 .copy-button.copied {
   background-color: var(--category-color);
 }
@@ -291,7 +280,7 @@ hr {
 }
 
 .post-list a.post-link:hover {
-    background-color: transparent; /* 목록 제목에는 hover 효과 제외 */
+    background-color: transparent;
 }
 
 .post-list h2 {
@@ -437,26 +426,35 @@ h1 .signature-icon {
 #back-to-top:hover {
   opacity: 1;
   text-decoration: none;
-  background-color: var(--copy-btn-bg); /* hover 효과 통일 */
+  background-color: var(--copy-btn-bg);
 }
 
-/*
+/* 
    ==========================================================================
-   (수정됨) 짧은 구분선 스타일 (가운데 정렬, 그라데이션 적용)
+   (추가됨) 반응형 디자인을 위한 미디어 쿼리
    ==========================================================================
 */
-hr.short-rule {
-  /* 파란색 그라데이션 효과 복원 */
-  background-image: linear-gradient(to right, var(--link-color), transparent);
-  height: 2px;
-  border: none;
+@media (max-width: 768px) {
 
-  /* 가운데 정렬 및 너비 설정 */
-  width: 65%;
-  margin-left: auto;
-  margin-right: auto;
-  
-  /* 위아래 여백 */
-  margin-top: 2em;
-  margin-bottom: 2em;
+  /* --- 모바일 화면용 기본 글자 크기 조정 --- */
+  body {
+    font-size: 16px;
+  }
+
+  /* --- 모바일 화면에서 메인 컨텐츠 영역의 여백(padding) 줄이기 --- */
+  .content-wrapper {
+    /* 상하 40px, 좌우 25px로 패딩을 대폭 줄여 본문 공간 확보 */
+    padding: 40px 25px; 
+  }
+
+  /* --- 모바일에서 헤더의 제목과 네비게이션이 겹치지 않도록 조정 --- */
+  .site-header .container {
+    flex-direction: column; /* 세로로 쌓기 */
+    gap: 15px; /* 요소 사이 간격 */
+  }
+
+  /* --- 모바일에서 이전/다음글 네비게이션 버튼 세로로 쌓기 --- */
+  .post-nav {
+    flex-direction: column;
+  }
 }
