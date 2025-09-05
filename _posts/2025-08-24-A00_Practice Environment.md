@@ -72,17 +72,18 @@ VMware의 VMnet8(NAT) 기능을 활용하여 외부 인터넷과 분리된 `192.
 
 취약점 분석을 위해 Damn Vulnerable Web Application (DVWA)를 타겟 서버에 직접 배포하고 데이터베이스 연동을 완료하여, 모든 분석 준비를 마쳤습니다.
 
-   ![DVWA 메인 페이지]({{ "/assets/images/A00_P3-1.png" | relative_url }}) <!-- 추천 파일명: DVWA-Main.png -->
+   ![DVWA 메인 페이지]({{ "/assets/images/A00_P3-1.png" | relative_url }})
 
 **4. 분석 도구 세팅 및 연동 확인**
 
 웹 프록시의 핵심 도구인 Burp Suite를 설정하여 공격자 머신과 타겟 서버 간의 모든 HTTP/HTTPS 통신을 가로채고 분석할 수 있는 환경을 구축했습니다. 또한 Nikto, Sqlmap 등 자동화 도구의 정상 작동을 확인함으로써, 수동 분석과 자동화 분석을 병행할 준비를 완료했습니다.
 
-   ![Burp Suite 패킷 캡처]({{ "/assets/images/A00_P4-1.png" | relative_url }}) <!-- 추천 파일명: Burp-Capture.png -->
-   ![Nikto 스캔 결과]({{ "/assets/images/A00_P4-2.png" | relative_url }}) <!-- 추천 파일명: Nikto-Scan.png -->
+   ![Burp Suite 패킷 캡처]({{ "/assets/images/A00_P4-1.png" | relative_url }})
+   ![Nikto 스캔 결과]({{ "/assets/images/A00_P4-2.png" | relative_url }})
 
 ---
 
 *이어지는 보고서들에서는 위 환경과 방법론을 기반으로 OWASP Top 10의 각 취약점 항목을 분석합니다.*
+
 
 <hr class="short-rule">
