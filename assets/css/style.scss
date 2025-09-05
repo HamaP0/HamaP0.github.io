@@ -1,5 +1,3 @@
----
----
 /* =============================================================================
    HamaP의 블로그 - 최종 스타일시트 (Gemini 팔레트 + 다크 모드 기본)
    ============================================================================= */
@@ -19,11 +17,20 @@
   --link-hover-color:  #a3c2f7;
   --category-color:    #00A67D;
   --copy-btn-bg:       #5F6368;
+
+  /* ==========================================================
+     (수정됨) 사용자 요청에 따른 신규/수정 색상 변수
+     ========================================================== */
+  --major-topic-color: var(--category-color);   /* 대주제 색상 (청록색) */
+  --minor-topic-color: var(--link-hover-color); /* 소주제 색상 (밝은 하늘색) */
+  --emphasis-color:    #FABD2F;                 /* 본문 내 일반 강조 텍스트 색상 (골드) */
+  --inline-code-color: #FABD2F;                 /* 인라인 코드 글자 색상 (골드) */
+  --inline-code-bg:    var(--border-color);     /* 인라인 코드 배경 색상 */
 }
 
 /* 
    ==========================================================================
-   (추가됨) 텍스트 선택(selection) 색상 테마에 맞게 변경
+   텍스트 선택(selection) 색상 테마에 맞게 변경
    ==========================================================================
 */
 ::selection {
@@ -167,13 +174,59 @@ hr.short-rule {
   color: var(--link-color);
 }
 
+/* ==========================================================================
+   (수정됨) 사용자 요청에 따른 포스트 제목 및 강조 스타일링
+   ========================================================================== */
 
-.post-content :not(pre) > code {
-  padding: 3px 6px;
-  font-size: 0.9em;
+/* --- 대주제 (취약점 개요 등): 4pt 증가 및 청록색/구분선 적용 --- */
+.post-content h3 {
+  font-size: 1.5em;
+  color: var(--major-topic-color);
+  font-weight: 600;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid var(--border-color);
+  line-height: 1.4;
+  margin-top: 2.5em;
+  margin-bottom: 1em;
 }
 
-.post-content h2, .post-content h3 {
+/* --- 중주제 (근본 원인 등): h3보다 약간 작게, 동일 스타일 적용 --- */
+.post-content h4 {
+  font-size: 1.3em;
+  color: var(--major-topic-color);
+  font-weight: 600;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid var(--border-color);
+  line-height: 1.4;
+  margin-top: 2.5em;
+  margin-bottom: 1em;
+}
+
+/* --- (신규 추가) 본문 내 일반 강조(strong) 텍스트: 골드 색상 적용 --- */
+.post-content strong {
+  color: var(--emphasis-color);
+  font-weight: 600; /* 폰트 굵기 명시 */
+}
+
+/* --- 소주제 (Part 1... 등): 2pt 증가 및 밝은 하늘색 적용 (일반 강조 규칙을 덮어씀) --- */
+.post-content p > strong:first-child,
+.post-content ul > li > strong:first-child {
+  font-size: 1.15em;
+  color: var(--minor-topic-color);
+}
+
+/* --- 인라인 코드 `code` 블록 스타일링 --- */
+.post-content :not(pre) > code {
+  padding: 3px 8px;
+  font-size: 0.9em;
+  background-color: var(--inline-code-bg);
+  color: var(--inline-code-color);
+  border-radius: 4px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+/* --- 기존 h2, h3 규칙에서 h3를 분리 --- */
+.post-content h2 {
   line-height: 1.4;
   margin-top: 2.5em;
   margin-bottom: 1em;
@@ -431,7 +484,7 @@ h1 .signature-icon {
 
 /* 
    ==========================================================================
-   (추가됨) 반응형 디자인을 위한 미디어 쿼리
+   반응형 디자인을 위한 미디어 쿼리
    ==========================================================================
 */
 @media (max-width: 768px) {
