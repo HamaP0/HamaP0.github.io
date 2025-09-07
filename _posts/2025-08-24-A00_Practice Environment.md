@@ -54,7 +54,7 @@ categories: Projects OWASP-Top-10
 
 **1. 가상 네트워크 구성도**
 
-    VMware의 VMnet8`NAT` 기능을 활용하여 외부 인터넷과 분리된 `192.9.200.0/24` 대역의 사설 네트워크를 구성했습니다. 이 네트워크 내에는 공격 대상인 'Target' 서버와 공격을 수행할 'Attacker' 머신이 위치합니다.
+   VMware의 VMnet8`NAT` 기능을 활용하여 외부 인터넷과 분리된 `192.9.200.0/24` 대역의 사설 네트워크를 구성했습니다. 이 네트워크 내에는 공격 대상인 'Target' 서버와 공격을 수행할 'Attacker' 머신이 위치합니다.
 
    ![가상 네트워크 구성도]({{ "/assets/images/A00_P1-1.png" | relative_url }})
 
