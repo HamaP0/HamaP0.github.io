@@ -4,21 +4,22 @@ title: 자격증
 category: 자격증
 ---
 
-<h1>{{ page.title }}</h1>
+<h1>{{ page.category }}</h1>
 <p>자격증 취득 관련 글 목록입니다.</p>
 <hr>
 
+{% assign category_posts = site.posts
+   | where_exp: "post", "post.categories contains page.category"
+   | sort: "date"
+   | reverse %}
 <ul class="post-list">
-  {% if site.categories[page.category] %}
-    {% assign posts = site.categories[page.category] | sort: 'date' | reverse %}
-    {% for post in posts %}
-      <li>
-        <h2>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title }}
-          </a>
-        </h2>
-      </li>
-    {% endfor %}
-  {% endif %}
+  {% for post in category_posts %}
+    <li>
+      <h2>
+        <a class="post-link" href="{{ post.url | relative_url }}">
+          {{ post.title }}
+        </a>
+      </h2>
+    </li>
+  {% endfor %}
 </ul>

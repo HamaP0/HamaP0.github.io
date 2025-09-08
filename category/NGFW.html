@@ -1,16 +1,17 @@
 ---
 layout: default
 title: NGFW
-category: "NGFW"
+category: NGFW
 ---
 
 <h1>{{ page.category }}</h1>
 <p>차세대 방화벽 NGFW 학습 기록입니다.</p>
 <hr>
 
-{% assign raw_posts = site.categories[page.category] | default: [] %}
-{% assign category_posts = raw_posts | sort: 'date' | reverse %}
-
+{% assign category_posts = site.posts
+   | where_exp: "post", "post.categories contains page.category"
+   | sort: "date"
+   | reverse %}
 <ul class="post-list">
   {% for post in category_posts %}
     <li>
