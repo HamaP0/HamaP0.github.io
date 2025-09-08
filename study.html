@@ -4,11 +4,12 @@ title: Study
 ---
 
 <h1>{{ page.title }}</h1>
-<p>이곳에서는 제가 공부한 기록을 모아두었습니다. 아래 카테고리를 선택하세요.</p>
+<p>이곳에서 제가 공부한 기록을 모아두었습니다. 아래 카테고리를 선택하세요.</p>
 <hr>
 
+<h2>스터디 카테고리</h2>
 <ul class="category-list">
-  {% assign study_categories = "자격증|해킹 툴|웹 해킹|웹 기술|NGFW|bandit" | split: "|" %}
+  {% assign study_categories = "자격증|해킹 툴|웹 해킹|웹 기술|NGFW" | split: "|" %}
   {% for cat in study_categories %}
     {% assign posts = site.categories[cat] %}
     {% if posts and posts.size > 0 %}
@@ -21,4 +22,11 @@ title: Study
       </li>
     {% endif %}
   {% endfor %}
+
+  {# 'CTF/Wargame' 상위 카테고리 페이지로 가는 링크입니다. #}
+  <li>
+    <a class="post-link" href="{{ '/ctf-wargame.html' | relative_url }}">
+      CTF/Wargame
+    </a>
+  </li>
 </ul>
