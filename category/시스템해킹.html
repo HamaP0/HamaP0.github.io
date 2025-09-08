@@ -7,14 +7,17 @@ category: 시스템 해킹
 <h1>{{ page.title }}</h1>
 
 <ul class="post-list">
-  {% assign raw_posts     = site.categories[page.category] | default: [] %}
-  {% assign category_posts = raw_posts | sort: 'date' | reverse %}
-
-  {% for post in category_posts %}
-    <li>
-      <a class="post-link" href="{{ post.url | relative_url }}">
-        {{ post.title | escape }}
-      </a>
-    </li>
-  {% endfor %}
+  {% comment %}
+    site.categories[page.category]가 존재할 때만 정렬 → null 에러 방지
+  {% endcomment %}
+  {% if site.categories[page.category] %}
+    {% assign category_posts = site.categories[page.category] | sort: 'date' | reverse %}
+    {% for post in category_posts %}
+      <li>
+        <a class="post-link" href="{{ post.url | relative_url }}">
+          {{ post.title | escape }}
+        </a>
+      </li>
+    {% endfor %}
+  {% endif %}
 </ul>
