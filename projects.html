@@ -14,7 +14,7 @@ title: 프로젝트
     {% if posts and posts.size > 0 %}
       <li>
         <a class="post-link"
-           href="{{ '/' | append: cat | append: '.html' | relative_url }}">
+           href="{{ '/category/' | append: cat | append: '.html' | relative_url }}">
           {{ cat }} ({{ posts.size }})
         </a>
       </li>
