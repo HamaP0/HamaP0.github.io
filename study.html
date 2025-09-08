@@ -11,8 +11,6 @@ title: Study
 <h2>카테고리 목록</h2>
 <ul class="category-list">
   {% assign study_categories = "해킹 툴,웹 기술,웹 해킹,시스템 해킹,앱 해킹,자격증,bandit,NGFW,OWASP-Top-10" | split: "," %}
-  {% assign sorted = study_categories | sort: 'date' | reverse %}
-  {% assign category_posts = study_categories | map: "site.categories" | map: "first" | sort: 'date' | reverse %}
   {% for cat in study_categories %}
     {% assign posts = site.categories[cat] %}
     {% if posts and posts.size > 0 %}
