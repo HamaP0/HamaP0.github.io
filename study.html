@@ -11,7 +11,7 @@ title: Study
 <ul class="category-list">
   {% assign study_categories = "웹 기술|웹 해킹|해킹 툴|자격증|bandit|NGFW" | split: "|" %}
   {% for cat in study_categories %}
-    {% assign posts = site.categories[cat] | default: [] %}
+    {% assign posts = site.posts | where_exp: "post", "post.categories contains cat" %}
     {% if posts.size > 0 %}
       {% assign filename = cat | replace: " ", "" %}
       <li>
