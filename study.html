@@ -7,16 +7,15 @@ title: Study
 <p>이곳에서는 제가 공부한 기록을 모아두었습니다. 아래 카테고리를 선택하세요.</p>
 <hr>
 
-<h2>스터디 카테고리</h2>
 <ul class="category-list">
-  {% assign study_categories = "웹 기술|웹 해킹|해킹 툴|자격증|bandit|NGFW" | split: "|" %}
+  {% assign study_categories = "자격증|해킹 툴|웹 해킹|웹 기술|NGFW|bandit" | split: "|" %}
   {% for cat in study_categories %}
-    {% assign posts = site.posts | where_exp: "post", "post.categories contains cat" %}
-    {% if posts.size > 0 %}
+    {% assign posts = site.categories[cat] %}
+    {% if posts and posts.size > 0 %}
       {% assign filename = cat | replace: " ", "" %}
       <li>
         <a class="post-link"
-           href="{{ '/category/' | append: filename | append: '.html' | relative_url }}">
+           href="{{ '/' | append: filename | append: '.html' | relative_url }}">
           {{ cat }} ({{ posts.size }})
         </a>
       </li>
