@@ -4,28 +4,38 @@ title: Study
 ---
 
 <h1>{{ page.title }}</h1>
-<p>이곳에서 제가 공부한 기록을 모아두었습니다. 아래 카테고리를 선택하세요.</p>
+<p>이곳에서는 제가 공부한 기록을 모아두었습니다. 아래 카테고리를 선택하세요.</p>
 <hr>
 
 <h2>스터디 카테고리</h2>
 <ul class="category-list">
-  {% assign study_categories = "자격증|해킹 툴|웹 해킹|웹 기술|NGFW" | split: "|" %}
-  {% for cat in study_categories %}
+
+  {# 1. '보안 공부' 상위 카테고리 그룹 링크 #}
+  <li class="category-group-link">
+    <a class="post-link" href="{{ '/security-study.html' | relative_url }}">
+      보안 공부
+    </a>
+  </li>
+
+  {# 2. 'CTF/Wargame' 상위 카테고리 그룹 링크 #}
+  <li class="category-group-link">
+    <a class="post-link" href="{{ '/ctf-wargame.html' | relative_url }}">
+      CTF/Wargame
+    </a>
+  </li>
+  
+  {# 3. '자격증' 독립 카테고리 #}
+  {% assign independent_categories = "자격증" | split: "|" %}
+  {% for cat in independent_categories %}
     {% assign posts = site.categories[cat] %}
     {% if posts and posts.size > 0 %}
-      {% assign filename = cat | replace: " ", "" %}
       <li>
         <a class="post-link"
-           href="{{ '/category/' | append: filename | append: '.html' | relative_url }}">
+           href="{{ '/category/자격증.html' | relative_url }}">
           {{ cat }} ({{ posts.size }})
         </a>
       </li>
     {% endif %}
   {% endfor %}
-  <li>
-    <a class="post-link" href="{{ '/ctf-wargame.html' | relative_url }}">
-      CTF/Wargame
-    </a>
-  </li>
-</ul>
 
+</ul>
