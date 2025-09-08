@@ -4,7 +4,7 @@ title: 시스템 해킹
 category: 시스템 해킹
 ---
 <h1>{{ page.category }}</h1>
-<p>시스템 해킹 학습 기록입니다.</p>
+<p>시스템 해킹 공부 기록입니다.</p>
 <hr>
 {% assign category_posts = site.posts | where_exp: "post", "post.categories contains page.category" | sort: "date" %}
 <ul class="post-list">
@@ -14,3 +14,4 @@ category: 시스템 해킹
     </li>
   {% endfor %}
 </ul>
+
