@@ -4,18 +4,18 @@ title: 웹 해킹
 category: 웹 해킹
 ---
 
-<h1>{{ page.title }}</h1>
+<h1>{{ page.category }}</h1>
 <hr>
 
 <ul class="post-list">
-  {% if site.categories[page.category] %}
-    {% assign posts = site.categories[page.category] | sort: 'date' | reverse %}
-    {% for post in posts %}
-      <li>
+  {% assign posts = site.categories[page.category] | sort: 'date' | reverse %}
+  {% for post in posts %}
+    <li>
+      <h2>
         <a class="post-link" href="{{ post.url | relative_url }}">
           {{ post.title }}
         </a>
-      </li>
-    {% endfor %}
-  {% endif %}
+      </h2>
+    </li>
+  {% endfor %}
 </ul>

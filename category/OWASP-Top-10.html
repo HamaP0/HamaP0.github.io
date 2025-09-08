@@ -8,16 +8,14 @@ category: OWASP-Top-10
 <hr>
 
 <ul class="post-list">
-  {% if site.categories[page.category] %}
-    {% assign posts = site.categories[page.category] | sort: 'date' | reverse %}
-    {% for post in posts %}
-      <li>
-        <h2>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title }}
-          </a>
-        </h2>
-      </li>
-    {% endfor %}
-  {% endif %}
+  {% assign posts = site.categories[page.category] | sort: 'date' | reverse %}
+  {% for post in posts %}
+    <li>
+      <h2>
+        <a class="post-link" href="{{ post.url | relative_url }}">
+          {{ post.title }}
+        </a>
+      </h2>
+    </li>
+  {% endfor %}
 </ul>
