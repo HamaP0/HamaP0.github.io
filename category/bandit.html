@@ -1,24 +1,24 @@
 ---
 layout: default
 title: Bandit
+category: bandit
 ---
 
-<h1>Bandit</h1>
+<h1>{{ page.title }}</h1>
 <p>Bandit 워게임 관련 글 목록입니다.</p>
-  
 <hr>
-  
+
 <ul class="post-list">
-  <!-- 
-    site.categories.bandit 에는 'bandit' 카테고리의 글만 담겨있습니다.
-    'reversed' 키워드를 추가하여 최신 글이 위로 오도록 순서를 뒤집니다.
-  -->
-  {% assign bandit_posts = site.categories.bandit | sort: 'date' %}
-  {% for post in bandit_posts %}
-    <li>
-      <h2>
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h2>
-    </li>
-  {% endfor %}
+  {% if site.categories[page.category] %}
+    {% assign posts = site.categories[page.category] | sort: 'date' | reverse %}
+    {% for post in posts %}
+      <li>
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title }}
+          </a>
+        </h2>
+      </li>
+    {% endfor %}
+  {% endif %}
 </ul>
