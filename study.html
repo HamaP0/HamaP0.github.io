@@ -10,13 +10,15 @@ title: Study
 
 <h2>카테고리 목록</h2>
 <ul class="category-list">
-  {% for category in site.categories %}
-    {% assign category_name = category[0] %}
-    {% unless category_name == 'Projects' or category_name == 'OWASP-Top-10' or category_name == 'App-Security' %}
+  {% assign study_categories = "해킹 툴,웹 기술,웹 해킹,시스템 해킹,앱 해킹,자격증,bandit,NGFW,OWASP-Top-10" | split: "," %}
+  {% assign sorted = study_categories | sort: 'date' | reverse %}
+  {% assign category_posts = study_categories | map: "site.categories" | map: "first" | sort: 'date' | reverse %}
+  {% for cat in study_categories %}
+    {% assign posts = site.categories[cat] %}
+    {% if posts and posts.size > 0 %}
       <li>
-        <a href="{{ '/category/' | append: category_name | append: '.html' | relative_url }}">{{ category_name }} ({{ category[1].size }})</a>
+        <a href="{{ '/category/' | append: cat | append: '.html' | relative_url }}">{{ cat }} ({{ posts.size }})</a>
       </li>
-    {% endunless %}
+    {% endif %}
   {% endfor %}
 </ul>
-

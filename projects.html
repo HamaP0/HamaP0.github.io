@@ -13,17 +13,14 @@ title: 프로젝트
   정확하게 추가하면, 해당 카테고리가 이 페이지에 자동으로 나타납니다.
   예: assign project_categories = "OWASP-Top-10|App-Security|Another-Project"
 -->
-{%- assign project_categories = "OWASP-Top-10|App-Security" | split: '|' -%}
+
 
 <h2>카테고리 목록</h2>
-<ul class="category-list">
-  {% for category_name in project_categories %}
-    {% if site.categories[category_name] %}
-      <li>
-        <a href="{{ '/category/' | append: category_name | append: '.html' | relative_url }}">
-          {{ category_name }} ({{ site.categories[category_name].size }})
-        </a>
-      </li>
-    {% endif %}
+<ul class="post-list">
+  {% assign project_posts = site.categories['OWASP-Top-10'] | sort: 'date' | reverse %}
+  {% for post in project_posts %}
+    <li>
+      <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </li>
   {% endfor %}
 </ul>
