@@ -10,21 +10,21 @@ title: Study
 <h2>스터디 카테고리</h2>
 <ul class="category-list">
 
-  {# 1. '보안 공부' 상위 카테고리 그룹 링크 #}
+  <!-- 1. '보안 공부' 상위 카테고리 그룹 링크 -->
   <li class="category-group-link">
     <a class="post-link" href="{{ '/security-study.html' | relative_url }}">
       보안 공부
     </a>
   </li>
 
-  {# 2. 'CTF/Wargame' 상위 카테고리 그룹 링크 #}
+  <!-- 2. 'CTF/Wargame' 상위 카테고리 그룹 링크 -->
   <li class="category-group-link">
     <a class="post-link" href="{{ '/ctf-wargame.html' | relative_url }}">
       CTF/Wargame
     </a>
   </li>
   
-  {# 3. '자격증' 독립 카테고리 #}
+  <!-- 3. '자격증' 독립 카테고리 -->
   {% assign independent_categories = "자격증" | split: "|" %}
   {% for cat in independent_categories %}
     {% assign posts = site.categories[cat] %}
