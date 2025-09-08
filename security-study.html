@@ -9,7 +9,6 @@ exclude_from_nav: true
 <hr>
 
 <ul class="category-list">
-  <!-- 이 리스트에 '해킹 툴'을 추가했습니다. -->
   {% assign tech_categories = "웹 기술|웹 해킹|앱 해킹|시스템 해킹|해킹 툴|NGFW" | split: "|" %}
   {% for cat in tech_categories %}
     {% assign posts = site.categories[cat] %}
