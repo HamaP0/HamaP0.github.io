@@ -10,7 +10,8 @@ exclude_from_nav: true
 
 <h2>보안 공부 목록</h2>
 <ul class="category-list">
-  {% assign tech_categories = "웹 해킹|웹 기술|앱 해킹|시스템 해킹|NGFW" | split: "|" %}
+  <!-- 이 리스트에 '해킹 툴'을 추가했습니다. -->
+  {% assign tech_categories = "웹 기술|웹 해킹|앱 해킹|시스템 해킹|해킹 툴|NGFW" | split: "|" %}
   {% for cat in tech_categories %}
     {% assign posts = site.categories[cat] %}
     {% if posts and posts.size > 0 %}
