@@ -2,7 +2,7 @@
 layout: post
 title: "쿠키와 세션 (Cookie & Session) 공부"
 date: 2025-09-05 17:00:00 +0900
-categories: Study 웹 기술
+categories: [웹 기술]
 ---
 
 ### 1. 개요

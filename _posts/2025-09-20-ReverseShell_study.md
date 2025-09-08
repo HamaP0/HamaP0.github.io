@@ -2,7 +2,7 @@
 layout: post
 title: "리버스 쉘 (Reverse Shell) 공부"
 date: 2025-09-20 17:00:00 +0900
-categories: Study 시스템 해킹
+categories: [시스템 해킹]
 ---
 
 ### 1. 개요

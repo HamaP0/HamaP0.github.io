@@ -2,7 +2,7 @@
 layout: post
 title: "John the Ripper 공부"
 date: 2025-09-25 17:00:00 +0900
-categories: Study 해킹 툴
+categories: [해킹 툴]
 ---
 
 ### 1. 개요

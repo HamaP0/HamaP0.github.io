@@ -2,7 +2,7 @@
 layout: post
 title: "MySQL 공부"
 date: 2025-09-10 17:00:00 +0900
-categories: Study 웹 기술
+categories: [웹 기술]
 ---
 
 ### 1. MySQL 개요

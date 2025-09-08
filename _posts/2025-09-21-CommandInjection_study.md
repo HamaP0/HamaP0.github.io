@@ -2,7 +2,7 @@
 layout: post
 title: "명령어 인젝션 (Command Injection) 공부"
 date: 2025-09-22 17:00:00 +0900
-categories: Study 웹 해킹
+categories: [웹 해킹]
 ---
 
 ### 1. 개요

@@ -2,7 +2,7 @@
 layout: post
 title: "HTTP 공부"
 date: 2025-09-11 17:00:00 +0900
-categories: Study 웹 기술
+categories: [웹 기술]
 ---
 
 ### 1. HTTP 개요

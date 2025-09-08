@@ -2,7 +2,7 @@
 layout: post
 title: "cron을 이용한 지속성 확보 공부"
 date: 2025-09-19 17:00:00 +0900
-categories: Study 시스템 해킹
+categories: [시스템 해킹]
 ---
 
 ### 1. 개요

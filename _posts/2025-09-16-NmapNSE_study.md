@@ -2,7 +2,7 @@
 layout: post
 title: "Nmap Scripting Engine (NSE) 사용법"
 date: 2025-09-16 17:00:00 +0900
-categories: Study 해킹 툴
+categories: [해킹 툴]
 ---
 
 ### 1. 개요

@@ -2,7 +2,7 @@
 layout: post
 title: "프록시 서버 (Proxy Server) 공부"
 date: 2025-08-18 17:00:00 +0900
-categories: Study 웹 기술
+categories: [웹 기술]
 ---
 
 ### 1. 개요

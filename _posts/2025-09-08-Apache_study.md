@@ -2,7 +2,7 @@
 layout: post
 title: "Apache 공부"
 date: 2025-09-08 17:00:00 +0900
-categories: Study 웹 기술
+categories: [웹 기술]
 ---
 
 ### 1. Apache 개요

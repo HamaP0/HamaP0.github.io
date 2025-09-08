@@ -2,7 +2,7 @@
 layout: post
 title: "Burp Suite 공부"
 date: 2025-09-06 17:00:00 +0900
-categories: Study 해킹 툴
+categories: [해킹 툴]
 ---
 
 ### 1. Burp Suite 개요

@@ -2,7 +2,7 @@
 layout: post
 title: "A09:2021 - Security Logging and Monitoring Failures <br> (보안 로깅 및 모니터링 실패) 분석 보고서"
 date: 2025-09-02 17:00:00 +0900
-categories: Projects OWASP-Top-10
+categories: [OWASP-Top-10]
 ---
 ---
 
