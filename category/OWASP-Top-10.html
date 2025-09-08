@@ -12,7 +12,7 @@ category: "OWASP-Top-10"
     (수정) | escape 필터를 제거하여 title에 포함된 <br> 태그가
     HTML로 올바르게 렌더링되도록 합니다.
   {% endcomment %}
-  {% assign category_posts = site.categories[page.category] | sort: 'title' %}
+  {% assign category_posts = site.categories[page.category] | sort: 'date' %}
   {% for post in category_posts %}
     <li>
       <h2>

@@ -10,7 +10,7 @@ category: "NGFW"
 <hr>
 
 <ul class="post-list">
-  {% assign category_posts = site.categories[page.category] | sort: 'date' | reverse %}
+  {% assign category_posts = site.categories[page.category] | sort: 'date' %}
   {% for post in category_posts %}
     <li>
       <h2>
