@@ -15,7 +15,7 @@ title: Study
       {% assign filename = cat | replace: " ", "" %}
       <li>
         <a class="post-link"
-           href="{{ '/' | append: filename | append: '.html' | relative_url }}">
+           href="{{ '/category/' | append: filename | append: '.html' | relative_url }}">
           {{ cat }} ({{ posts.size }})
         </a>
       </li>
