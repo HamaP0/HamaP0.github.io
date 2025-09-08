@@ -7,21 +7,25 @@ title: Study
 <p>이곳에서는 제가 공부한 기록을 모아두었습니다. 아래 카테고리를 선택하세요.</p>
 <hr>
 
-{% assign project_categories = "OWASP-Top-10" | split: "," %}
-<h2>카테고리 목록</h2>
+<h2>스터디 카테고리</h2>
 <ul class="category-list">
-  {% for pair in site.categories %}
-    {% assign cat = pair[0] %}
-    {% assign posts = pair[1] %}
-    {% unless project_categories contains cat %}
-      {% if posts and posts.size > 0 %}
-        <li>
-          <a class="post-link"
-             href="{{ '/category/' | append: cat | append: '.html' | relative_url }}">
-            {{ cat }} ({{ posts.size }})
-          </a>
-        </li>
-      {% endif %}
-    {% endunless %}
+  {% assign study_categories = "웹 기술|해킹 툴|웹 해킹|시스템 해킹|앱 해킹|자격증|bandit|NGFW" | split: "|" %}
+  {% for cat in study_categories %}
+    {% assign posts = site.categories[cat] %}
+    {% if posts and posts.size > 0 %}
+      {% comment %}
+        카테고리 페이지 파일명(공백 제거 or 원본 그대로)
+        – “웹 기술” → category/웹기술.html  
+        – “해킹 툴” → category/해킹툴.html  
+        – “bandit” → category/bandit.html  
+      {% endcomment %}
+      {% assign filename = cat | remove: " " %}
+      <li>
+        <a class="post-link"
+           href="{{ '/category/' | append: filename | append: '.html' | relative_url }}">
+          {{ cat }} ({{ posts.size }})
+        </a>
+      </li>
+    {% endif %}
   {% endfor %}
 </ul>
