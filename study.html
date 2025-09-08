@@ -9,9 +9,7 @@ title: Study
 
 <h2>스터디 카테고리</h2>
 <ul class="category-list">
-  {% assign study_categories = 
-     "웹 기술|웹 해킹|해킹 툴|자격증|bandit|NGFW" 
-     | split: "|" %}
+  {% assign study_categories = "웹 기술|웹 해킹|해킹 툴|자격증|bandit|NGFW" | split: "|" %}
   {% for cat in study_categories %}
     {% assign posts = site.categories[cat] | default: [] %}
     {% if posts.size > 0 %}
