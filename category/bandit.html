@@ -4,7 +4,7 @@ title: Bandit
 category: bandit
 ---
 <h1>{{ page.category }}</h1>
-<p>Bandit 워게임 관련 글 목록입니다.</p>
+<p>Bandit 풀이 목록입니다.</p>
 <hr>
 {% assign category_posts = site.posts | where_exp: "post", "post.categories contains page.category" | sort: "date" %}
 <ul class="post-list">
@@ -14,3 +14,4 @@ category: bandit
     </li>
   {% endfor %}
 </ul>
+
