@@ -515,3 +515,18 @@ h1 .signature-icon {
 
 }
 
+/*
+   ==========================================================================
+   (신규 추가) 상위 카테고리 그룹 링크 스타일
+   - study.html에서 '해킹 기술', 'CTF/Wargame'처럼 하위 목록을 가진
+     그룹 링크를 다른 색상(골드)으로 강조합니다.
+   ==========================================================================
+*/
+.category-list .category-group-link a {
+  color: var(--emphasis-color); /* 링크 색상을 골드 색상으로 변경 */
+}
+
+.category-list .category-group-link a:hover {
+  background-color: var(--emphasis-color); /* 마우스 올리면 배경을 골드 색상으로 */
+  color: var(--bg-color); /* 글자색은 배경색과 동일하게 어둡게 변경 */
+}
