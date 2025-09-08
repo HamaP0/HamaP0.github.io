@@ -1,77 +1,65 @@
----
-layout: default
----
-<article class="post">
-    <header class="post-header">
-        {% comment %}
-          (수정) | escape 필터를 제거하여 title에 포함된 <br> 태그가
-          HTML로 올바르게 렌더링되도록 합니다.
-        {% endcomment %}
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+  {% include head.html %}
+<body>
+
+  {% include header.html %}
+
+  <main class="content-wrapper">
+    <article class="post">
+      <header class="post-header">
         <h1 class="post-title">{{ page.title }}</h1>
         <p class="post-meta">
-            작성일: {{ page.date | date: "%Y년 %m월 %d일" }}
-            {% if page.categories.size > 0 %}
-                • 카테고리: {{ page.categories | join: ', ' }}
-            {% endif %}
+          작성일: {{ page.date | date: "%Y년 %m월 %d일" }}
+          {% if page.categories.size > 0 %}
+            • 카테고리: {{ page.categories | join: ', ' }}
+          {% endif %}
         </p>
-    </header>
+      </header>
 
-    <div class="post-content">
+      <div class="post-content">
         {{ content }}
-    </div>
+      </div>
 
-    {%- comment -%}
-    ======================================================
-    카테고리 내 이전/다음 글 내비게이션
-    ======================================================
-    {%- endcomment -%}
-    {%- assign current_category = page.categories.first -%}
+      {% assign current_category = page.categories.first %}
+      {% if current_category %}
+        {% assign posts_in_category = site.categories[current_category] | sort: 'date' %}
+        {% for p in posts_in_category %}
+          {% if p.url == page.url %}
+            {% assign idx = forloop.index0 %}
+          {% endif %}
+        {% endfor %}
+        {% assign prev_idx = idx | minus: 1 %}
+        {% assign next_idx = idx | plus: 1 %}
+        {% if prev_idx >= 0 or next_idx < posts_in_category.size %}
+          <hr>
+          <nav class="post-nav">
+            {% if prev_idx >= 0 %}
+              {% assign prev_post = posts_in_category[prev_idx] %}
+              <a class="post-nav-item post-nav-prev" href="{{ prev_post.url | relative_url }}">
+                <div class="nav-arrow">« 이전 글</div>
+                <span class="post-title">{{ prev_post.title }}</span>
+              </a>
+            {% else %}
+              <div class="post-nav-item-placeholder"></div>
+            {% endif %}
+            {% if next_idx < posts_in_category.size %}
+              {% assign next_post = posts_in_category[next_idx] %}
+              <a class="post-nav-item post-nav-next" href="{{ next_post.url | relative_url }}">
+                <div class="nav-arrow">다음 글 »</div>
+                <span class="post-title">{{ next_post.title }}</span>
+              </a>
+            {% else %}
+              <div class="post-nav-item-placeholder"></div>
+            {% endif %}
+          </nav>
+        {% endif %}
+      {% endif %}
+    </article>
+  </main>
 
-    {%- if current_category -%}
-        {%- assign posts_in_category = site.categories[current_category] | sort: 'date' -%}
-        
-        {%- for post in posts_in_category -%}
-            {%- if post.url == page.url -%}
-                {%- assign post_index = forloop.index0 -%}
-                {%- break -%}
-            {%- endif -%}
-        {%- endfor -%}
+  {% include footer.html %}
+  {% include back-to-top.html %}
 
-        {%- assign prev_post_index = post_index | minus: 1 -%}
-        {%- assign next_post_index = post_index | plus: 1 -%}
-
-        {%- if prev_post_index >= 0 -%}
-            {%- assign previous_post = posts_in_category[prev_post_index] -%}
-        {%- endif -%}
-
-        {%- if next_post_index < posts_in_category.size -%}
-            {%- assign next_post = posts_in_category[next_post_index] -%}
-        {%- endif -%}
-
-        {%- if previous_post or next_post -%}
-            <hr>
-            <nav class="post-nav">
-                {%- if previous_post -%}
-                <a class="post-nav-item post-nav-prev" href="{{ previous_post.url | relative_url }}">
-                    <div class="nav-arrow">« 이전 글</div>
-                    <span class="post-title">{{ previous_post.title | escape }}</span>
-                </a>
-                {%- else -%}
-                <!-- 이전 글이 없을 때 공간을 차지하는 빈 요소 -->
-                <div class="post-nav-item-placeholder"></div>
-                {%- endif -%}
-
-                {%- if next_post -%}
-                <a class="post-nav-item post-nav-next" href="{{ next_post.url | relative_url }}">
-                    <div class="nav-arrow">다음 글 »</div>
-                    <span class="post-title">{{ next_post.title | escape }}</span>
-                </a>
-                {%- else -%}
-                <!-- 다음 글이 없을 때 공간을 차지하는 빈 요소 -->
-                <div class="post-nav-item-placeholder"></div>
-                {%- endif -%}
-            </nav>
-        {%- endif -%}
-    {%- endif -%}
-
-</article>
+</body>
+</html>
