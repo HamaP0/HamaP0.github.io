@@ -1,16 +1,18 @@
 ---
 layout: default
 title: Bandit
-category: bandit
+category: "bandit"
 ---
 
 <h1>{{ page.category }}</h1>
 <p>Bandit 워게임 관련 글 목록입니다.</p>
 <hr>
 
+{% assign raw_posts = site.categories[page.category] | default: [] %}
+{% assign category_posts = raw_posts | sort: 'date' | reverse %}
+
 <ul class="post-list">
-  {% assign posts = site.categories[page.category] | sort: 'date' | reverse %}
-  {% for post in posts %}
+  {% for post in category_posts %}
     <li>
       <h2>
         <a class="post-link" href="{{ post.url | relative_url }}">
