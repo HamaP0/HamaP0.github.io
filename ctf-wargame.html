@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CTF/Wargame
-exclude_from_nav: true # 이 페이지를 상단 네비게이션 메뉴에서 제외합니다.
+exclude_from_nav: true
 ---
 
 <h1>{{ page.title }}</h1>
@@ -10,8 +10,6 @@ exclude_from_nav: true # 이 페이지를 상단 네비게이션 메뉴에서 �
 
 <h2>CTF/Wargame 목록</h2>
 <ul class="category-list">
-  {# 나중에 다른 CTF/워게임을 추가하고 싶다면 아래 리스트에 | 기호로 구분하여 추가하세요. #}
-  {# 예: "bandit|드림핵|OWASP-JuiceShop" #}
   {% assign ctf_categories = "bandit|드림핵|OWASP-JuiceShop|TryHackMe|PortSwigger|OvertheWire|Rcity|Pwnable" | split: "|" %}
   {% for cat in ctf_categories %}
     {% assign posts = site.categories[cat] %}
