@@ -5,13 +5,11 @@ category: 해킹 툴
 ---
 
 <h1>{{ page.category }}</h1>
-<p>해킹 툴 학습 기록입니다.</p>
 <hr>
 
 {% assign category_posts = site.posts
    | where_exp: "post", "post.categories contains page.category"
-   | sort: "date"
-   | reverse %}
+   | sort: "date" %}
 <ul class="post-list">
   {% for post in category_posts %}
     <li>
