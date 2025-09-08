@@ -1,15 +1,18 @@
 ---
 layout: default
 title: 앱 해킹
-category: "앱 해킹"
+category: 앱 해킹
 ---
 
-<h1>앱 해킹</h1>
+<h1>{{ page.title }}</h1>
+
 <ul class="post-list">
-  {% assign category_posts = site.categories['앱 해킹'] | sort: 'date' | reverse %}
-  {% for post in category_posts %}
-    <li>
-      <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-    </li>
-  {% endfor %}
+  {% if site.categories[page.category] %}
+    {% assign category_posts = site.categories[page.category] | sort: 'date' | reverse %}
+    {% for post in category_posts %}
+      <li>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      </li>
+    {% endfor %}
+  {% endif %}
 </ul>
