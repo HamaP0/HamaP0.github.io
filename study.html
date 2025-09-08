@@ -3,9 +3,8 @@ layout: default
 title: Study
 ---
 
-<h1>Study</h1>
-<p>이곳에서는 제가 공부한 기록하고 있습니다. 아래 카테고리를 선택하세요.</p>
-
+<h1>{{ page.title }}</h1>
+<p>이곳에는 제가 공부한 기록을 모아두었습니다. 아래 카테고리를 선택하세요.</p>
 <hr>
 
 <h2>카테고리 목록</h2>
@@ -15,7 +14,9 @@ title: Study
     {% assign posts = site.categories[cat] %}
     {% if posts and posts.size > 0 %}
       <li>
-        <a href="{{ '/category/' | append: cat | append: '.html' | relative_url }}">{{ cat }} ({{ posts.size }})</a>
+        <a href="{{ '/category/' | append: cat | append: '.html' | relative_url }}">
+          {{ cat }} ({{ posts.size }})
+        </a>
       </li>
     {% endif %}
   {% endfor %}
