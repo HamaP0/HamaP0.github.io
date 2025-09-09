@@ -532,7 +532,7 @@ h1 .signature-icon {
 
 /* 
    ==========================================================================
-   (신규 추가) 요청사항 반영을 위한 CSS
+   (신규 추가) 요청사항 반영을 위한 CSS (v2)
    ==========================================================================
 */
 
@@ -540,35 +540,35 @@ h1 .signature-icon {
 .post-date {
   font-size: 0.9em;
   color: var(--footer-text);
-  text-align: center; /* 제목과 동일하게 중앙 정렬 */
+  text-align: center;
   margin-top: 0;
 }
 
-/* --- 카테고리 목록: 제목과 개수를 한 줄에 배치 --- */
-.category-item-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline; /* 텍스트 하단 정렬 */
+/* --- 카테고리 목록: 제목 폰트 크기 H2 수준으로 키우기 --- */
+.category-list a {
+  font-size: 2em; /* H2와 유사한 크기로 대폭 상향 */
+  font-weight: 600;
+  padding: 8px 12px;
 }
 
-/* --- 카테고리 목록: 게시글 개수 스타일 --- */
+/* --- 카테고리 목록: 게시글 개수 (초록색) 스타일 --- */
 .post-count {
-  font-size: 0.9em;
+  font-size: 0.8em; /* 제목(2em) 기준 상대 크기 */
   font-weight: normal;
   color: var(--footer-text);
-  padding-left: 10px; /* 제목과 살짝 간격 띄우기 */
+  padding-left: 10px;
 }
 
 /* --- 카테고리 목록: 날짜 범위 스타일 --- */
 .post-date-range {
-  font-size: 0.8em;
+  font-size: 0.9em; /* 기본 폰트(17px) 기준 */
   color: var(--footer-text);
-  padding-left: 12px; /* 제목과 동일한 위치에서 시작하도록 조정 */
-  margin-top: -5px; /* 제목과의 간격 줄이기 */
+  padding-left: 12px;
+  margin-top: -5px;
 }
 
-/* --- 금색 카테고리: [숫자] 부분 스타일 --- */
+/* --- 금색 카테고리: [개수] 부분 스타일 --- */
 .category-count-bracket {
-  font-size: 0.9em;
+  font-size: 0.8em; /* 제목(2em) 기준 상대 크기 */
   font-weight: normal;
 }
