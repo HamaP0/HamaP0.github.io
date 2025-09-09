@@ -1,13 +1,13 @@
 ---
 layout: default
 title: OWASP Top 10
-category: [OWASP Top 10]
+category: OWASP Top 10
 ---
 <h1>{{ page.category }}</h1>
 <p>OWASP Top 10 프로젝트 기록입니다.</p>
 <hr>
 
-{% assign category_posts = site.posts | where_exp: "post", "post.categories contains page.category" | sort: "date" %}
+{% assign category_posts = site.categories[page.category] | sort: "date" %}
 <ul class="post-list">
   {% for post in category_posts %}
     <li>
