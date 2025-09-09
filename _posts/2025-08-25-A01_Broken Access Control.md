@@ -2,7 +2,7 @@
 layout: post
 title: "A01:2021 - Broken Access Control (접근 통제 실패) 분석 보고서"
 date: 2025-08-25 17:00:00 +0900
-categories: [OWASP-Top-10]
+categories: [OWASP Top 10]
 ---
 ---
 
@@ -133,3 +133,4 @@ categories: [OWASP-Top-10]
    결론적으로 접근 통제 실패의 핵심 방어 원리는 '사용자 제어 가능 입력 User-Controllable Input을 권한 판단의 기준으로 삼지 않는 것' 입니다. 권한 검증은 반드시 서버 측의 신뢰할 수 있는 데이터(세션, DB)를 기반으로 이루어져야 합니다.
 
 <hr class="short-rule">
+
