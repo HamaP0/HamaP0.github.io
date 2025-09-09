@@ -7,7 +7,7 @@ category: 자격증
 <p>자격증 취득 목록입니다.</p>
 <hr>
 
-{% assign category_posts = site.posts | where_exp: "post", "post.categories contains page.category" | sort: "date" | reverse %}
+{% assign category_posts = site.posts | where_exp: "post", "post.categories contains page.category" | sort: "date" %}
 <ul class="post-list">
   {% for post in category_posts %}
     <li>
