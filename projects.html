@@ -8,7 +8,7 @@ title: 프로젝트
 <hr>
 
 <ul class="category-list">
-  {% assign project_categories = "OWASP-Top-10" | split: "," %}
+  {% assign project_categories = "OWASP Top 10" | split: "," %}
   {% for cat in project_categories %}
     {% assign posts_in_cat = site.categories[cat] %}
     {% if posts_in_cat.size > 0 %}
@@ -26,3 +26,4 @@ title: 프로젝트
     {% endif %}
   {% endfor %}
 </ul>
+
