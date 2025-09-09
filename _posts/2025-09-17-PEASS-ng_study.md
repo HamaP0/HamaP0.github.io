@@ -49,7 +49,7 @@ chmod +x linpeas.sh
 *   **빨간색:** 흥미롭거나 주의 깊게 봐야 할 항목.
 *   **노란색:** 추가적인 정보가 될 수 있는 항목.
 
-[여기에 linpeas.sh 실행 결과 화면 스크린샷 삽입]
+   ![Linpeas.sh](/assets/images/Lin_1.png)
 
 결과 보고서를 통해 SUID가 설정된 바이너리, 시스템 권한으로 실행되는 cron 작업 `sudo -l` 로 확인한 권한 등 권한 상승에 결정적인 단서가 될 수 있는 정보들을 한눈에 파악할 수 있다. 예를 들어 `(i) find results` 섹션에서 [GTFOBins](https://gtfobins.github.io/)에 등재된 SUID 파일을 발견했다면 이를 직접적인 공격 경로로 활용할 수 있다.
 
@@ -62,7 +62,7 @@ chmod +x linpeas.sh
 
 아래 예시에서는 **`/usr/bin/find`** 파일이 SUID 비트가 설정되어 있고 **GTFOBins**에 등재되어 있어 권한 상승에 이용 가능하다고 **빨간색+노란색 배경**으로 강조되어 있다.
 
-[여기에 linpeas.sh가 find SUID를 발견한 결과 스크린샷 삽입]
+  ![LinpeasSuid](/assets/images/Lin_2.png)
 
 #### **2. 분석 (GTFOBins)**
 **GTFOBins**는 유닉스 바이너리를 이용한 권한 상승 및 다양한 기능 우회 방법을 모아놓은 리소스이다. `linpeas.sh`가 알려준 **`find`** 바이너리를 GTFOBins 사이트에서 검색한다.
