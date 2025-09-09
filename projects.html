@@ -18,7 +18,6 @@ title: 프로젝트
       {% assign cat_filename = cat | replace: ' ', '-' %}
 
       <li>
-        <!-- 이제 이 링크는 /category/OWASP-Top-10.html 을 가리킵니다 -->
         <a class="post-link" href="{{ '/category/' | append: cat_filename | append: '.html' | relative_url }}">
           <span class="category-title-text">{{ cat }}</span> <span class="post-count">({{ posts_in_cat.size }})</span>
         </a>
@@ -29,3 +28,4 @@ title: 프로젝트
     {% endif %}
   {% endfor %}
 </ul>
+
