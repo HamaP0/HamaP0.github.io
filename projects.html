@@ -19,9 +19,9 @@ title: 프로젝트
         <a class="post-link" href="{{ '/category/' | append: cat | append: '.html' | relative_url }}">
           {{ cat }} <span class="post-count">({{ posts_in_cat.size }})</span>
         </a>
-        <div class="post-date-range">
+        <span class="post-date-range">
           {{ oldest_post.date | date: "%y-%m-%d" }} ~ {{ newest_post.date | date: "%y-%m-%d" }}
-        </div>
+        </span>
       </li>
     {% endif %}
   {% endfor %}
