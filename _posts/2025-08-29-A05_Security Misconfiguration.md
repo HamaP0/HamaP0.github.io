@@ -2,7 +2,7 @@
 layout: post
 title: "A05:2021 - Security Misconfiguration (보안 설정 오류) 분석 보고서"
 date: 2025-08-29 17:00:00 +0900
-categories: [OWASP-Top-10]
+categories: [OWASP Top 10]
 ---
 ---
 
@@ -80,3 +80,4 @@ categories: [OWASP-Top-10]
    4.  **주기적인 점검:** 이런 설정들이 제대로 되어 있는지 정기적으로 점검하고 보안 패치가 나오면 즉시 업데이트하는 것이 중요합니다.
 
 <hr class="short-rule">
+
