@@ -10,13 +10,21 @@ title: 프로젝트
 <ul class="category-list">
   {% assign project_categories = "OWASP-Top-10" | split: "," %}
   {% for cat in project_categories %}
-    {% assign posts = site.categories[cat] %}
-    {% if posts and posts.size > 0 %}
+    {% assign posts_in_cat = site.categories[cat] %}
+    {% if posts_in_cat.size > 0 %}
+      {% assign sorted_posts = posts_in_cat | sort: 'date' %}
+      {% assign oldest_post = sorted_posts | first %}
+      {% assign newest_post = sorted_posts | last %}
       <li>
-        <a class="post-link"
-           href="{{ '/category/' | append: cat | append: '.html' | relative_url }}">
-          {{ cat }} ({{ posts.size }})
-        </a>
+        <div class="category-item-container">
+          <a class="post-link" href="{{ '/category/' | append: cat | append: '.html' | relative_url }}">
+            {{ cat }}
+          </a>
+          <span class="post-count">({{ posts_in_cat.size }})</span>
+        </div>
+        <div class="post-date-range">
+          {{ oldest_post.date | date: "%y-%m-%d" }} ~ {{ newest_post.date | date: "%y-%m-%d" }}
+        </div>
       </li>
     {% endif %}
   {% endfor %}
