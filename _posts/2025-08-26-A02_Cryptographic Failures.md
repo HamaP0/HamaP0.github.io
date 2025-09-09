@@ -2,7 +2,7 @@
 layout: post
 title: "A02:2021 - Cryptographic Failures (암호화 실패) 분석 보고서"
 date: 2025-08-26 17:00:00 +0900
-categories: [OWASP-Top-10]
+categories: [OWASP Top 10]
 ---
 ---
 
@@ -110,3 +110,4 @@ categories: [OWASP-Top-10]
    결론적으로 인증 토큰(세션 ID)의 핵심 방어 원리는 `예측 불가능성` 과 `보호된 전송` 입니다. 모든 보안 토큰은 반드시 암호학적으로 안전한 난수 생성기를 통해 만들어져야 하며 Secure 및 HttpOnly 같은 보안 플래그를 적용하여 전송 및 보관 과정에서의 탈취 위협으로부터 보호되어야 합니다.
 
 <hr class="short-rule">
+
