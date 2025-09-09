@@ -47,7 +47,7 @@ john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```bash
 john --show hash.txt
 ```
-[여기에 JtR MD5 크래킹 성공 이미지 삽입]
+   ![JohnMd5](/assets/images/John_1.png)
 
 결과를 보면 `5f4dcc3b5aa7...` 해시의 원본 값이 `password`임을 성공적으로 찾아낸 것을 확인할 수 있다. 이는 취약한 해시 알고리즘이 얼마나 위험한지를 명확히 보여준다.
 
