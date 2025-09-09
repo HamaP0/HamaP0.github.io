@@ -38,7 +38,7 @@ DocumentRoot /var/www/html
 *   **`Options +Indexes` · `Options Indexes`**: 디렉터리 리스팅 허용
 *   **`Options -Indexes`**: 디렉터리 리스팅 차단 (보안 권장 설정)
 
-[여기에 디렉터리 리스팅 활성화/비활성화 비교 이미지 삽입]
+   ![ApacheList](/assets/images/Apache_1.png)
 
 #### **ServerTokens / ServerSignature**
 서버 오류 페이지나 HTTP 응답 헤더에 Apache 버전과 같은 상세 정보를 얼마나 노출할지 결정한다. 보안을 위해 최소한의 정보만 보여주는 것이 좋다.
@@ -68,7 +68,7 @@ Apache 로그 파일, 특히 접근 로그 **`access.log`** 는 정상적인 서
     # /var/log/apache2 디렉터리에서 access.log 파일을 대상으로 'UNION' 문자열 검색
     grep "UNION" /var/log/apache2/access.log
     ```
-    [여기에 Sqlmap 공격 흔적이 기록된 access.log 캡처 이미지 삽입]
+   ![ApacheInjection](/assets/images/Apache_2.png)
 
     로그에는 URL 인코딩된 형태(`%20UNION%20SELECT...`)로 공격 페이로드가 기록되어 공격이 발생했다는 명백한 증거가 된다.
 
@@ -78,9 +78,8 @@ Apache 로그 파일, 특히 접근 로그 **`access.log`** 는 정상적인 서
     # URL 인코딩된 세미콜론(%3B)과 ls 명령어를 함께 검색
     grep "%3B%20ls" /var/log/apache2/access.log
     ```
-    [여기에 Command Injection 공격 흔적이 기록된 access.log 캡처 이미지 삽입]
+   ![ApacheCommand](/assets/images/Apache_3.png)
 
     로그를 통해 공격자가 어떤 IP에서 어떤 명령어를 주입하려고 시도했는지 파악할 수 있다. 이러한 로그는 침해 사고 분석 시 공격자의 행위를 재구성하는 데 결정적인 역할을 한다.
 
 <hr class="short-rule">
-
