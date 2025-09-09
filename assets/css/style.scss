@@ -532,11 +532,11 @@ h1 .signature-icon {
 
 /* 
    ==========================================================================
-   (신규 추가) 요청사항 반영을 위한 CSS (v2)
+   (신규 추가) 요청사항 반영을 위한 CSS (v3)
    ==========================================================================
 */
 
-/* --- 포스트 페이지: 제목 아래 날짜 스타일 --- */
+/* --- 포스트 페이지: 제목 아래 날짜 스타일 (변경 없음) --- */
 .post-date {
   font-size: 0.9em;
   color: var(--footer-text);
@@ -544,31 +544,71 @@ h1 .signature-icon {
   margin-top: 0;
 }
 
-/* --- 카테고리 목록: 제목 폰트 크기 H2 수준으로 키우기 --- */
-.category-list a {
-  font-size: 2em; /* H2와 유사한 크기로 대폭 상향 */
-  font-weight: 600;
-  padding: 8px 12px;
+/* --- 카테고리 페이지: li 요소를 flex 컨테이너로 만들어 한 줄 정렬 --- */
+.category-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 15px; /* li 간의 간격 조정 */
 }
 
-/* --- 카테고리 목록: 게시글 개수 (초록색) 스타일 --- */
+/* --- 카테고리 페이지: 제목 링크 스타일 (폰트 크기 조정) --- */
+.category-list a {
+  font-size: 1.6em; /* H1보다 작은 크기로 조정 */
+  font-weight: 600;
+  padding: 5px 0; /* 좌우 패딩 제거, flex가 간격 관리 */
+}
+
+/* --- 카테고리 페이지: 게시글 개수 (초록색) 스타일 --- */
 .post-count {
-  font-size: 0.8em; /* 제목(2em) 기준 상대 크기 */
+  font-size: 0.8em;
   font-weight: normal;
   color: var(--footer-text);
   padding-left: 10px;
 }
 
-/* --- 카테고리 목록: 날짜 범위 스타일 --- */
+/* --- 카테고리 페이지: 날짜 범위 스타일 (한 줄 표시용) --- */
 .post-date-range {
-  font-size: 0.9em; /* 기본 폰트(17px) 기준 */
+  font-size: 1em; /* 기본 폰트 크기와 동일하게 조정 */
   color: var(--footer-text);
-  padding-left: 12px;
-  margin-top: -5px;
+  flex-shrink: 0; /* 화면이 줄어도 줄바꿈 방지 */
+  padding-left: 20px; /* 제목과의 최소 간격 */
 }
 
 /* --- 금색 카테고리: [개수] 부분 스타일 --- */
 .category-count-bracket {
-  font-size: 0.8em; /* 제목(2em) 기준 상대 크기 */
+  font-size: 0.8em;
   font-weight: normal;
+}
+
+/* --- 게시글 목록 페이지(category.html): li를 flex 컨테이너로 --- */
+.post-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color); /* 구분선 추가 */
+  padding-bottom: 10px;
+}
+
+/* --- 게시글 목록 페이지: 제목의 불필요한 마진 제거 --- */
+.post-list h3 {
+  margin: 0;
+}
+.post-list h3 a {
+  color: var(--text-color);
+  font-size: 1.1em;
+}
+
+/* --- 게시글 목록 페이지: 날짜 스타일 (우측 정렬용) --- */
+.post-list .post-meta {
+  font-size: 0.9em;
+  color: var(--footer-text);
+  flex-shrink: 0; /* 줄바꿈 방지 */
+  padding-left: 20px;
+}
+
+/* --- study.html의 금색 카테고리는 날짜가 없으므로 우측 정렬 비활성화 --- */
+.category-list .category-group-link {
+  justify-content: flex-start; /* 왼쪽 정렬 */
 }
