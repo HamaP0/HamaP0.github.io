@@ -2,7 +2,7 @@
 layout: post
 title: "A04:2021 - Insecure Design (안전하지 않은 설계) 분석 보고서"
 date: 2025-08-28 17:00:00 +0900
-categories: [OWASP-Top-10]
+categories: [OWASP Top 10]
 ---
 ---
 
@@ -88,3 +88,4 @@ categories: [OWASP-Top-10]
    결론적으로 안전한 설계의 핵심은 **`위협 모델링`** 입니다. 개발 초기 단계부터 '공격자가 이 기능을 어떻게 악용할 수 있을까?'를 먼저 질문하고 그에 대한 방어 로직(입력값 검증 · 권한 제어 등)을 설계 단계에서부터 반영해야 합니다.
 
 <hr class="short-rule">
+
