@@ -2,7 +2,7 @@
 layout: post
 title: "A10:2021 - Server-Side Request Forgery (서버 측 요청 위조) 분석 보고서"
 date: 2025-09-03 17:00:00 +0900
-categories: [OWASP-Top-10]
+categories: [OWASP Top 10]
 ---
 ---
 
@@ -104,3 +104,4 @@ categories: [OWASP-Top-10]
    결론적으로 SSRF를 유발할 수 있는 명령어 인젝션의 핵심 방어 원리는 **`엄격한 입력값 검증`** 입니다. 허용할 것만 정의하는 화이트리스트 방식은 예측 불가능한 모든 악의적인 입력을 효과적으로 차단하는 가장 좋은 방법입니다. SSRF 관점에서는 서버가 생성하는 아웃바운드 트래픽은 기본적으로 신뢰하지 않고 요청 가능한 목적지를 화이트리스트로 관리하는 것이 근본적인 방어 전략입니다.
 
 <hr class="short-rule">
+
