@@ -534,6 +534,8 @@ h1 .signature-icon {
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color); /* 구분자 추가 */
+  padding-bottom: 15px; /* 구분자와 아래 내용 간의 간격 확보 */
 }
 
 /* --- 카테고리 페이지: 모든 링크의 기본 스타일 --- */
