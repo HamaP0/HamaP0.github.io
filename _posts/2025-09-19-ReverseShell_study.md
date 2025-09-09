@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "리버스 쉘 (Reverse Shell) 공부"
-date: 2025-09-20 17:00:00 +0900
+date: 2025-09-19 17:00:00 +0900
 categories: [시스템 해킹]
 ---
 
@@ -58,3 +58,4 @@ nc -lvnp 4444
     ```
 
 <hr class="short-rule">
+
