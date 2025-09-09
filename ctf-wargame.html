@@ -14,10 +14,10 @@ exclude_from_nav: true
     {% assign posts = site.categories[cat] %}
     {% if posts and posts.size > 0 %}
       {% assign filename = cat | replace: " ", "" %}
-      <li>
+      <li class="category-group-link">
         <a class="post-link"
            href="{{ '/category/' | append: filename | append: '.html' | relative_url }}">
-          {{ cat }} ({{ posts.size }})
+          {{ cat }} <span class="category-count-bracket">[{{ posts.size }}]</span>
         </a>
       </li>
     {% endif %}
