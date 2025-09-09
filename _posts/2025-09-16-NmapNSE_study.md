@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Nmap Scripting Engine (NSE) 사용법"
+title: "Nmap Scripting Engine (NSE) 공부"
 date: 2025-09-16 17:00:00 +0900
 categories: [해킹 툴]
 ---
@@ -44,32 +44,3 @@ nmap -sV --script=vuln 192.9.200.11
 이 정보는 [A06: 취약하고 오래된 구성 요소](https://hamap0.github.io/projects/owasp-top-10/2025/08/30/A06_Vulnerable-and-Outdated-Components.html) 분석의 직접적인 증거가 된다.
 
 <hr class="short-rule">
-
-
-
-
-
-### 시각 자료(이미지) 제작을 위한 스크립트
-
-#### **vuln 스크립트 스캔 결과 이미지 제작**
-
-1.  (준비) 스캔 대상 서버에 의도적으로 오래된 버전의 서비스를 설치하거나 Nmap의 테스트용 스크립트가 탐지할 수 있는 취약한 환경을 구성하면 더 극적인 결과를 얻을 수 있습니다. (예: 오래된 vsftpd 버전)
-2.  터미널에 `nmap -sV --script=vuln 192.9.200.11` 명령어를 실행합니다.
-3.  스캔이 완료되면 결과가 출력됩니다. 만약 실제 취약점이 발견되었다면 아래와 유사한 결과가 포함될 것입니다.
-    ```
-    PORT   STATE SERVICE VERSION
-    80/tcp open  http    Apache httpd 2.4.58 ((Ubuntu))
-    | http-vuln-cve2017-5638:
-    |   VULNERABLE:
-    |   Apache Struts2 S2-045
-    |     State: VULNERABLE (Exploitable)
-    |     IDs:  CVE:CVE-2017-5638
-    ...
-    ```
-4.  이 결과가 포함된 터미널 화면 전체를 스크린샷으로 찍습니다.
-5.  이미지 편집 프로그램을 사용하여 스크린샷을 엽니다.
-6.  `| http-vuln-cve2017-5638:` 부터 `CVE:CVE-2017-5638` 까지 `**취약점의 이름 · 상태(VULNERABLE) · CVE 번호**`가 포함된 블록 전체에 명확한 하이라이트를 적용합니다.
-7.  만약 발견된 취약점이 없더라도 `-sV` 스캔 결과와 함께 `Host is up` 부분이 보이도록 스크린샷을 찍어 게시글에 삽입할 수 있습니다.
-8.  수정된 이미지를 저장하여 게시글에 삽입합니다.
-
----
