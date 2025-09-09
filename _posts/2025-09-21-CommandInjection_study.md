@@ -51,7 +51,7 @@ categories: [웹 해킹]
     # DVWA 입력값:
     127.0.0.1; echo <Base64 Encoded String> | base64 -d | bash
     ```
-[여기에 Base64 인코딩을 이용한 RCE 성공 이미지 삽입]
+   ![CommandinjectionBase64](/assets/images/Cinjection_1.png)
 
 이 방식은 필터링이 복잡할수록 유용하며 `A01` 보고서에서 서버 제어권을 획득할 때 사용된 핵심 기법이다.
 
