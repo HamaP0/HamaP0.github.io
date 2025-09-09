@@ -9,23 +9,23 @@ title: Study
 
 <ul class="category-list">
 
-  <!-- 1. '보안 공부' 상위 카테고리 그룹 링크 -->
+  <!-- 1. '보안 공부' 상위 카테고리 그룹 링크 (HTML 구조 단순화) -->
   <li class="category-group-link">
     {% assign tech_categories = "웹 기술|웹 해킹|앱 해킹|시스템 해킹|해킹 툴|NGFW" | split: "|" %}
     <a class="post-link" href="{{ '/security-study.html' | relative_url }}">
-      <span class="category-title-text">보안 공부</span> <span class="category-count-bracket">[{{ tech_categories | size }}]</span>
+      보안 공부<span class="category-count-bracket">[{{ tech_categories | size }}]</span>
     </a>
   </li>
 
-  <!-- 2. 'CTF/Wargame' 상위 카테고리 그룹 링크 -->
+  <!-- 2. 'CTF/Wargame' 상위 카테고리 그룹 링크 (HTML 구조 단순화) -->
   <li class="category-group-link">
     {% assign ctf_categories = "bandit|드림핵|OWASP-JuiceShop|TryHackMe|PortSwigger|OvertheWire|Rcity|Pwnable" | split: "|" %}
     <a class="post-link" href="{{ '/ctf-wargame.html' | relative_url }}">
-      <span class="category-title-text">CTF/Wargame</span> <span class="category-count-bracket">[{{ ctf_categories | size }}]</span>
+      CTF/Wargame<span class="category-count-bracket">[{{ ctf_categories | size }}]</span>
     </a>
   </li>
   
-  <!-- 3. '자격증' 독립 카테고리 -->
+  <!-- 3. '자격증' 독립 카테고리 (기존 구조 유지) -->
   {% assign independent_categories = "자격증" | split: "|" %}
   {% for cat in independent_categories %}
     {% assign posts_in_cat = site.categories[cat] %}
