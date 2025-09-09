@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "A07:2021 - Identification and Authentication Failures (식별 및 인증 실패) 분석 보고서"
+title: "A07:2021 - Identification and Authentication Failures <br> (식별 및 인증 실패) 분석 보고서"
 date: 2025-08-31 17:00:00 +0900
 categories: [OWASP Top 10]
 ---
 ---
 
-### **프로젝트 7. A07:2021 - Identification and Authentication Failures <br> (식별 및 인증 실패) 분석 보고서**
+### **프로젝트 7. A07:2021 - Identification and Authentication Failures (식별 및 인증 실패) 분석 보고서**
 
 ### 1. 취약점 개요
 
@@ -118,5 +118,6 @@ categories: [OWASP Top 10]
    결론적으로 인증 시스템 방어의 핵심은 **`공격 비용의 극대화`** 입니다. 계정 잠금 · 응답 시간 지연(Rate Limiting) · CAPTCHA 등의 방어책을 통해 자동화된 공격의 시간 및 리소스 비용을 비약적으로 증가시켜 공격의 실효성을 없애야 합니다.
 
 <hr class="short-rule">
+
 
 
