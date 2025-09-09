@@ -30,7 +30,7 @@ Windows 환경에서는 **PuTTY**라는 프로그램을 사용하면 아주 편�
 
 ### PuTTY 접속 방법
 
-1.  PuTTY를 실행하고, 아래와 같이 접속 정보를 입력합니다.
+1.  PuTTY를 실행하고 아래와 같이 접속 정보를 입력합니다.
     - **Host Name (or IP address):** `bandit.labs.overthewire.org`
     - **Port:** `2220`
     - **Connection type:** `SSH` (기본값)
