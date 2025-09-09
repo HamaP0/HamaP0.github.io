@@ -1,4 +1,37 @@
+---
+layout: post
+title: "Nmap 공부"
+date: 2025-09-04 17:00:00 +0900
+categories: [해킹 툴]
+---
 
+### 1. Nmap 개요
+
+Nmap은 네트워크 스캐너이다. IP 패킷을 분석해 호스트 정보와 서비스 등을 파악하는 오픈소스 도구이다.
+
+---
+
+### 2. 스캔 타입별 결과 비교
+
+#### **기본 TCP 스캔**
+가장 기본적인 스캔. 대상 IP의 열린 포트와 포트가 사용하는 서비스를 보여준다.
+```bash
+nmap 192.9.200.11
+```
+**결과**
+```
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+```
+
+#### **-sV (Version Scan)**
+기본 스캔에 서비스의 상세 버전을 추가로 확인한다.
+```bash
+nmap -sV 192.9.200.11
+```
+**결과**
+```
 PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 9.6p1 Ubuntu 1 (protocol 2.0)
 80/tcp open  http    Apache httpd 2.4.58 ((Ubuntu))
@@ -16,9 +49,15 @@ nmap -sC 192.9.200.11
 ```
 PORT   STATE SERVICE
 22/tcp open  ssh
+| ssh-hostkey: 
+|   256 34:d0:49:d9:fc:53:38:1d:49:64:60:f0:39:22:72:77 (ECDSA)
+|_  256 d5:04:7d:b5:de:35:d5:8a:93:34:f5:6a:12:c4:54:ea (ED25519)
 80/tcp open  http
-|_http-server-header: Apache/2.4.58 ((Ubuntu))
-|_http-title: DVWA - Damn Vulnerable Web Application
+| http-ls: Volume /
+| SIZE  TIME              FILENAME
+| -     2025-09-08 13:43  dvwa/
+|_
+|_http-title: Index of /
 ```
    ![NmapsC](/assets/images/Nmap_2.png)
 
