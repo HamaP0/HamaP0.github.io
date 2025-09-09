@@ -39,7 +39,7 @@ nc -lvnp 4444
 
 처음 획득한 쉘은 자동 완성이나 `Ctrl+C`가 동작하지 않는 불안정한 쉘(Dumb Shell)이다. 이를 상호작용이 가능한 완전한 TTY 쉘로 업그레이드하는 과정이 필요하다.
 
-[여기에 쉘 안정화 전/후 비교 이미지 삽입]
+   ![Reverseshell](/assets/images/Reverse_1.png)
 
 1.  **TTY 쉘 생성:**
     ```bash
@@ -58,4 +58,3 @@ nc -lvnp 4444
     ```
 
 <hr class="short-rule">
-
