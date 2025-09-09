@@ -17,7 +17,7 @@ HTTP는 상태를 저장하지 않는(Stateless) 특성이 있다. 각 요청은
 
 HTTP 통신은 요청(Request)과 응답(Response) 메시지로 구성된다. 이 메시지 구조를 이해하는 것은 Burp Suite로 패킷을 분석할 때 가장 기본이 된다.
 
-[여기에 HTTP 요청/응답 메시지 구조 이미지 삽입]
+   ![HttpRepeater](/assets/images/Http_1.png)
 
 #### **요청 메시지 (Request)**
 1.  **시작 줄 (Start Line)**: 요청의 종류 · 대상 · 프로토콜 버전을 나타낸다.
