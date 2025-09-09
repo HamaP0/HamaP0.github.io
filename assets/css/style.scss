@@ -532,7 +532,7 @@ h1 .signature-icon {
 
 /* 
    ==========================================================================
-   (신규 추가) 요청사항 반영을 위한 CSS (v4 - 최종)
+   (신규 추가) 요청사항 반영을 위한 CSS (v5 - 최종)
    ==========================================================================
 */
 
@@ -552,21 +552,22 @@ h1 .signature-icon {
   margin-bottom: 15px;
 }
 
-/* --- 카테고리 페이지: 제목 링크 스타일 (폰트 크기 조정) --- */
+/* --- 카테고리 페이지: 제목 링크 스타일 --- */
 .category-list a {
   font-size: 1.6em;
   font-weight: 600;
   padding: 5px 0;
 }
+/* --- a 태그 자체의 hover 효과는 투명하게 만들어 이중 적용 방지 --- */
 .category-list a:hover {
-  background-color: transparent; /* a 태그 자체의 배경색은 제거 */
+  background-color: transparent;
 }
 
 /* --- 초록색/금색 카테고리 제목 텍스트 부분 --- */
 .category-title-text {
   padding: 5px 10px;
   border-radius: 4px;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s; /* 애니메이션 효과 통합 */
 }
 
 /* --- 초록색 카테고리 hover 효과 (텍스트 부분만) --- */
@@ -588,7 +589,7 @@ h1 .signature-icon {
   padding-left: 10px;
 }
 
-/* --- 카테고리 페이지: 날짜 범위 스타일 (한 줄 표시용) --- */
+/* --- 카테고리 페이지: 날짜 범위 스타일 --- */
 .post-date-range {
   font-size: 1em;
   color: var(--footer-text);
@@ -596,14 +597,13 @@ h1 .signature-icon {
   padding-left: 20px;
 }
 
-/* --- 금색 카테고리: [개수] 부분 스타일 (폰트 크기 통일) --- */
+/* --- 금색 카테고리: [개수] 부분 스타일 (간격 축소) --- */
 .category-count-bracket {
-  /* font-size 제거 -> 부모 a태그와 동일한 크기로 자동 설정 */
   font-weight: normal;
-  padding-left: 10px;
+  padding-left: 5px; /* 간격을 10px -> 5px로 줄임 */
 }
 
-/* --- 게시글 목록 페이지(category.html): li를 flex 컨테이너로 --- */
+/* --- 게시글 목록 페이지(category.html 등): li를 flex 컨테이너로 --- */
 .post-list li {
   display: flex;
   justify-content: space-between;
@@ -618,8 +618,11 @@ h1 .signature-icon {
   color: var(--text-color);
   font-size: 1.1em;
 }
+.post-list a.post-link:hover {
+  background-color: rgba(137, 178, 246, 0.15); /* 일반적인 hover 효과 추가 */
+}
 
-/* --- 게시글 목록 페이지: 날짜 스타일 (우측 정렬용) --- */
+/* --- 게시글 목록 페이지: 날짜 스타일 --- */
 .post-list .post-meta {
   font-size: 0.9em;
   color: var(--footer-text);
