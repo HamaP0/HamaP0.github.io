@@ -37,7 +37,7 @@ categories: [해킹 툴]
 ```bash
 nmap -sV --script=vuln 192.9.200.11
 ```
-[여기에 vuln 스크립트 스캔 결과 이미지 삽입]
+   ![Nmap2vuln](/assets/images/Nmap2_1.png)
 
 이 명령을 실행하면 Nmap은 스캔된 서비스(예: Apache 2.4.58) 버전에 해당하는 `vuln` 카테고리의 스크립트들을 찾아 실행한다. 만약 해당 버전에 알려진 취약점이 있고 Nmap 스크립트가 이를 지원한다면 위 결과처럼 관련 CVE 번호와 함께 취약점의 상태(VULNERABLE)가 출력된다.
 
