@@ -49,7 +49,7 @@ Wireshark를 실행하고 캡처할 네트워크 인터페이스(예: `eth0` 또
 3.  Wireshark에서 캡처를 중지한다.
 4.  디스플레이 필터에 `icmp`를 입력한다.
 
-[여기에 ICMP 패킷 분석 화면 스크린샷 삽입]
+   ![WiresharkIcmp](/assets/images/Wire_1.png)
 
 결과적으로 두 개의 ICMP 패킷이 나타난다. 하나는 내 PC가 Target 서버로 보낸 `Request`(요청)이고 다른 하나는 Target 서버가 응답한 `Reply`(응답)이다. 이 과정을 통해 간단한 `ping` 명령이 실제 네트워크에서는 어떤 패킷 형태로 오고 가는지 직접 확인할 수 있다.
 
@@ -61,11 +61,11 @@ Wireshark를 실행하고 캡처할 네트워크 인터페이스(예: `eth0` 또
 2.  캡처를 중지하고 필터에 `http.request.method == "POST"` 를 입력한다.
 3.  필터링된 POST 패킷의 상세 창에서 `HTML Form URL Encoded` 부분을 확장하면 `username`과 `password` 값을 평문으로 확인할 수 있다.
 
-[여기에 HTTP POST 패킷 상세 분석 이미지 삽입]
+   ![WiresharkHttppost](/assets/images/Wire_2.png)
 
 4.  해당 패킷에서 `Follow TCP Stream` 기능을 사용하면 `username=admin&password=password` 와 같은 전송 데이터를 더 명확하게 확인할 수 있다.
 
-[여기에 Follow TCP Stream 결과 이미지 삽입]
+   ![WiresharkFollowtcpstream](/assets/images/Wire_3.png)
 
 이 과정을 통해 암호화되지 않은 HTTP 통신은 중간에서 얼마든지 감청될 수 있다는 것을 명확히 확인할 수 있다.
 
@@ -88,7 +88,7 @@ Wireshark를 실행하고 캡처할 네트워크 인터페이스(예: `eth0` 또
 1.  Wireshark를 실행하고 `Edit > Preferences > Protocols > TLS` 메뉴로 이동한다.
 2.  `(Pre)-Master-Secret log filename` 필드 옆의 `Browse...` 버튼을 클릭하여 위에서 생성한 키 로그 파일(`~/Desktop/ssl_key.log`)의 경로를 지정한다.
 
-[여기에 Wireshark TLS 설정 화면 스크린샷 삽입]
+   ![WiresharkTls](/assets/images/Wire_4.png)
 
 #### **3. 패킷 캡처 및 복호화 확인**
 1.  Wireshark에서 패킷 캡처를 시작한다.
@@ -96,7 +96,7 @@ Wireshark를 실행하고 캡처할 네트워크 인터페이스(예: `eth0` 또
 3.  캡처를 중지하고 디스플레이 필터에 `http` 를 입력한다.
 4.  설정이 올바르게 되었다면 이전에는 `TLSv1.2` 또는 `Application Data`로만 표시되던 패킷들이 `HTTP/1.1` 또는 `HTTP/2` 프로토콜로 식별되며 패킷 상세 창 하단에 `Decrypted TLS` 탭이 추가된 것을 확인할 수 있다.
 
-[여기에 복호화된 HTTPS 패킷 목록 및 Decrypted TLS 탭 이미지 삽입]
+   ![WiresharkHttps](/assets/images/Wire_5.png)
 
 `Decrypted TLS` 탭을 선택하면 암호화되었던 데이터가 평문(Plaintext)으로 표시되어 `HTTP` 패킷과 동일하게 `username=admin&password=password`와 같은 민감한 정보를 분석할 수 있게 된다.
 
