@@ -40,6 +40,7 @@ categories: [웹 해킹]
   }
 ?>
 ```
+   ![FileuploadWebshell](/assets/images/FUpload_1.png)
 
 #### **개선된 웹쉘 (간이 파일 브라우저)**
 조금 더 발전된 형태의 웹쉘은 단순히 명령어를 실행하는 것을 넘어 서버의 파일 시스템을 탐색하는 기능을 포함할 수 있다. 아래 코드는 `path` 파라미터로 전달된 경로의 파일과 디렉터리 목록을 보여주는 간단한 파일 브라우저 역할을 한다.
@@ -90,6 +91,7 @@ categories: [웹 해킹]
 1.  서버의 필터링 로직이 `Content-Type`만 검증했다면, 파일은 정상적으로 업로드되고 저장 경로(예: `../../hackable/uploads/shell.php`)가 출력된다.
 2.  브라우저에서 해당 경로에 `?cmd=whoami` 파라미터를 추가하여 접속한다.
 3.  화면에 `www-data`가 출력되면 웹쉘 업로드 및 명령어 실행에 성공한 것이다.
+   ![FileuploadBurp](/assets/images/Fupload_2.png)
 
 ---
 
