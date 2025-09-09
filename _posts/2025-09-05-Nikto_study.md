@@ -46,27 +46,3 @@ Nikto 스캔 결과에서 주목할 만한 주요 정보는 다음과 같다.
 이처럼 Nmap이 알려준 버전 정보 외에도 실제 공격에 직접적인 단서가 될 수 있는 구체적인 취약점들을 다수 발견할 수 있다.
 
 <hr class="short-rule">
-
-
-
-
-
-### 시각 자료(이미지) 제작을 위한 스크립트
-
-위 게시글의 `[여기에 스캔 결과 하이라이트 이미지 삽입]` 부분에 들어갈 이미지를 만드는 절차입니다.
-
-1.  터미널에 `nikto -h 192.9.200.11 -p 80` 명령을 실행하고 결과가 나오면 터미널 창 전체를 스크린샷으로 찍어 **`Nikto결과.png`** 로 저장합니다.
-2.  이미지 편집 프로그램(그림판, 포토샵 등)으로 `Nikto결과.png` 파일을 엽니다.
-3.  아래의 각 항목에 해당하는 줄에 **각기 다른 색상**으로 반투명한 사각형 하이라이트를 줍니다. 이렇게 하면 각 취약점의 종류를 시각적으로 구분하기 좋습니다.
-    *   **서버 정보 (초록색):**
-        `+ Server: Apache/2.4.58 ((Ubuntu))`
-    *   **보안 헤더 누락 (파란색):**
-        `+ The anti-clickjacking X-Frame-Options header is not present.`
-        `+ The X-XSS-Protection header is not defined...`
-        `+ The X-Content-Type-Options header is not set...` (이 세 줄을 하나의 큰 박스로 묶어도 좋습니다)
-    *   **중요 페이지 노출 (빨간색):**
-        `+ OSVDB-3092: /setup.php: This file reveals detailed information...`
-    *   **기본 파일/디렉터리 노출 (주황색):**
-        `+ OSVDB-3233: /icons/README: Apache default file found.`
-        `+ OSVDB-3268: /config/: Directory indexing found.`
-4.  하이라이트가 적용된 이미지를 저장하여 게시글에 삽입합니다.
