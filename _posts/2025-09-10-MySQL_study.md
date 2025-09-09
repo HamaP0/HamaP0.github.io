@@ -34,7 +34,7 @@ sudo mysql -u root -p
 
 DVWA의 데이터베이스 구조를 직접 확인하는 과정은 SQL Injection과 같은 공격을 이해하는 데 도움이 된다.
 
-[여기에 DVWA 데이터베이스 구조 확인 과정 터미널 스크린샷 삽입]
+   ![MysqlDatabase](/assets/images/Mysql_1.png)
 
 1.  **데이터베이스 선택:**
     `USE dvwa;`
