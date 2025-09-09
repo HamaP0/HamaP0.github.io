@@ -35,7 +35,7 @@ DocumentRoot /var/www/html
 #### **Options Indexes**
 특정 디렉터리에 `index.html`이나 `index.php` 같은 인덱스 파일이 없을 때 해당 디렉터리의 파일 목록을 보여줄지 여부를 결정한다. 이 기능이 활성화되어 있으면 의도치 않은 파일이 노출될 수 있다.
 
-*   **`Options +Indexes` 또는 `Options Indexes`**: 디렉터리 리스팅 허용
+*   **`Options +Indexes` · `Options Indexes`**: 디렉터리 리스팅 허용
 *   **`Options -Indexes`**: 디렉터리 리스팅 차단 (보안 권장 설정)
 
 [여기에 디렉터리 리스팅 활성화/비활성화 비교 이미지 삽입]
@@ -83,3 +83,4 @@ Apache 로그 파일, 특히 접근 로그 **`access.log`** 는 정상적인 서
     로그를 통해 공격자가 어떤 IP에서 어떤 명령어를 주입하려고 시도했는지 파악할 수 있다. 이러한 로그는 침해 사고 분석 시 공격자의 행위를 재구성하는 데 결정적인 역할을 한다.
 
 <hr class="short-rule">
+
