@@ -6,7 +6,7 @@ categories: [OWASP Top 10]
 ---
 ---
 
-### **프로젝트 8. A08:2021 - Software and Data Integrity Failures <br> (소프트웨어 및 데이터 무결성 실패) 분석 보고서**
+### **프로젝트 8. A08:2021 - Software and Data Integrity Failures (소프트웨어 및 데이터 무결성 실패) 분석 보고서**
 
 ### 1. 취약점 개요
 
@@ -110,4 +110,5 @@ categories: [OWASP Top 10]
    결론적으로 데이터 무결성 실패의 핵심 방어 원리는 **`안전한 데이터 포맷의 선택`** 입니다. 객체 직렬화처럼 코드 실행 가능성이 내포된 데이터 포맷의 사용을 지양하고 JSON처럼 데이터와 코드가 명확히 분리된 포맷을 사용하는 것이 설계 단계에서 위험을 원천적으로 제거하는 가장 좋은 방법입니다.
 
 <hr class="short-rule">
+
 
