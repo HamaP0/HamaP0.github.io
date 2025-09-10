@@ -534,8 +534,8 @@ h1 .signature-icon {
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 15px;
-  border-bottom: 1px solid var(--border-color); /* 구분자 추가 */
-  padding-bottom: 15px; /* 구분자와 아래 내용 간의 간격 확보 */
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
 }
 
 /* --- 카테고리 페이지: 모든 링크의 기본 스타일 --- */
@@ -543,31 +543,30 @@ h1 .signature-icon {
   font-size: 1.6em;
   font-weight: 600;
   padding: 5px 0;
-  border-radius: 4px;
-  transition: background-color 0.2s, color 0.2s;
 }
 .category-list a:hover {
   background-color: transparent;
 }
 
-/* --- 초록색 카테고리 제목 텍스트 부분 (hover 효과 대상) --- */
+/* --- 초록색/금색 카테고리 제목 텍스트 부분 (여백과 hover 효과를 모두 담당) --- */
 .category-title-text {
   padding: 5px 10px;
   border-radius: 4px;
   transition: background-color 0.2s, color 0.2s;
 }
+
+/* --- 초록색 카테고리 hover 효과 --- */
 .category-list li:not(.category-group-link) a:hover .category-title-text {
   background-color: var(--category-color);
   color: var(--bg-color);
 }
 
-/* --- 금색 카테고리: a 태그 전체에 hover 효과 직접 적용 (2중 배경 문제 해결) --- */
+/* --- 금색 카테고리 기본 색상 및 hover 효과 --- */
 .category-list .category-group-link a {
-  padding: 5px 10px;
-  color: var(--emphasis-color); /* 기본 색상을 골드로 지정 */
+  color: var(--emphasis-color);
 }
-.category-list .category-group-link a:hover {
-  background-color: var(--emphasis-color); /* 한 번에 배경색 적용 */
+.category-list .category-group-link a:hover .category-title-text {
+  background-color: var(--emphasis-color);
   color: var(--bg-color);
 }
 
