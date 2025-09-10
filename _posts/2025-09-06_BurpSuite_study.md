@@ -47,6 +47,6 @@ Burp Suite를 사용하려면 먼저 브라우저의 트래픽이 Burp Suite를 
 3.  `Payloads` 탭에서 주입할 값 목록(예: 비밀번호 사전 파일)을 설정한다.
 4.  공격을 시작하면 각 페이로드에 대한 서버의 응답 코드나 길이(Length)를 비교하여 유의미한 차이를 찾아낼 수 있다.
 
-   ![BurpIntruder](/assets/images/Burp_3.png)
+   ![BurpIntruder](/assets/images/A04_P1-1.png)
 
 <hr class="short-rule">
