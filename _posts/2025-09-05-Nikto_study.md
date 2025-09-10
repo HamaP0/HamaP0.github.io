@@ -39,9 +39,9 @@ nikto -h 192.9.200.11 -p 80
 **결과 분석**
 Nikto 스캔 결과에서 주목할 만한 주요 정보는 다음과 같다.
 *   **웹 서버 버전 정보:** `Apache/2.4.58`
-*   **주요 보안 헤더 누락:** `X-Frame-Options`, `X-XSS-Protection`
-*   **불필요한 기본 파일 및 디렉터리 노출:** `/icons/README`, `/config/`
-*   **중요 정보 노출 가능성이 있는 페이지:** `setup.php`
+*   **주요 보안 헤더 누락:** `anti-clickjacking X-Frame-Options header`, `X-Content-Type-Options header`
+*   **디렉토리 인덱싱 노출:** `//`, `/%2e/`
+*   **허용된 HTTP 메소드:** `OPTIONS`, `HEAD`, `GET`, `POST`
 
 이처럼 Nmap이 알려준 버전 정보 외에도 실제 공격에 직접적인 단서가 될 수 있는 구체적인 취약점들을 다수 발견할 수 있다.
 
