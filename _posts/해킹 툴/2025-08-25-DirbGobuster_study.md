@@ -59,17 +59,3 @@ gobuster dir -u http://192.9.200.11/dvwa/ -w /usr/share/wordlists/dirb/common.tx
 <hr class="short-rule">
 
 ### 시각 자료(이미지) 제작을 위한 스크립트
-
-
-
-
-
-#### **Gobuster 스캔 결과 이미지 제작**
-
-1.  터미널에 `gobuster dir -u http://192.9.200.11/dvwa/ -w /usr/share/wordlists/dirb/common.txt` 명령어를 실행한다.
-2.  스캔이 진행되고 결과가 출력된다. `phpinfo.php`나 `config` 와 같이 흥미로운 경로들이 발견된 상태에서 터미널 화면 전체를 스크린샷으로 찍는다.
-3.  이미지 편집 프로그램을 사용하여 스크린샷을 연다.
-4.  두 부분에 하이라이트를 적용하여 원인과 결과를 명확히 보여준다.
-    *   **원인:** 실행한 `gobuster` 명령어 전체
-    *   **결과:** 출력된 결과 목록 중 `phpinfo.php`와 같이 중요한 정보가 될 수 있는 경로들
-5.  수정된 이미지를 저장하여 게시글에 삽입한다.
