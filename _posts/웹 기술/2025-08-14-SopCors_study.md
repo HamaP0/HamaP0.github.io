@@ -9,10 +9,11 @@ categories: [웹 기술]
 
 SOP는 다른 출처의 리소스로부터 문서를 보호하는 브라우저 보안 정책이며 CORS는 특정 교차 출처 요청을 안전하게 허용하는 메커니즘이다.
 
-현대 웹은 여러 출처(Origin)의 리소스를 조합하여 하나의 페이지를 구성한다. 만약 아무런 제약이 없다면 악의적인 사이트(`evil.com`)가 사용자의 브라우저를 이용해 사용자가 로그인해 있는 은행 사이트(`bank.com`)의 정보를 읽어갈 수 있다. 이를 방지하기 위해 브라우저는 **SOP(Same-Origin Policy, 동일 출처 정책)**라는 보안 모델을 가지고 있으며 이 정책을 안전하게 완화하기 위한 메커니즘이 **CORS(Cross-Origin Resource Sharing, 교차 출처 리소스 공유)**이다.
+현대 웹은 여러 출처(Origin)의 리소스를 조합하여 하나의 페이지를 구성한다. 만약 아무런 제약이 없다면 악의적인 사이트가 사용자의 브라우저를 이용해 사용자가 로그인해 있는 은행 사이트의 정보를 읽어갈 수 있다. 이를 방지하기 위해 브라우저는 **SOP**`Same-Origin Policy 동일 출처 정책`라는 보안 모델을 가지고 있으며 이 정책을 안전하게 완화하기 위한 메커니즘이 **CORS**`Cross-Origin Resource Sharing 교차 출처 리소스 공유`이다.
+
 ### 2. SOP (Same-Origin Policy)
 
-SOP는 '같은 출처에서 온 리소스만 상호작용할 수 있다'는 규칙이다. 여기서 **'출처(Origin)'**는 다음 세 가지 요소의 조합으로 결정된다.
+SOP는 '같은 출처에서 온 리소스만 상호작용할 수 있다'는 규칙이다. 여기서 **`출처(Origin)`**는 다음 세 가지 요소의 조합으로 결정된다.
 
 1.  **프로토콜 (Protocol):** `http`, `https`
 2.  **호스트 (Host):** `example.com`, `sub.example.com`
@@ -20,7 +21,7 @@ SOP는 '같은 출처에서 온 리소스만 상호작용할 수 있다'는 규�
 
 이 세 가지가 모두 동일해야 '동일 출처'로 인정된다. 예를 들어 `https://example.com` 에서 로드된 스크립트는 `https://api.example.com` 이나 `http://example.com` 의 리소스를 기본적으로 읽어올 수 없다.
 
-SOP는 다른 출처의 리소스를 **불러오는 것(Embedding)**은 허용하지만 그 내용을 **읽는 것(Reading)**은 차단한다.
+SOP는 다른 출처의 리소스를 **`불러오는 것(Embedding)`**은 허용하지만 그 내용을 **`읽는 것(Reading)`**은 차단한다.
 
 ### 3. CORS (Cross-Origin Resource Sharing)
 
@@ -48,4 +49,4 @@ CORS는 서버가 HTTP 헤더를 통해 자신의 리소스를 다른 출처와 
 *   **CSRF (Cross-Site Request Forgery)와의 관계**:
     SOP는 다른 출처로 요청을 보내는 것 자체를 막지는 않는다. 따라서 `<img>` 태그나 `<form>` 제출 등을 이용해 사용자의 의도와 무관하게 서버의 상태를 변경하는 요청(글쓰기, 삭제 등)을 보내는 CSRF 공격은 여전히 가능하다. CORS는 리소스를 '읽는' 권한을 제어하는 것이 주 목적이다.
 
-<hr class="short-rule"
+<hr class="short-rule">
