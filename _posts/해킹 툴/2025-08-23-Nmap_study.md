@@ -88,9 +88,3 @@ nmap -sV --script=vuln 192.9.200.11
 이 명령을 실행하면 스캔된 서비스 버전에 해당하는 `vuln` 스크립트가 실행된다. 결과에 관련 CVE 번호와 `VULNERABLE` 상태가 출력될 경우 이는 `A06` 분석의 직접적인 증거가 된다.
 
 <hr class="short-rule">
-
-
-
-
-   ![Nmap2vuln](/assets/images/Nmap_3.png)
-   제작해야함
