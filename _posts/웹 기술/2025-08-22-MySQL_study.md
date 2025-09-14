@@ -45,7 +45,7 @@ DVWA의 데이터베이스 구조를 직접 확인하는 과정은 SQL Injection
 
 3.  **`users` 테이블 구조 확인:**
     `DESC users;`
-    (결과로 `user_id`, `user`, `password` 등 컬럼 정보가 나타난다.)
+    (결과로 `user_id` · `user` · `password` 등 컬럼 정보가 나타난다.)
 
 4.  **`users` 테이블 데이터 조회:**
     `SELECT user, password FROM users;`

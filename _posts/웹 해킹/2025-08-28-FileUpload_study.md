@@ -88,7 +88,7 @@ categories: [웹 해킹]
 3.  `Forward` 버튼을 눌러 변조된 요청을 서버로 전송한다.
 
 #### **3. 업로드 확인 및 웹쉘 실행**
-1.  서버의 필터링 로직이 `Content-Type`만 검증했다면, 파일은 정상적으로 업로드되고 저장 경로(예: `../../hackable/uploads/shell.php`)가 출력된다.
+1.  서버의 필터링 로직이 `Content-Type`만 검증했다면 파일은 정상적으로 업로드되고 저장 경로(예: `../../hackable/uploads/shell.php`)가 출력된다.
 2.  브라우저에서 해당 경로에 `?cmd=whoami` 파라미터를 추가하여 접속한다.
 3.  화면에 `www-data`가 출력되면 웹쉘 업로드 및 명령어 실행에 성공한 것이다.
    ![FileuploadBurp](/assets/images/Fupload_2.png)
