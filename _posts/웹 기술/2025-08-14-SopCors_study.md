@@ -48,26 +48,4 @@ CORS는 서버가 HTTP 헤더를 통해 자신의 리소스를 다른 출처와 
 *   **CSRF (Cross-Site Request Forgery)와의 관계**:
     SOP는 다른 출처로 요청을 보내는 것 자체를 막지는 않는다. 따라서 `<img>` 태그나 `<form>` 제출 등을 이용해 사용자의 의도와 무관하게 서버의 상태를 변경하는 요청(글쓰기, 삭제 등)을 보내는 CSRF 공격은 여전히 가능하다. CORS는 리소스를 '읽는' 권한을 제어하는 것이 주 목적이다.
 
-<hr class="short-rule">
-
-
-
-
-### 시각 자료(이미지) 제작을 위한 스크립트
-
-#### **SOP 오류 및 CORS 성공 비교 이미지 제작**
-
-이 이미지를 제작하려면 로컬에서 간단한 웹 서버를 실행해야 한다.
-
-1.  **준비:** `index.html` 파일과 `server.py` 파일을 생성한다.
-    *   `index.html`: `fetch('http://localhost:8000/data')` 코드를 포함하는 간단한 HTML.
-    *   `server.py`: `/data` 경로로 요청이 오면 JSON을 응답하는 간단한 Python Flask 또는 http.server. 'Access-Control-Allow-Origin' 헤더를 추가/제거할 수 있도록 준비한다.
-2.  **"Before" 이미지 (SOP 오류):**
-    *   `server.py`에서 CORS 헤더를 비활성화한 상태로 실행한다.
-    *   브라우저에서 `index.html`을 열고 개발자 도구(F12)의 콘솔 탭을 확인한다.
-    *   콘솔에 나타난 빨간색 CORS 오류 메시지 화면을 스크린샷으로 찍는다.
-3.  **"After" 이미지 (CORS 성공):**
-    *   `server.py`에서 `Access-Control-Allow-Origin` 헤더를 활성화하고 재시작한다.
-    *   `index.html`을 새로고침한다.
-    *   콘솔에 서버로부터 받은 JSON 데이터가 정상적으로 출력된 화면을 스크린샷으로 찍는다.
-4.  **최종 편집:** 두 스크린샷을 "Before (SOP Blocked)"와 "After (CORS Allowed)" 레이블을 붙여 나란히 배치하고, 각 화면의 핵심 결과(오류 메시지, 성공 데이터)에 하이라이트를 적용하여 `SOP_CORS_Compare.png`로 저장한다.
+<hr class="short-rule"
