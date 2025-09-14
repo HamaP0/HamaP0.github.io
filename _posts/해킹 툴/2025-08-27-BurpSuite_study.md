@@ -50,37 +50,3 @@ Burp Suite를 사용하려면 먼저 브라우저의 트래픽이 Burp Suite를 
    ![BurpIntruder](/assets/images/A04_P1-1.png)
 
 <hr class="short-rule">
-
-
-
-
-
-### 시각 자료(이미지) 제작을 위한 스크립트
-
-#### **이미지 1 제작 (Proxy Intercept)**
-
-1.  Burp Suite와 브라우저 프록시 설정을 마칩니다.
-2.  DVWA 로그인 페이지로 이동합니다.
-3.  Burp Suite의 `Proxy` > `Intercept` 탭에서 `Intercept is on` 상태로 둡니다.
-4.  DVWA 로그인 페이지에서 아무 아이디/비밀번호나 입력하고 `Login` 버튼을 누릅니다.
-5.  Burp Suite에 잡힌 `POST /DVWA/login.php` 요청 화면을 스크린샷으로 찍습니다.
-6.  이미지에서 `username=admin&password=password`와 같은 파라미터 부분에 하이라이트를 적용하여 저장합니다.
-
-#### **이미지 2 제작 (Repeater)**
-
-1.  위에서 잡은 로그인 요청을 마우스 오른쪽 클릭하여 `Send to Repeater`를 선택합니다.
-2.  `Repeater` 탭으로 이동합니다.
-3.  왼쪽 요청(Request) 패널에서 `password=password` 값을 `password=wrongpassword` 와 같이 다른 값으로 수정합니다.
-4.  `Send` 버튼을 눌러 요청을 보냅니다.
-5.  오른쪽 응답(Response) 패널에 `Login failed` 메시지가 포함된 HTML이 나타납니다.
-6.  요청 패널의 수정된 비밀번호 부분과, 응답 패널의 `Login failed` 부분에 각각 하이라이트를 적용하여 전체 화면을 스크린샷으로 찍고 저장합니다.
-
-#### **이미지 3 제작 (Intruder)**
-
-1.  로그인 요청을 마우스 오른쪽 클릭하여 `Send to Intruder`를 선택합니다.
-2.  `Intruder` > `Positions` 탭으로 이동합니다.
-3.  오른쪽의 `Clear §` 버튼을 눌러 자동 지정된 위치를 모두 지웁니다.
-4.  `password=` 뒤의 값(예: `password`)만 드래그하여 선택하고, `Add §` 버튼을 누릅니다.
-5.  `Payloads` 탭으로 이동하여 `Payload type`을 `Simple list`로 두고, 아래 `Payload Options`에 `password`, `123456`, `letmein` 등 몇 가지 추측값을 입력합니다.
-6.  `Start attack` 버튼을 누릅니다.
-7.  새로운 공격 결과 창이 나타나면, 다른 응답과 `Length` 값이 다른 성공적인 응답(예: `letmein`) 줄에 하이라이트를 적용하여 스크린샷으로 찍고 저장합니다.
