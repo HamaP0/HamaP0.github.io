@@ -80,6 +80,9 @@ uid=1000(user) gid=1000(user) euid=0(root) groups=1000(user)
 # whoami
 root
 ```
+
+  ![LinpeasRoot](/assets/images/Lin_3.png)
+
 *   명령어를 실행하면 프롬프트는 그대로지만 **`-p`** 옵션으로 인해 유효 사용자 ID(`euid`)가 `root`로 설정된 쉘이 실행된다.
 *   **`id`** 명령어를 실행하면 `euid=0(root)`로 표시되어 권한이 상승했음을 확인할 수 있다.
 *   **`whoami`** 명령어 역시 `root`를 반환한다.

