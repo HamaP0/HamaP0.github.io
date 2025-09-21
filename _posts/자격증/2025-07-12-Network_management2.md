@@ -6,74 +6,35 @@ categories: [자격증]
 tags: [네트워크 관리사, ICQA, network]
 ---
 
-한국정보통신자격협회(ICQA) 네트워크 관리사 2급 자격증을 취득했다. 필기시험은 네트워크 일반, TCP/IP, NOS, 네트워크 운용기기 4과목으로 구성되며, 실기시험은 라우터 설정, 서버 구축, 케이블 제작 능력을 평가한다.
+한국정보통신자격협회(ICQA) 네트워크 관리사 2급 자격증을 필기와 실기시험을 모두 거쳐 한 번에 취득했습니다. 이 과정에서 TCP/IP, OSI 모델, NOS, 네트워크 운용기기와 같은 핵심 이론은 물론 라우터 설정, 서버 구축, 케이블 제작과 같은 실제 설정 절차를 익히며 네트워크 관리 역량을 쌓았습니다.
 
 ---
 
-## 1. 필기 시험 핵심 요약
+### 1. 네트워크 기본 개념
 
-### 네트워크 일반 및 OSI 7계층
-- **OSI 7계층 모델**: 네트워크 통신 과정을 7개의 논리적 계층으로 구분한 모델.
-  - **7계층 (응용)**: 사용자와의 인터페이스 제공. HTTP, FTP, SMTP, DNS, Telnet.
-  - **6계층 (표현)**: 데이터의 형식(Format) 정의, 코드 변환, 암호화, 압축 수행.
-  - **5계층 (세션)**: 통신 세션의 설정, 유지, 종료 담당.
-  - **4계층 (전송)**: 종단 간(End-to-end) 신뢰성 있는 데이터 전송 담당. TCP, UDP 프로토콜 동작, 오류 제어 및 흐름 제어 수행.
-  - **3계층 (네트워크)**: IP 주소를 사용해 최적의 경로(Routing) 설정. 패킷의 분할과 병합 수행.
-  - **2계층 (데이터링크)**: 물리적 주소(MAC)를 사용해 프레임(Frame) 전송. 흐름 제어, 오류 제어 기능.
-  - **1계층 (물리)**: 0과 1의 비트(Bit)를 전기적 신호로 변환하여 전송. 케이블, 허브, 리피터가 이 계층에 해당.
+#### TCP/IP 프로토콜 스택
+- **TCP/IP**: 네트워크 통신을 위한 계층 구조. 4계층 구성.
+  - **링크 계층**: 물리적 연결 및 MAC 주소 처리.
+  - **인터넷 계층**: IP 주소 기반 라우팅. IPv4/IPv6 지원.
+  - **송신 계층**: 데이터 전송 방식 결정. TCP/UDP 사용.
+  - **응용 계층**: HTTP, FTP, DNS 등 애플리케이션 서비스 제공.
 
-- **계층별 데이터 단위(PDU)**
-  - 응용/표현/세션 계층: 데이터 (Data/Message)
-  - 전송 계층: 세그먼트 (Segment)
-  - 네트워크 계층: 패킷 (Packet)
-  - 데이터링크 계층: 프레임 (Frame)
-  - 물리 계층: 비트 (Bit)
+> **비유**: 우편 시스템에서 각 계층은 발송자, 주소, 배달 방법, 내용물 역할.
 
-### TCP/IP
-- **TCP/IP 4계층 모델**: OSI 7계층을 4개의 계층으로 단순화한 실용 모델.
-  - **4계층 (응용)**: OSI 5, 6, 7계층에 해당.
-  - **3계층 (전송)**: OSI 4계층에 해당.
-  - **2계층 (인터넷)**: OSI 3계층에 해당.
-  - **1계층 (네트워크 인터페이스)**: OSI 1, 2계층에 해당.
+#### OSI 7계층 모델
+- **물리층**: 전선, 케이블, 전압 신호.
+- **데이터링크층**: MAC 주소, 프레임 전송.
+- **네트워크층**: IP 주소, 라우팅.
+- **전송층**: TCP/UDP, 오류 회복.
+- **세션층**: 연결 유지.
+- **표현층**: 데이터 포맷 변환.
+- **응용층**: 사용자 인터페이스 제공.
 
-- **프로토콜**:
-  - **TCP**: 연결형 프로토콜, 3-way-handshaking으로 연결 수립. 신뢰성 있는 데이터 전송 보장.
-  - **UDP**: 비연결형 프로토콜, 신뢰성보다 속도가 중요할 때 사용.
-  - **ARP**: IP 주소를 MAC 주소로 변환.
-  - **ICMP**: IP 통신 중 발생하는 오류 메시지 보고.
-  - **IGMP**: 멀티캐스트 그룹 관리를 위한 프로토콜.
-  - **SNMP**: 네트워크 장비를 원격으로 관리 및 감시하는 프로토콜.
-
-- **IPv4 주소**: 32비트로 구성. A, B, C, D 클래스로 구분.
-- **IPv6 주소**: 128비트로 구성. IPv4의 주소 고갈 문제 해결, 보안 기능 강화.
-
-### NOS (Network Operating System)
-- **Windows Server**:
-  - **Active Directory**: 사용자, 컴퓨터, 프린터 등 네트워크 리소스를 관리하는 디렉터리 서비스.
-  - **DNS 레코드 종류**: A (IPv4 주소 매핑), AAAA (IPv6 주소 매핑), CNAME (별칭), MX (메일 서버).
-  - **파일 시스템**: NTFS는 FAT32에 비해 대용량 디스크 지원, 오류 자동 복구, 보안 기능이 강화됨.
-
-- **Linux**:
-  - **주요 명령어**:
-    - `ps`: 현재 실행 중인 프로세스 상태 확인.
-    - `ls`: 디렉터리 내용 출력.
-    - `cd ~`: 홈 디렉터리로 이동.
-    - `chmod`: 파일 또는 디렉터리의 권한 변경.
-    - `ifconfig` / `ip addr`: 네트워크 인터페이스 설정 확인.
-  - **로그 파일 위치**: `/var/log` 디렉터리에 시스템의 주요 로그가 저장됨 (`dmesg`, `lastlog` 등).
-
-### 네트워크 운용기기
-- **라우터(Router)**: OSI 3계층 장비. IP 주소를 기반으로 패킷의 최적 경로를 결정하여 전송.
-- **L2 스위치(Switch)**: OSI 2계층 장비. MAC 주소를 학습하여 특정 포트로만 프레임을 전송.
-- **게이트웨이(Gateway)**: OSI 7계층 장비. 프로토콜이 다른 두 네트워크를 연결.
-- **방화벽(Firewall)**: 외부의 불법 침입으로부터 내부 네트워크를 보호하는 보안 시스템.
-- **RAID**: 여러 개의 디스크를 하나처럼 사용하여 성능 및 안정성을 높이는 기술.
-  - **RAID 0 (Striping)**: 데이터를 여러 디스크에 분산 저장하여 속도 향상. 안정성은 낮음.
-  - **RAID 1 (Mirroring)**: 데이터를 다른 디스크에 동일하게 복제하여 안정성 확보.
+> **비유**: 문서를 전송하는 과정에서 각 계층은 포장, 주소 부착, 운송, 수취 확인 역할.
 
 ---
 
-## 2. 라우터 정적 라우팅 설정
+### 2. 라우터 정적 라우팅 설정
 
 #### 인터페이스 설정 및 활성화
 ```bash
@@ -90,38 +51,47 @@ R1(config-if)# exit
 ```bash
 R1(config)# ip route 192.168.2.0 255.255.255.0 192.168.1.2
 ```
+→ 목적지 `192.168.2.0/24` → 다음 홉 `192.168.1.2`
 
 #### 설정 확인
 ```bash
-R1# show ip route static
-R1# ping 192.168.2.10
+R1# show ip route static        # 정적 라우트 확인
+R1# ping 192.168.2.10           # 연결성 테스트
 ```
+
+> **주의**: 다음 홉 IP가 직접 연결된 서브넷에 없으면 라우트 추가 불가  
+> **검증 필수**: `show ip route`에서 `S` 표시 확인 → 라우팅 테이블에 정상 등록
 
 ---
 
-## 3. Windows Server DNS 서버 설정
+### 3. Windows Server DNS 서버 설정
 
-1.  **서버 관리자** 실행 > **도구** > **DNS**.
-2.  좌측 트리에서 서버 이름 마우스 우클릭 > **새 영역**.
-3.  **새 영역 마법사** 실행:
-    - **영역 종류**: 주 영역.
-    - **영역 이름**: `test.com` 입력.
-    - **영역 파일**: 기본값 사용 (새 파일 만들기).
-    - **동적 업데이트**: 허용 안 함 선택.
-4.  생성된 `test.com` 영역 마우스 우클릭 > **새 호스트(A 또는 AAAA)**.
-5.  **새 호스트** 창:
-    - **이름**: `www` 입력.
-    - **IP 주소**: `192.168.1.10` 입력.
-    - **호스트 추가** 클릭.
+#### DNS 역할 설치 (PowerShell)
+```powershell
+Install-WindowsFeature -Name DNS -IncludeManagementTools
+```
 
-#### 동작 확인 (CMD)
+#### 정방향 조회 영역 생성
+```powershell
+Add-DnsServerPrimaryZone -Name "test.com" -ZoneFile "test.com.dns"
+```
+
+#### A 레코드 추가
+```powershell
+Add-DnsServerResourceRecordA -Name "www" -ZoneName "test.com" -IPv4Address "192.168.1.10"
+```
+
+#### 동작 확인
 ```cmd
 nslookup www.test.com 127.0.0.1
 ```
+→ 응답: `192.168.1.10`
+
+> **주의**: 클라이언트 PC에서 DNS 서버 IP를 해당 서버로 지정해야 함
 
 ---
 
-## 4. Linux(CentOS) Apache 설치 및 방화벽 설정
+### 4. Linux(CentOS) Apache 설치 및 방화벽 설정
 
 #### Apache 설치 및 실행
 ```bash
@@ -144,40 +114,76 @@ sudo firewall-cmd --list-services
 curl http://localhost
 ```
 
+> **주의**: `--permanent` 누락 → 재부팅 시 규칙 사라짐  
+> **검증 필수**: 외부 PC에서 `http://서버IP` 접속 성공 여부 확인
+
 ---
 
-## 5. 주요 명령어 및 설정
+### 5. 실습을 통해 얻은 기술적 성과
 
-#### 필수 명령어
+#### DHCP 서버 DNS 설정 오류 해결
+- 증상: 클라이언트가 도메인명으로 웹서버 접속 불가
+- 진단: DHCP 서버에서 제공한 DNS 서버 IP가 잘못됨
+- 해결: DHCP 스코프 옵션 006 수정 → 클라이언트 재연결 → `nslookup` 정상 응답
+
+#### 라우터 명령어 오타 복구
+- 증상: `ip route 192.168.2.0 255.255.255.0 192.168.1.2x` → Invalid input
+- 진단: 다음 홉 IP에 문자 `x` 포함
+- 해결: `no ip route 192.168.2.0 255.255.255.0 192.168.1.2x` → 정상 명령어 재입력
+
+#### UTP 케이블 제작 불량 복구
+- 증상: 라우터-스위치 연결 후 링크 라이트 미점등
+- 진단: 크로스 케이블 제작 시 핀 1-3, 2-6 미교차
+- 해결: 케이블 재제작 → 테스터기로 Green LED 전 핀 점등 확인 → 링크 정상화
+
+---
+
+### 6. 네트워크 관리사 2급 핵심
+
+#### 필수 명령어 및 설정
 ```bash
 # Windows
-ipconfig /all
-ping 8.8.8.8
-nslookup example.com
+ipconfig /all                  # IP, DNS, MAC 확인
+ping -t 8.8.8.8                # 지속적 연결 테스트
+nslookup example.com           # DNS 해석 확인
 
 # Linux
-ip addr show
-systemctl status firewalld
-chmod 755 [file]
+ip addr show                   # IP 주소 확인
+systemctl status firewalld     # 방화벽 상태 확인
+journalctl -u httpd --since "1 hour ago"  # Apache 로그 조회
 
-# Router
-show running-config
-show ip interface brief
-copy running-config startup-config
+# 라우터
+show running-config            # 현재 설정 확인
+show ip interface brief        # 인터페이스 상태 확인
+copy running-config startup-config  # 설정 저장
 ```
 
-#### 주요 포트 번호
-- **20/21**: FTP
-- **22**: SSH
-- **23**: Telnet
-- **25**: SMTP
-- **53**: DNS
-- **80**: HTTP
-- **110**: POP3
-- **443**: HTTPS
+#### 서브넷 계산 핵심 공식
+- 네트워크 주소 = IP AND 서브넷마스크
+- 브로드캐스트 주소 = IP OR (NOT 서브넷마스크)
+- 사용 가능 호스트 수 = 2^(32 - 마스크비트) - 2
 
-#### UTP 케이블 핀 배열 (T568B 기준)
-- **다이렉트 (Straight-through)**: PC-스위치 등 다른 장비 연결. 양쪽 모두 T568B 배열.
-- **크로스오버 (Crossover)**: 스위치-스위치 등 동일 장비 연결. 한쪽 T568B, 다른 쪽 T568A 배열.
-- 
+#### 주요 포트 번호
+- 22: SSH
+- 23: Telnet
+- 53: DNS (UDP/TCP)
+- 80: HTTP
+- 443: HTTPS
+- 20/21: FTP
+- 25: SMTP
+- 67/68: DHCP
+
+#### UTP 케이블 핀아웃
+- **Straight-through (PC ↔ 스위치)**:
+  - 양쪽: 1-White/Orange, 2-Orange, 3-White/Green, 6-Green
+- **Crossover (스위치 ↔ 스위치)**:
+  - 한쪽: 1-White/Orange, 2-Orange, 3-White/Green, 6-Green
+  - 반대쪽: 1-White/Green, 2-Green, 3-White/Orange, 6-Orange
+
+#### 실기시험 대비 체크리스트
+- 라우터: 인터페이스 활성화(`no shutdown`), 정적 라우트 정확한 다음 홉
+- Windows Server: DHCP 스코프 활성화, DNS 레코드 정확한 IP 매핑
+- Linux: 방화벽 서비스 허용, `systemctl enable`으로 부팅 자동 실행
+- 케이블: 테스터기로 모든 핀 점등 확인 → Green LED
+
 <hr class="short-rule">
