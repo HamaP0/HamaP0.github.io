@@ -111,4 +111,3 @@ tags: [linux]
     - `:q!`: 강제 종료.
 
 <hr class="short-rule">
-
