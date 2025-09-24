@@ -145,6 +145,3 @@ tags: [정보보안기사, KISA, CISSP]
   - **SLE = 자산 가치 × 노출 계수(EF)**
 
 <hr class="short-rule">
-
-
-
