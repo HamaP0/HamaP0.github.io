@@ -124,5 +124,3 @@ tags: [정보처리기사, KCA, software]
 
 
 <hr class="short-rule">
-
-
