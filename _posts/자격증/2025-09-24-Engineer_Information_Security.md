@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 정보보안기사 1차 필기 합격 기록
+title: 정보보안기사 1차 필기 합격
 date: 2025-09-24 15:00:00 +0900
 categories: [자격증]
 tags: [정보보안기사, KISA, CISSP]
@@ -145,3 +145,4 @@ tags: [정보보안기사, KISA, CISSP]
   - **SLE = 자산 가치 × 노출 계수(EF)**
 
 <hr class="short-rule">
+
