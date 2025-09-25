@@ -25,7 +25,6 @@ categories: [웹 기술]
     *   **키 배송 문제 (Key Distribution Problem):** 통신 시작 전에 어떻게 안전하게 상대방에게 비밀 키를 전달할 것인가 하는 근본적인 문제가 있다.
     *   관리해야 할 키의 수가 통신 대상의 수에 비례하여 기하급수적으로 증가한다.
 *   **주요 알고리즘:** AES · DES · SEED
-   ![Symmtric_Flow](/assets/images/Symmtric_1.png)
 
 ### 3. 비대칭키 암호 (Asymmetric Key Cryptography)
 
@@ -56,3 +55,4 @@ HTTPS는 대칭키의 '속도'와 비대칭키의 '안전한 키 교환'이라�
 이처럼 비대칭키는 안전한 키 교환이라는 목적을 달성하는 데만 잠시 사용되고 실제 대용량 데이터 전송은 속도가 빠른 대칭키를 이용함으로써 효율성과 보안성을 모두 만족시킨다.
 
 <hr class="short-rule">
+
