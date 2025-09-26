@@ -65,6 +65,7 @@ categories: [OWASP Top 10]
     *   **IP:** `192.9.200.11`
     *   **Services:** Apache, PHP, MySQL (APM 스택), DVWA
    ![Ubuntu 서버 IP 주소 확인]({{ "/assets/images/A00_P2-1.png" | relative_url }})
+
 *   **Attacker (공격자):**
     *   **OS:** Kali Linux
     *   **IP:** `192.9.200.12`
@@ -84,3 +85,4 @@ categories: [OWASP Top 10]
 
 
 <hr class="short-rule">
+
