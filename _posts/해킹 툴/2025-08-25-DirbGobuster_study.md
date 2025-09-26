@@ -57,3 +57,5 @@ gobuster dir -u http://192.9.200.11/dvwa/ -w /usr/share/wordlists/dirb/common.tx
 *   **`-t [threads]`**: 스캔에 사용할 스레드 수를 지정하여 속도를 조절한다.
 
 <hr class="short-rule">
+
+### 시각 자료(이미지) 제작을 위한 스크립트

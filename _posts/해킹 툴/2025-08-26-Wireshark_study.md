@@ -69,35 +69,39 @@ Wireshark를 실행하고 캡처할 네트워크 인터페이스(예: `eth0` 또
 
 이 과정을 통해 암호화되지 않은 HTTP 통신은 중간에서 얼마든지 감청될 수 있다는 것을 명확히 확인할 수 있다.
 
-### 6. 사용 예시 3: HTTPS (TLS) 트래픽 복호화
+#### **복호화 원리**
 
-대부분의 현대 웹 트래픽은 TLS를 통해 암호화된다. Wireshark는 브라우저로부터 암호화 키 로그를 제공받아 이 암호화된 트래픽을 복호화하고 평문 HTTP처럼 분석하는 강력한 기능을 제공한다.
+TLS 핸드셰이크 과정에서 클라이언트와 서버는 공유 비밀(Pre-Master Secret)을 생성한다.  
+이 값을 외부에 기록하면, Wireshark가 이를 이용해 암호화된 트래픽을 복호화할 수 있다.  
+브라우저는 `SSLKEYLOGFILE` 환경 변수가 설정되어 있을 경우, 이 키를 지정된 파일에 기록한다.
 
-#### **1. 키 로그 파일 생성 (Pre-Master Secret)**
-1.  브라우저가 TLS 세션 키를 특정 파일에 저장하도록 환경 변수를 설정한다. 이 파일은 Wireshark가 트래픽을 복호화하는 데 사용된다.
-    ```bash
-    # 터미널에서 환경 변수 설정
-    export SSLKEYLOGFILE=~/Desktop/ssl_key.log
-    ```
-2.  동일한 터미널에서 웹 브라우저(예: Firefox, Chrome)를 실행한다. 이렇게 실행된 브라우저에서 발생하는 모든 TLS 트래픽의 키가 지정된 파일에 기록된다.
-    ```bash
-    firefox
-    ```
+#### **설정 절차**
 
-#### **2. Wireshark 복호화 설정**
-1.  Wireshark를 실행하고 `Edit > Preferences > Protocols > TLS` 메뉴로 이동한다.
-2.  `(Pre)-Master-Secret log filename` 필드 옆의 `Browse...` 버튼을 클릭하여 위에서 생성한 키 로그 파일(`~/Desktop/ssl_key.log`)의 경로를 지정한다.
+1. **키 로그 파일 경로 지정**  
+   터미널에서 다음 환경 변수를 설정한다.  
+   ```bash
+   export SSLKEYLOGFILE=~/ssl_key.log
+   ```  
+   이후 동일한 터미널에서 브라우저를 실행해야 키 로그가 기록된다.  
+   ```bash
+   firefox
+   ```
 
-   ![WiresharkTls](/assets/images/Wire_4.png)
+2. **Wireshark에 키 로그 경로 등록**  
+   Wireshark 메뉴에서 `Edit > Preferences > Protocols > TLS`로 이동한다.  
+   `(Pre)-Master-Secret log filename` 필드에 위에서 지정한 파일 경로(`~/ssl_key.log`)를 입력한다.
 
-#### **3. 패킷 캡처 및 복호화 확인**
-1.  Wireshark에서 패킷 캡처를 시작한다.
-2.  키 로깅이 설정된 브라우저에서 HTTPS를 사용하는 사이트(예: DVWA 로그인 페이지)에 접속하고 로그인한다.
-3.  캡처를 중지하고 디스플레이 필터에 `http` 를 입력한다.
-4.  설정이 올바르게 되었다면 이전에는 `TLSv1.2` 또는 `Application Data`로만 표시되던 패킷들이 `HTTP/1.1` 또는 `HTTP/2` 프로토콜로 식별되며 패킷 상세 창 하단에 `Decrypted TLS` 탭이 추가된 것을 확인할 수 있다.
+3. **캡처 및 분석**  
+   - Wireshark에서 패킷 캡처를 시작한다.  
+   - 키 로깅이 활성화된 브라우저로 HTTPS 사이트(DVWA 등)에 접속하고 로그인한다.  
+   - 캡처를 중지한 후 디스플레이 필터에 `http`를 입력한다.  
 
-   ![WiresharkHttps](/assets/images/Wire_5.png)
+   설정이 성공하면, 기존에 `TLSv1.3 Application Data`로만 표시되던 패킷이 `HTTP/1.1` 또는 `HTTP/2`로 식별되며,  
+   패킷 상세 창 하단에 `Decrypted TLS` 탭이 추가된다.  
+   이 탭을 선택하면 평문 형태의 HTTP 요청 본문(예: `username=admin&password=password`)을 확인할 수 있다.
 
-`Decrypted TLS` 탭을 선택하면 암호화되었던 데이터가 평문(Plaintext)으로 표시되어 `HTTP` 패킷과 동일하게 `username=admin&password=password`와 같은 민감한 정보를 분석할 수 있게 된다.
+> 최신 브라우저에서는 샌드박스 정책으로 인해 키 로그가 기대한 경로에 생성되지 않을 수 있다.  
+> 이 경우 Firefox를 사용하거나, 터미널에서 직접 브라우저를 실행해 환경 변수가 정상적으로 상속되었는지 확인해야 한다.  
+> 또한, TLS 1.3에서는 일부 세션 재사용 방식으로 인해 모든 패킷이 복호화되지 않을 수도 있다.
 
 <hr class="short-rule">
