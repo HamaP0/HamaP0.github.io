@@ -68,8 +68,9 @@ Apache 로그 파일, 특히 접근 로그 **`access.log`** 는 정상적인 서
     # /var/log/apache2 디렉터리에서 access.log 파일을 대상으로 'UNION' 문자열 검색
     grep "UNION" /var/log/apache2/access.log
     ```
-   ![ApacheInjection](/assets/images/Apache_2.png)
-
+    ```log
+    192.9.200.12 - - [20/Aug/2025:21:15:30 +0900] "GET /dvwa/vulnerabilities/sqli/?id=1%27%20UNION%20ALL%20SELECT%20NULL%2CCONCAT%280x...%29--%20-&Submit=Submit HTTP/1.1" 200 1961 "-" "sqlmap/1.9.8"
+    ```
     로그에는 URL 인코딩된 형태(`%20UNION%20SELECT...`)로 공격 페이로드가 기록되어 공격이 발생했다는 명백한 증거가 된다.
 
 *   **Command Injection 공격 탐지:**
@@ -78,8 +79,59 @@ Apache 로그 파일, 특히 접근 로그 **`access.log`** 는 정상적인 서
     # URL 인코딩된 세미콜론(%3B)과 ls 명령어를 함께 검색
     grep "%3B%20ls" /var/log/apache2/access.log
     ```
-   ![ApacheCommand](/assets/images/Apache_3.png)
+    ```log
+    192.9.200.12 - - [20/Aug/2025:21:40:11 +0900] "GET /dvwa/vulnerabilities/exec/?ip=127.0.0.1%3B%20ls+-l HTTP/1.1" 200 1950 "http://192.9.200.11/dvwa/vulnerabilities/exec/" "Mozilla/5.0..."
+    ```
 
     로그를 통해 공격자가 어떤 IP에서 어떤 명령어를 주입하려고 시도했는지 파악할 수 있다. 이러한 로그는 침해 사고 분석 시 공격자의 행위를 재구성하는 데 결정적인 역할을 한다.
 
 <hr class="short-rule">
+
+
+
+
+
+### 시각 자료(이미지) 제작을 위한 스크립트
+
+#### **디렉터리 리스팅 비교 이미지 제작**
+
+이 이미지는 `Options Indexes` 지시어의 효과를 시각적으로 보여주는 핵심 자료입니다.
+
+**1. "Before" 이미지 (리스팅 활성화)**
+
+1.  (준비) DVWA의 파일 업로드 기능을 이용해 `/hackable/uploads/` 디렉터리에 아무 파일이나 1~2개 업로드해 둡니다. 이 디렉터리에는 인덱스 파일이 없어 리스팅을 확인하기 좋습니다.
+2.  Apache 설정이 기본값(`Options Indexes`)인지 확인합니다.
+3.  웹 브라우저에서 `http://192.9.200.11/hackable/uploads/` 주소로 접속합니다.
+4.  화면에 "Index of /hackable/uploads/" 라는 제목과 함께 파일 목록이 보일 것입니다. 이 화면을 스크린샷으로 찍어 **`리스팅활성화.png`** 로 저장합니다.
+
+**2. "After" 이미지 (리스팅 비활성화)**
+
+1.  서버 터미널에서 Apache 설정 파일을 엽니다. (예: `sudo nano /etc/apache2/apache2.conf`)
+2.  파일 내용 중 `<Directory /var/www/>` 섹션을 찾아 `Options Indexes FollowSymLinks` 부분을 `Options -Indexes FollowSymLinks`로 수정합니다. (`-`를 추가하는 것이 핵심입니다.)
+3.  설정 파일을 저장하고 Apache를 재시작합니다. (`sudo systemctl restart apache2`)
+4.  이전에 접속했던 브라우저 페이지(`http://192.9.200.11/hackable/uploads/`)를 새로고침합니다.
+5.  이제 파일 목록 대신 "403 Forbidden" 오류 페이지가 나타날 것입니다. 이 화면을 스크린샷으로 찍어 **`리스팅비활성화.png`** 로 저장합니다.
+
+**3. 최종 이미지 편집**
+
+1.  이미지 편집 프로그램에서 `리스팅활성화.png`(왼쪽)와 `리스팅비활성화.png`(오른쪽)를 나란히 배치합니다.
+2.  각 이미지 위에 "**Before (디렉터리 리스팅 활성화)**"와 "**After (디렉터리 리스팅 비활성화)**" 텍스트를 추가합니다.
+3.  **왼쪽 이미지**에서는 파일 목록이 보이는 부분에 하이라이트를 적용하여 정보가 노출되고 있음을 강조합니다.
+4.  **오른쪽 이미지**에서는 "403 Forbidden" 오류 메시지에 하이라이트를 적용하여 접근이 성공적으로 차단되었음을 보여줍니다.
+5.  수정된 이미지를 저장하여 게시글에 삽입합니다.
+
+    #### **로그 파일 분석 이미지 제작**
+
+##### **1. Sqlmap 공격 로그 이미지:**
+1.  Target 서버에서 `sqlmap`을 이용한 SQL Injection 공격을 수행한다.
+2.  공격이 끝난 후, Target 서버의 터미널에서 `grep "UNION" /var/log/apache2/access.log` 명령어를 실행한다.
+3.  `sqlmap`이 생성한 `UNION SELECT` 구문이 포함된 여러 줄의 로그가 출력될 것이다. 이 터미널 화면을 스크린샷으로 찍는다.
+4.  이미지 편집 프로그램을 사용하여 `grep` 명령어와, 결과로 출력된 로그 라인들, 특히 URL 인코딩된 `UNION SELECT` 부분에 하이라이트를 적용하여 저장한다.
+
+##### **2. Command Injection 공격 로그 이미지:**
+1.  Target 서버의 DVWA `Command Injection` 페이지에서 `127.0.0.1; ls -l` 과 같은 공격을 수행한다.
+2.  Target 서버의 터미널에서 `grep "%3B" /var/log/apache2/access.log` 명령어를 실행한다.
+3.  공격에 사용된 페이로드(`...ip=127.0.0.1%3B+ls+-l...`)가 포함된 로그 라인이 출력될 것이다. 이 터미널 화면을 스크린샷으로 찍는다.
+4.  이미지에서 `grep` 명령어와 결과로 출력된 로그, 특히 URL 인코딩된 세미콜론(**`%3B`**)과 명령어(**`ls`**) 부분에 하이라이트를 적용하여 저장한다.
+
+---
