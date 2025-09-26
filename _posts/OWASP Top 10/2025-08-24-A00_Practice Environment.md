@@ -64,12 +64,11 @@ categories: [OWASP Top 10]
     *   **OS:** Ubuntu Server
     *   **IP:** `192.9.200.11`
     *   **Services:** Apache, PHP, MySQL (APM 스택), DVWA
+   ![Ubuntu 서버 IP 주소 확인]({{ "/assets/images/A00_P2-1.png" | relative_url }})
 *   **Attacker (공격자):**
     *   **OS:** Kali Linux
     *   **IP:** `192.9.200.12`
     *   **Services:** Burp Suite, Nmap, Nikto, Sqlmap 등
-
-   ![Ubuntu 서버 IP 주소 확인]({{ "/assets/images/A00_P2-1.png" | relative_url }})
    ![Kali Linux IP 주소 확인]({{ "/assets/images/A00_P2-2.png" | relative_url }})
 
 **3. 타겟 애플리케이션 및 분석 도구**
