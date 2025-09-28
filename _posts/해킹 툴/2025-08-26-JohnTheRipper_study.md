@@ -28,7 +28,7 @@ john --wordlist=[사전 파일 경로] [해시 파일 경로]
 
 ### 3. 사용 예시: MD5 해시 크래킹
 
-`A03: Injection` 보고서에서 `sqlmap`을 통해 탈취한 `admin` 계정의 MD5 해시 `5f4dcc3b5aa765d61d8327deb882cf99` 를 크래킹하는 상황이다.
+`A03: Injection` 보고서에서 `sqlmap`을 통해 탈취한 `admin` 계정의 MD5 해시 `5f4dcc3b5aa765d61d8327deb882cf99`를 크래킹하는 상황이다.
 
 #### ***1. 해시 파일 준비***
 크래킹할 해시 값을 `hash.txt` 라는 파일로 저장한다.

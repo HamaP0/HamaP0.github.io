@@ -62,7 +62,7 @@ Metasploit Framework(MSF)는 취약점 연구, 익스플로잇 코드 개발 및
    msf6 exploit(...) > exploit
    ```
 
-3. ***결과 확인***
+3. **결과 확인**
    공격이 성공하면 다음과 같은 메시지가 출력된다:  
    ```
    [*] Command shell session 1 opened (192.168.56.1:4444 -> 192.168.56.101:6200)
