@@ -45,7 +45,7 @@ PORT   STATE SERVICE VERSION
 ```bash
 nmap -sC 192.9.200.11
 ```
-**결과**
+***결과***
 ```
 PORT   STATE SERVICE
 22/tcp open  ssh

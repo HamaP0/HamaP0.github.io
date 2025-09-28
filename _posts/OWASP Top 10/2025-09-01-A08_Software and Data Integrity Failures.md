@@ -47,11 +47,11 @@ categories: [OWASP Top 10]
    데이터 무결성 실패의 가장 대표적인 사례인 '안전하지 않은 역직렬화' 취약점은 주로 `unserialize()`와 같은 위험한 함수를 통해 발생한다. 따라서 DVWA 소스코드 전체에서 `unserialize` 키워드를 검색하고 관련 API의 흐름을 역추적하면 취약점의 존재 여부를 확인할 수 있을 것이다.
 
 *   ***분석 및 검증 (가설 검증 실패):***
-   1.  **1차 가설 검증:** `grep` 명령어로 서버 전체에서 `unserialize` 키워드를 검색했으나 아무 결과도 발견되지 않았습니다.
+   **1차 가설 검증:** `grep` 명령어로 서버 전체에서 `unserialize` 키워드를 검색했으나 아무 결과도 발견되지 않았습니다.
 
    ![grep](/assets/images/A08_P1-1.png)
 
-   2.  **2차 가설 검증:** `vulnerabilities/api/` 경로의 동적 라우팅 구조를 파악하고 `.htaccess` 파일 분석을 통해 실제 요청이 `public/index.php`로 전달됨을 확인했습니다. 최종 실행 파일인 `src/UserController.php`까지 모든 흐름을 분석했지만 어디에도 `unserialize` 함수는 존재하지 않았습니다.
+   **2차 가설 검증:** `vulnerabilities/api/` 경로의 동적 라우팅 구조를 파악하고 `.htaccess` 파일 분석을 통해 실제 요청이 `public/index.php`로 전달됨을 확인했습니다. 최종 실행 파일인 `src/UserController.php`까지 모든 흐름을 분석했지만 어디에도 `unserialize` 함수는 존재하지 않았습니다.
 
    ![find htaccess](/assets/images/A08_P2-1.png)
    ![.htaccess 분석](/assets/images/A08_P2-2.png)

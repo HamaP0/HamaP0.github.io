@@ -215,7 +215,7 @@ az network nsg rule create \
   --access Allow \
   --protocol Tcp
 ```
-  ![App 티어 NSG 규칙 확인]](/assets/images/Hybrid_9.png)
+  ![App 티어 NSG 규칙 확인](/assets/images/Hybrid_9.png)
 
 > - NSG는 **L4 가상 방화벽**으로, 서브넷 또는 VM 단위로 트래픽을 제어합니다.  
 > - **기본 정책은 모든 인바운드 차단**이므로, **명시적 허용 규칙만이 통신을 가능하게** 합니다.  
@@ -339,8 +339,8 @@ az network vnet-gateway list-bgp-peer-status -g st421-rg-azure -n st421-vng-azur
 ```
   ![BGP 피어링 상태 확인](/assets/images/Hybrid_7.png)
 
-> - **State가 `Connected`**: BGP 피어링 세션이 성공적으로 수립되었음을 의미합니다.
-> - **RoutesReceived가 `1`**: Azure Gateway가 상대방인 On-Prem Gateway로부터 **온프레미스 네트워크(`192.168.0.0/16`)의 경로를 성공적으로 학습**했음을 나타냅니다.
+> - **State = `Connected`**: BGP 피어링 세션이 성공적으로 수립되었음을 의미합니다.
+> - **RoutesReceived = `1`**: Azure Gateway가 상대방인 On-Prem Gateway로부터 **온프레미스 네트워크(`192.168.0.0/16`)의 경로를 성공적으로 학습**했음을 나타냅니다.
 
 이와 동일한 정보는 **Azure Portal의 `VPN Gateway` → `BGP 피어` 메뉴**에서도 시각적으로 확인할 수 있습니다.
 
@@ -349,6 +349,5 @@ BGP의 가장 큰 장점은 바로 이 **동적 경로 학습** 능력입니다.
 ---
 
 ### 4. 마무리
-
 
 이 프로젝트는 BGP 기반 동적 라우팅과 NSG 정책을 조합하여 **실제 기업 환경과 유사한 수준의 보안과 확장성을 갖춘** 하이브리드 클라우드 연결을 성공적으로 구축한 사례입니다.

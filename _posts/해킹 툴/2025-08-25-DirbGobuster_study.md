@@ -40,6 +40,7 @@ gobuster dir -u http://192.9.200.11/dvwa/ -w /usr/share/wordlists/dirb/common.tx
    ![GobusterScan](/assets/images/Gobuster_1.png)
 
 ***결과 분석***
+
 스캔 결과 `Status: 200` (OK), `Status: 301` (Redirect) 등 정상적으로 접근 가능한 여러 경로를 발견했다.
 *   `/login.php` (Status: 200): 로그인 페이지
 *   `/phpinfo.php` (Status: 200): 서버의 상세 정보가 담긴 페이지

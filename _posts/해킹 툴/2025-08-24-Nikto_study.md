@@ -37,6 +37,7 @@ nikto -h 192.9.200.11 -p 80
    ![Nikto](/assets/images/Nikto_1.png)
 
 ***결과 분석***
+
 Nikto 스캔 결과에서 주목할 만한 주요 정보는 다음과 같다.
 *   **웹 서버 버전 정보:** `Apache/2.4.58`
 *   **주요 보안 헤더 누락:** `anti-clickjacking X-Frame-Options header`, `X-Content-Type-Options header`

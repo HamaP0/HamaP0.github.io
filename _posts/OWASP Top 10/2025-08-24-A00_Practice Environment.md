@@ -52,13 +52,13 @@ categories: [OWASP Top 10]
 
    안전하고 효과적인 분석을 위해 VMware 기반으로 외부와 격리된 가상 실습 환경(Lab)을 구축했습니다. 이 환경은 실제 서비스에 영향을 주지 않으면서 현실적인 공격 및 방어 시나리오를 시뮬레이션하는 기반을 제공합니다.
 
-**1. 가상 네트워크 구성도**
+***1. 가상 네트워크 구성도***
 
    VMware의 VMnet8`NAT` 기능을 활용하여 외부 인터넷과 분리된 `192.9.200.0/24` 대역의 사설 네트워크를 구성했습니다. 이 네트워크 내에는 공격 대상인 'Target' 서버와 공격을 수행할 'Attacker' 머신이 위치합니다.
 
    ![가상 네트워크 구성도]({{ "/assets/images/A00_P1-1.png" | relative_url }})
 
-**2. 가상머신 및 IP 할당**
+***2. 가상머신 및 IP 할당***
 
 *   ***Target (목표 서버):***
     *   **OS:** Ubuntu Server
@@ -72,7 +72,7 @@ categories: [OWASP Top 10]
     *   **Services:** Burp Suite, Nmap, Nikto, Sqlmap 등
    ![Kali Linux IP 주소 확인]({{ "/assets/images/A00_P2-2.png" | relative_url }})
 
-**3. 타겟 애플리케이션 및 분석 도구**
+***3. 타겟 애플리케이션 및 분석 도구***
 
 취약점 분석을 위해 **Damn Vulnerable Web Application `DVWA`**를 타겟 서버에 배포했으며 공격자 머신에는 웹 프록시의 핵심 도구인 `Burp Suite`를 비롯하여 `Nmap·Nikto·Sqlmap` 등 자동화 도구의 세팅을 완료하여 수동 분석과 자동화 분석을 병행할 준비를 마쳤습니다.
 
