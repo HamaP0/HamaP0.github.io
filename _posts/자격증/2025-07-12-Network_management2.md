@@ -10,7 +10,7 @@ tags: [네트워크 관리사, ICQA, network]
 
 ---
 
-### ***1과목: 네트워크 일반***
+### ***1. 네트워크 일반***
 
 - ***OSI 7계층 모델***: 네트워크 통신 과정을 7개의 논리적 계층으로 구분한 모델.
   - **7계층 (응용)**: 사용자 인터페이스 제공. (HTTP, FTP, SMTP, DNS)
@@ -36,9 +36,7 @@ tags: [네트워크 관리사, ICQA, network]
   - **UTP (Unshielded Twisted Pair)**: 가장 널리 사용되는 구리선 케이블. 카테고리(CAT5, CAT6)에 따라 대역폭이 다름.
   - **광섬유 (Optical Fiber)**: 빛을 이용해 데이터를 전송. 장거리, 고속 전송에 유리.
 
----
-
-### ***2과목: TCP/IP***
+### ***2. TCP/IP***
 
 - ***TCP/IP 4계층 모델***: OSI 7계층을 4계층으로 단순화한 실용 모델.
   - **4계층 (응용)**: OSI 5, 6, 7계층에 해당.
@@ -61,9 +59,7 @@ tags: [네트워크 관리사, ICQA, network]
   - **ICMP (Internet Control Message Protocol)**: 네트워크 통신 중 발생하는 오류 메시지를 보고. (`ping`이 사용)
   - **DHCP (Dynamic Host Configuration Protocol)**: 네트워크 내의 클라이언트에게 IP 주소를 자동으로 할당.
 
----
-
-### ***3과목: NOS (Network Operating System)***
+### ***3. NOS (Network Operating System)***
 
 - ***Windows Server***:
   - **Active Directory**: 사용자, 컴퓨터 등 네트워크 리소스를 관리하는 디렉터리 서비스.
@@ -89,9 +85,7 @@ tags: [네트워크 관리사, ICQA, network]
     systemctl status sshd :: 서비스 상태 확인 (systemd 기반)
     ```
 
----
-
-### ***4과목: 네트워크 운용기기***
+### ***4. 네트워크 운용기기***
 
 - ***계층별 장비***:
   - **리피터, 허브 (L1)**: 신호 증폭 및 분배.
