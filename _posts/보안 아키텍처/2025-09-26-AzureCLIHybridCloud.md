@@ -35,7 +35,7 @@ categories: [보안 아키텍처]
 
 ### 2. 환경 구축 절차
 
-#### 2.1 리소스 그룹 생성
+#### ***1. 리소스 그룹 생성***
 
 ```bash
 # 온프레미스 시뮬레이션용 리소스 그룹 생성
@@ -51,9 +51,7 @@ az group create --name st421-rg-azure --location koreacentral
 > 리소스 그룹은 Azure 리소스를 논리적으로 묶는 단위입니다.  
 > 온프레미스와 클라우드를 **분리된 리소스 그룹**으로 관리하면 충돌을 방지하고, 정리가 용이합니다.
 
----
-
-#### 2.2 가상 네트워크(VNet) 및 서브넷 생성
+#### ***2. 가상 네트워크(VNet) 및 서브넷 생성***
 
 ```bash
 # 온프레미스 VNet 생성 (192.168.0.0/16)
@@ -96,9 +94,7 @@ az network vnet subnet create \
 > - Web과 App 서브넷을 분리함으로써 **네트워크 격리**를 구현합니다.  
 > - CIDR 범위는 **온프레미스와 겹치지 않도록** 설정해야 합니다.
 
----
-
-#### 2.3 BGP 활성화된 VPN Gateway 생성
+#### ***3 BGP 활성화된 VPN Gateway 생성***
 
 ```bash
 # 온프레미스 측 공인 IP 생성
@@ -142,9 +138,7 @@ az network vnet-gateway create \
 > - `--asn`은 **Autonomous System Number**로, 서로 다른 값을 지정해야 BGP 피어링이 성립합니다.  
 > - 이 과정은 약 **30~40분 소요**됩니다.
 
----
-
-#### 2.4 Local Network Gateway 및 VPN 연결 생성
+#### ***4 Local Network Gateway 및 VPN 연결 생성***
 
 ```bash
 # 공인 IP 자동 추출
@@ -181,9 +175,7 @@ az network vpn-connection create \
 > - `--enable-bgp true`로 설정해야 **동적 라우팅**이 활성화됩니다.  
 > - 공유 키(`shared-key`)는 양쪽에서 **동일하게 설정**해야 연결이 성립합니다.
 
----
-
-#### 2.5 NSG 정책 적용
+#### ***5 NSG 정책 적용***
 
 ```bash
 # Web 서버용 NSG 생성
@@ -221,9 +213,7 @@ az network nsg rule create \
 > - **기본 정책은 모든 인바운드 차단**이므로, **명시적 허용 규칙만이 통신을 가능하게** 합니다.  
 > - 이는 **최소 권한 원칙**을 구현하는 핵심입니다.
 
----
-
-#### 2.6 cloud-init 기반 VM 배포
+#### ***6 cloud-init 기반 VM 배포***
 
 ```bash
 # Web 서버 cloud-init 스크립트 생성
@@ -305,7 +295,7 @@ az vm create \
 
 검증에 사용할 VM들의 내부 IP 주소를 먼저 확인합니다.
 
-#### 3.1 On-Prem → Web 서버 접속
+#### ***1. On-Prem → Web 서버 접속***
 
 온프레미스 클라이언트 VM에서 Azure의 Web 서버로 HTTP 요청을 보내 정상적으로 응답을 받는지 확인합니다. 이는 Web 티어 NSG 정책(`Allow-HTTP-From-OnPrem`)에 의해 허용된 통신입니다.
 
@@ -317,7 +307,7 @@ curl http://10.42.10.4
 
 > Welcome to st421 Hybrid Cloud Web! 메시지 수신을 통해, VPN과 BGP 라우팅이 정상적으로 동작하며 NSG 인바운드 규칙이 올바르게 적용되었음을 확인했습니다.
 
-#### 3.2 On-Prem → DB 직접 접속 차단 
+#### ***2. On-Prem → DB 직접 접속 차단***
 
 보안 정책이 제대로 동작하는지 검증하기 위해 의도적으로 규칙을 위반하는 통신을 시도합니다. 온프레미스 클라이언트 VM에서 App 티어의 DB 서버로 직접 접속을 시도합니다.
 
@@ -325,11 +315,11 @@ curl http://10.42.10.4
 
 ERROR 2003 (HY000): Can't connect to MySQL server... 오류가 발생했습니다. 이는 App 티어 NSG 정책이 허용되지 않은 소스(On-Prem)로부터의 직접적인 접근을 차단했음을 의미합니다. 이것이 **"최소 권한 원칙"**이 적용된 결과입니다. 
 
-#### 3.3 BGP 동적 라우팅 상태 검증
+#### ***.3 BGP 동적 라우팅 상태 검증***
 
 하이브리드 연결의 핵심인 BGP(Border Gateway Protocol) 동적 라우팅이 정상적으로 수립되었는지 확인하는 것은 중요합니다. BGP 피어링이 성공했다는 것은 양쪽 네트워크가 서로의 경로를 **자동으로 학습하고 있음**을 의미합니다.
 
-***CLI를 통한 검증***
+**CLI를 통한 검증**
 
 `az network vnet-gateway list-bgp-peer-status` 명령어를 사용하면 코드 기반으로 BGP 피어의 상태를 정확히 확인할 수 있습니다.
 
