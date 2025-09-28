@@ -15,13 +15,13 @@ Sqlmap은 SQL Injection 취약점을 탐지하고 공격을 자동화하는 오�
 
 ### 2. 기본 사용법 및 옵션
 
-#### **기본 스캔**
+#### ***기본 스캔***
 `-u` 옵션으로 취약점을 점검할 URL을 지정한다. Sqlmap이 테스트할 파라미터를 URL에 포함해야 한다.
 ```bash
 sqlmap -u "http://[Target IP]/vulnerabilities/sqli/?id=1&Submit=Submit#"
 ```
 
-#### **주요 옵션**
+#### ***주요 옵션***
 *   **--cookie="[COOKIE]"**: 인증이 필요한 페이지를 점검할 때 사용한다. 브라우저에서 복사한 쿠키 값을 입력한다.
 *   **--dbs**: 공격 가능한 데이터베이스의 목록을 보여준다.
 *   **-D [DB_NAME] --tables**: 특정 데이터베이스에 포함된 테이블 목록을 보여준다.
@@ -54,12 +54,12 @@ sqlmap -u "..." --cookie="..." -D dvwa -T users -C user,password --dump
 
 `--os-shell` 옵션은 Sqlmap의 가장 강력한 기능 중 하나로 성공 시 대상 서버의 운영체제 쉘을 획득하여 직접 명령을 내릴 수 있다. 이 기능은 SQL Injection을 통해 웹 서버의 쓰기 가능한 경로에 명령어 실행을 위한 작은 스크립트(Stager)를 업로드하는 방식으로 동작한다.
 
-#### **실행 명령어**
+#### ***실행 명령어***
 ```bash
 sqlmap -u "http://192.9.200.11/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="..." --os-shell
 ```
 
-#### **실행 결과 및 분석**
+#### ***실행 결과 및 분석***
 명령어 실행 결과 `os-shell` 획득에 실패했다. 로그 분석 결과 핵심적인 실패 원인은 `sqlmap`이 스크립트(Stager) 파일을 대상 서버의 웹 디렉터리에 업로드하지 못했기 때문으로 확인되었다.
 
    ![SqlmapOshellFail](/assets/images/Sql_3.png)

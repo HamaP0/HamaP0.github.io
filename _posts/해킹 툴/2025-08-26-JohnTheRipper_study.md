@@ -30,19 +30,19 @@ john --wordlist=[사전 파일 경로] [해시 파일 경로]
 
 `A03: Injection` 보고서에서 `sqlmap`을 통해 탈취한 `admin` 계정의 MD5 해시 `5f4dcc3b5aa765d61d8327deb882cf99` 를 크래킹하는 상황이다.
 
-#### **1. 해시 파일 준비**
+#### ***1. 해시 파일 준비***
 크래킹할 해시 값을 `hash.txt` 라는 파일로 저장한다.
 ```bash
 echo "5f4dcc3b5aa765d61d8327deb882cf99" > hash.txt
 ```
 
-#### **2. 사전 공격 실행**
+#### ***2. 사전 공격 실행***
 `rockyou.txt` 사전 파일을 이용하여 `hash.txt` 파일에 대한 크래킹을 수행한다. JtR은 해시의 종류(MD5, SHA1 등)를 자동으로 탐지한다.
 ```bash
 john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 ```
 
-#### **3. 결과 확인**
+#### ***3. 결과 확인***
 크래킹이 완료되면 `--show` 옵션으로 결과를 확인한다.
 ```bash
 john --show hash.txt

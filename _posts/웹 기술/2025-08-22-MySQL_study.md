@@ -15,13 +15,13 @@ DVWA를 설치한 Ubuntu 환경에서는 MySQL과 호환되는 MariaDB가 기본
 
 ### 2. 기본 접속 및 명령어
 
-#### **터미널 접속**
+#### ***터미널 접속***
 MySQL 서버에 관리자(root) 권한으로 접속한다. `-u`는 사용자 `-p`는 비밀번호 입력을 의미한다.
 ```bash
 sudo mysql -u root -p
 ```
 
-#### **주요 명령어**
+#### ***주요 명령어***
 *   **`SHOW DATABASES;`**: 현재 서버의 모든 데이터베이스 목록을 보여준다.
 *   **`USE [database_name];`**: 사용할 데이터베이스를 선택한다.
 *   **`SHOW TABLES;`**: 현재 선택된 데이터베이스의 모든 테이블 목록을 보여준다.
@@ -36,18 +36,18 @@ DVWA의 데이터베이스 구조를 직접 확인하는 과정은 SQL Injection
 
    ![MysqlDatabase](/assets/images/Mysql_1.png)
 
-1.  **데이터베이스 선택:**
+1.  ***데이터베이스 선택:***
     `USE dvwa;`
 
-2.  **테이블 목록 확인:**
+2.  ***테이블 목록 확인:***
     `SHOW TABLES;`
     (결과로 `guestbook`, `users` 테이블 등이 나타난다.)
 
-3.  **`users` 테이블 구조 확인:**
+3.  ***`users` 테이블 구조 확인:***
     `DESC users;`
     (결과로 `user_id` · `user` · `password` 등 컬럼 정보가 나타난다.)
 
-4.  **`users` 테이블 데이터 조회:**
+4.  ***`users` 테이블 데이터 조회:***
     `SELECT user, password FROM users;`
     (DVWA에 저장된 모든 사용자의 이름과 MD5로 해시된 비밀번호가 출력된다.)
 

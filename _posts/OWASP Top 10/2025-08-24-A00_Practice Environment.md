@@ -23,15 +23,15 @@ categories: [OWASP Top 10]
 
 #### OWASP Top 10 침투 프로세스
 
-*   **1단계: 정보 수집 Reconnaissance**
+*   ***1단계: 정보 수집 Reconnaissance***
     *   *시스템의 버전, 설정 등 외부 정보를 수집하여 공격의 실마리를 찾는 단계입니다.*
     *   → **[[A05] 보안 설정 오류](/projects/owasp-top-10/2025/08/29/A05_Security-Misconfiguration.html)**
 
-*   **2단계: 취약점 분석 Vulnerability Analysis**
+*   ***2단계: 취약점 분석 Vulnerability Analysis***
     *   *수집된 정보를 바탕으로 시스템을 구성하는 요소의 알려진 취약점(CVE)을 식별하는 단계입니다.*
     *   → **[[A06] 취약하고 오래된 구성 요소](/projects/owasp-top-10/2025/08/30/A06_Vulnerable-and-Outdated-Components.html)**
 
-*   **3단계: 공격 실행 Exploitation**
+*   ***3단계: 공격 실행 Exploitation***
     *   *식별된 취약점을 이용해 데이터를 탈취하거나 시스템 제어권을 획득하는 본격적인 공격 단계입니다.*
     *   → **[[A01] 접근 통제 실패](/projects/owasp-top-10/2025/08/25/A01_Broken-Access-Control.html)**
     *   → **[[A02] 암호화 실패](/projects/owasp-top-10/2025/08/26/A02_Cryptographic-Failures.html)**
@@ -42,7 +42,7 @@ categories: [OWASP Top 10]
     *   → **[[A10] 서버 측 요청 위조](/projects/owasp-top-10/2025/09/03/A10_Server-Side-Request-Forgery-(SSRF).html)**
 
 
-*   **4단계: 사후 분석 Post-Exploitation & Analysis**
+*   ***4단계: 사후 분석 Post-Exploitation & Analysis***
     *   *공격이 시스템에 남긴 흔적을 추적하고, 방어 시스템의 탐지 능력을 평가하는 단계입니다.*
     *   → **[[A09] 보안 로깅 및 모니터링 실패](/projects/owasp-top-10/2025/09/02/A09_Security-Logging-and-Monitoring-Failures.html)**
 
@@ -60,13 +60,13 @@ categories: [OWASP Top 10]
 
 **2. 가상머신 및 IP 할당**
 
-*   **Target (목표 서버):**
+*   ***Target (목표 서버):***
     *   **OS:** Ubuntu Server
     *   **IP:** `192.9.200.11`
     *   **Services:** Apache, PHP, MySQL (APM 스택), DVWA
    ![Ubuntu 서버 IP 주소 확인]({{ "/assets/images/A00_P2-1.png" | relative_url }})
-
-*   **Attacker (공격자):**
+   
+*   ***Attacker (공격자):***
     *   **OS:** Kali Linux
     *   **IP:** `192.9.200.12`
     *   **Services:** Burp Suite, Nmap, Nikto, Sqlmap 등
@@ -85,4 +85,3 @@ categories: [OWASP Top 10]
 
 
 <hr class="short-rule">
-

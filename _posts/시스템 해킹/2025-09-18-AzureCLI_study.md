@@ -35,17 +35,17 @@ Azure CLI의 명령어는 `az <group> <subgroup> <command> --parameter <value>` 
 
 ### 4. 주요 명령어 예시
 
-*   **리소스 그룹 목록 확인:**
+*   ***리소스 그룹 목록 확인:***
     Azure의 모든 리소스가 속해 있는 논리적 컨테이너인 리소스 그룹의 목록을 확인한다. `--output table` 옵션을 사용하면 결과를 테이블 형식으로 보기 쉽게 출력할 수 있다.
     ```bash
     az group list --output table
     ```
-*   **가상 머신 목록 확인:**
+*   ***가상 머신 목록 확인:***
     현재 구독에 있는 모든 가상 머신의 목록을 확인한다.
     ```bash
     az vm list --output table
     ```
-*   **스토리지 계정의 파일 공유 목록 확인:**
+*   ***스토리지 계정의 파일 공유 목록 확인:***
     특정 스토리지 계정 내에 있는 파일 공유 목록을 확인한다.
     ```bash
     az storage share list --account-name [YourStorageAccountName] --output table
@@ -55,13 +55,13 @@ Azure CLI의 명령어는 `az <group> <subgroup> <command> --parameter <value>` 
 
 ### 5. 보안 관점에서의 의미
 
-*   **정찰 (Reconnaissance):**
+*   ***정찰 (Reconnaissance):***
     공격자가 계정 정보를 탈취했을 경우 Azure CLI는 대상 클라우드 환경의 전체 구조(VM · 네트워크 · 스토리지 등)를 파악하는 강력한 정찰 도구가 된다.
 
-*   **데이터 유출 (Data Exfiltration):**
+*   ***데이터 유출 (Data Exfiltration):***
     스토리지 계정에 접근 권한이 있는 경우 `az storage blob download` 와 같은 명령어를 이용해 컨테이너에 저장된 민감한 데이터를 공격자 자신의 시스템으로 대량 유출할 수 있다.
 
-*   **권한 상승 (Privilege Escalation):**
+*   ***권한 상승 (Privilege Escalation):***
     `az role assignment list` 와 같은 명령어로 현재 계정에 할당된 역할과 권한을 확인하고 과도하게 부여된 권한을 이용해 다른 리소스에 접근하거나 더 높은 권한을 획득하는 경로를 찾을 수 있다.
 
 <hr class="short-rule">

@@ -41,7 +41,7 @@ Metasploit Framework(MSF)는 취약점 연구, 익스플로잇 코드 개발 및
 > **주의**: 현대 리눅스 배포판(예: Ubuntu 22.04)의 `apt`나 공식 Docker 이미지에는 이 백도어가 **포함되지 않는다**.  
 > 따라서 이 공격을 재현하려면 **Metasploitable 2**와 같은 의도적으로 취약한 가상머신이 필요하다.
 
-#### **공격 절차**
+#### ***공격 절차***
 
 1. **Metasploitable 2 실행**  
    [공식 사이트](https://sourceforge.net/projects/metasploitable/)에서 다운로드한 후 VirtualBox 또는 VMware로 실행한다.  
@@ -62,7 +62,7 @@ Metasploit Framework(MSF)는 취약점 연구, 익스플로잇 코드 개발 및
    msf6 exploit(...) > exploit
    ```
 
-3. **결과 확인**  
+3. ***결과 확인***
    공격이 성공하면 다음과 같은 메시지가 출력된다:  
    ```
    [*] Command shell session 1 opened (192.168.56.1:4444 -> 192.168.56.101:6200)
@@ -101,7 +101,7 @@ Metasploit의 가장 강력한 기능은 **Meterpreter** 페이로드에 있다.
 
 이 예시는 윈도우 시스템의 SMB 취약점(MS17-010, 이터널블루)을 공격하여 Meterpreter 세션을 획득하고 시스템을 제어하는 과정을 보여준다.
 
-#### **공격 시나리오: MS17-010 (EternalBlue)**
+#### ***공격 시나리오: MS17-010 (EternalBlue)***
 
 Metasploitable 2는 Windows 머신이 아니지만,  
 **Metasploitable 3 **(Windows 기반)을 사용하면 다음과 같은 공격이 가능하다.
@@ -119,7 +119,7 @@ Metasploitable 2는 Windows 머신이 아니지만,
    msf6 exploit(...) > exploit
    ```
 
-#### **Meterpreter 세션 활용**
+#### ***Meterpreter 세션 활용***
 공격에 성공하면 `meterpreter >` 라는 새로운 프롬프트가 나타난다. 여기서는 일반 쉘 명령어와 다른 Meterpreter 전용 명령어를 사용할 수 있다.
 
 *   **시스템 정보 확인:**

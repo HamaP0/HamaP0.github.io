@@ -27,19 +27,19 @@ Burp Suite를 사용하려면 먼저 브라우저의 트래픽이 Burp Suite를 
 
 ### 3. 핵심 기능
 
-#### **Proxy: 트래픽 가로채기**
+#### ***Proxy: 트래픽 가로채기***
 `Proxy` 탭은 모든 트래픽을 확인하고 제어하는 관문이다. `Intercept` 기능이 활성화된 상태에서 웹 페이지에 접속하면 요청이 서버로 전송되기 전에 Burp Suite에 잡힌다. 여기서 `Forward` 버튼을 눌러 요청을 그대로 보내거나 `Drop` 버튼으로 요청을 버릴 수 있다. 또는 요청 내용을 수정한 뒤 보낼 수도 있다.
 
    ![BurpIntercept](/assets/images/Burp_1.png)
 
-#### **Repeater: 요청 재전송 및 수정**
+#### ***Repeater: 요청 재전송 및 수정***
 `Repeater` 탭은 가로챈 요청을 수동으로 여러 번 보내볼 수 있는 기능이다. 특정 파라미터 값을 바꿔가며 서버가 어떻게 다르게 반응하는지 확인할 때 매우 유용하다.
 
 예를 들어 [SQL Injection](https://hamap0.github.io/projects/owasp-top-10/2025/08/27/A03_Injection.html)이나 [Broken Access Control](https://hamap0.github.io/projects/owasp-top-10/2025/08/25/A01_Broken-Access-Control.html) 취약점을 테스트할 때 ID 값이나 다른 파라미터를 변경하며 서버의 응답 변화를 관찰할 수 있다.
 
    ![BurpRepeater](/assets/images/Burp_2.png)
 
-#### **Intruder: 공격 자동화**
+#### ***Intruder: 공격 자동화***
 `Intruder` 탭은 요청의 특정 부분을 자동화된 방식으로 바꾸어 대량으로 보내는 기능이다. 주로 무차별 대입 공격(Brute-force)이나 특정 파라미터에 대한 값 추측 공격에 사용된다.
 
 1.  공격할 요청을 `Intruder` 탭으로 보낸다.
