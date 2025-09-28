@@ -72,6 +72,8 @@ PORT   STATE SERVICE
 *   **-p [Ports]**: 특정 포트만 지정해서 스캔한다. (예: `-p 80, 443`)
 *   **-r**: 포트 스캔 순서를 무작위로 섞지 않고 1번부터 순차적으로 진행한다.
 
+---
+
 ### 4. Nmap Scripting Engine (NSE)
 
 NSE는 Nmap 스캔 과정에서 특정 작업을 자동화하는 Lua 스크립트를 실행하는 기능이다.
@@ -88,3 +90,4 @@ nmap -sV --script=vuln 192.9.200.11
 
 
 <hr class="short-rule">
+
