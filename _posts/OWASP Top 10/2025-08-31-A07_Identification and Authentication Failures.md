@@ -6,7 +6,7 @@ categories: [OWASP Top 10]
 ---
 ---
 
-### ***프로젝트 7. A07:2021 - Identification and Authentication Failures <br> (식별 및 인증 실패) 분석 보고서***
+### ***프로젝트 7. A07:2021 - Identification and Authentication Failures (식별 및 인증 실패) 분석 보고서***
 
 ### 1. 취약점 개요
 

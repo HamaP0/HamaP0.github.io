@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "A10:2021 - Server-Side Request Forgery (서버 측 요청 위조) 분석 보고서"
+title: "A10:2021 - Server-Side Request Forgery (SSRF) 분석 보고서"
 date: 2025-09-03 17:00:00 +0900
 categories: [OWASP Top 10]
 ---
 ---
 
-### ***프로젝트 10.A10:2021 - Server-Side Request Forgery (SSRF) 분석 보고서***
+### ***프로젝트 10.A10:2021 - Server-Side Request Forgery (서버 측 요청 위조) 분석 보고서***
 
 ### 1. 취약점 개요
 
