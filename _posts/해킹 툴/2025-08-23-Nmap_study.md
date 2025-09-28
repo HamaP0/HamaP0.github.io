@@ -72,7 +72,7 @@ PORT   STATE SERVICE
 *   **-p [Ports]**: 특정 포트만 지정해서 스캔한다. (예: `-p 80, 443`)
 *   **-r**: 포트 스캔 순서를 무작위로 섞지 않고 1번부터 순차적으로 진행한다.
 
-### 4. ***Nmap Scripting Engine (NSE)***
+### 4. Nmap Scripting Engine (NSE)
 
 NSE는 Nmap 스캔 과정에서 특정 작업을 자동화하는 Lua 스크립트를 실행하는 기능이다.
 
@@ -85,5 +85,6 @@ nmap -sV --script=vuln 192.9.200.11
    ![Nmap2vuln](/assets/images/Nmap_3.png)
 
 이 명령을 실행하면 스캔된 서비스 버전에 해당하는 `vuln` 스크립트가 실행된다. 결과에 관련 CVE 번호와 `VULNERABLE` 상태가 출력될 경우 이는 `A06` 분석의 직접적인 증거가 된다.
+
 
 <hr class="short-rule">
