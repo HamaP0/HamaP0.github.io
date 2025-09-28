@@ -210,11 +210,13 @@ hr.short-rule {
   font-weight: 600; /* 폰트 굵기 명시 */
 }
 
-/* --- 소주제 (Part 1... 등): 2pt 증가 및 밝은 하늘색 적용 (일반 강조 규칙을 덮어씀) --- */
-.post-content p > strong:first-child,
-.post-content ul > li > strong:first-child {
+/* --- 소주제 (***text***): 2pt 증가 및 밝은 하늘색 적용 --- */
+/* Markdown에서 ***text***는 <strong><em>text</em></strong>로 변환됩니다. */
+.post-content strong > em,
+.post-content em > strong {
   font-size: 1.15em;
   color: var(--minor-topic-color);
+  font-style: normal; /* 이탤릭체 제거 */
 }
 
 /* --- 인라인 코드 `code` 블록 스타일링 --- */
