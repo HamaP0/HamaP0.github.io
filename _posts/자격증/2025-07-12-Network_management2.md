@@ -36,6 +36,8 @@ tags: [네트워크 관리사, ICQA, network]
   - **UTP (Unshielded Twisted Pair)**: 가장 널리 사용되는 구리선 케이블. 카테고리(CAT5, CAT6)에 따라 대역폭이 다름.
   - **광섬유 (Optical Fiber)**: 빛을 이용해 데이터를 전송. 장거리, 고속 전송에 유리.
 
+---
+
 ### ***2. TCP/IP***
 
 - ***TCP/IP 4계층 모델***: OSI 7계층을 4계층으로 단순화한 실용 모델.
@@ -58,6 +60,8 @@ tags: [네트워크 관리사, ICQA, network]
   - **ARP (Address Resolution Protocol)**: 논리적 주소(IP)를 물리적 주소(MAC)로 변환.
   - **ICMP (Internet Control Message Protocol)**: 네트워크 통신 중 발생하는 오류 메시지를 보고. (`ping`이 사용)
   - **DHCP (Dynamic Host Configuration Protocol)**: 네트워크 내의 클라이언트에게 IP 주소를 자동으로 할당.
+
+---
 
 ### ***3. NOS (Network Operating System)***
 
@@ -84,6 +88,8 @@ tags: [네트워크 관리사, ICQA, network]
     route -n             :: 라우팅 테이블 확인
     systemctl status sshd :: 서비스 상태 확인 (systemd 기반)
     ```
+
+---
 
 ### ***4. 네트워크 운용기기***
 
