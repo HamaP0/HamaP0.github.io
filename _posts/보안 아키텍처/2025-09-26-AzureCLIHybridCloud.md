@@ -94,7 +94,7 @@ az network vnet subnet create \
 > - Web과 App 서브넷을 분리함으로써 **네트워크 격리**를 구현합니다.  
 > - CIDR 범위는 **온프레미스와 겹치지 않도록** 설정해야 합니다.
 
-#### ***3 BGP 활성화된 VPN Gateway 생성***
+#### ***3. BGP 활성화된 VPN Gateway 생성***
 
 ```bash
 # 온프레미스 측 공인 IP 생성
@@ -138,7 +138,7 @@ az network vnet-gateway create \
 > - `--asn`은 **Autonomous System Number**로, 서로 다른 값을 지정해야 BGP 피어링이 성립합니다.  
 > - 이 과정은 약 **30~40분 소요**됩니다.
 
-#### ***4 Local Network Gateway 및 VPN 연결 생성***
+#### ***4. Local Network Gateway 및 VPN 연결 생성***
 
 ```bash
 # 공인 IP 자동 추출
@@ -175,7 +175,7 @@ az network vpn-connection create \
 > - `--enable-bgp true`로 설정해야 **동적 라우팅**이 활성화됩니다.  
 > - 공유 키(`shared-key`)는 양쪽에서 **동일하게 설정**해야 연결이 성립합니다.
 
-#### ***5 NSG 정책 적용***
+#### ***5. NSG 정책 적용***
 
 ```bash
 # Web 서버용 NSG 생성
@@ -213,7 +213,7 @@ az network nsg rule create \
 > - **기본 정책은 모든 인바운드 차단**이므로, **명시적 허용 규칙만이 통신을 가능하게** 합니다.  
 > - 이는 **최소 권한 원칙**을 구현하는 핵심입니다.
 
-#### ***6 cloud-init 기반 VM 배포***
+#### ***6. cloud-init 기반 VM 배포***
 
 ```bash
 # Web 서버 cloud-init 스크립트 생성
@@ -315,7 +315,7 @@ curl http://10.42.10.4
 
 ERROR 2003 (HY000): Can't connect to MySQL server... 오류가 발생했습니다. 이는 App 티어 NSG 정책이 허용되지 않은 소스(On-Prem)로부터의 직접적인 접근을 차단했음을 의미합니다. 이것이 **"최소 권한 원칙"**이 적용된 결과입니다. 
 
-#### ***.3 BGP 동적 라우팅 상태 검증***
+#### ***3. BGP 동적 라우팅 상태 검증***
 
 하이브리드 연결의 핵심인 BGP(Border Gateway Protocol) 동적 라우팅이 정상적으로 수립되었는지 확인하는 것은 중요합니다. BGP 피어링이 성공했다는 것은 양쪽 네트워크가 서로의 경로를 **자동으로 학습하고 있음**을 의미합니다.
 
@@ -341,3 +341,5 @@ BGP의 가장 큰 장점은 바로 이 **동적 경로 학습** 능력입니다.
 ### 4. 마무리
 
 이 프로젝트는 BGP 기반 동적 라우팅과 NSG 정책을 조합하여 **실제 기업 환경과 유사한 수준의 보안과 확장성을 갖춘** 하이브리드 클라우드 연결을 성공적으로 구축한 사례입니다.
+
+<hr class="short-rule">
